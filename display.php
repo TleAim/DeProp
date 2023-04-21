@@ -26,6 +26,7 @@ function is_mobile() {
             return true;
         }
     }
-    return false;
+    return false; 
 }
+//test commit
 ?>
