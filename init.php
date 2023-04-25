@@ -24,3 +24,7 @@ $pagename = "ดีพร๊อพ ตลาดบ้านและที่ด
     <!-- Firebase Authen -->
     <script src="https://www.gstatic.com/firebasejs/8.3.0/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.3.0/firebase-auth.js"></script>
+
+    <script>
+        let uid = "none";
+    </script>

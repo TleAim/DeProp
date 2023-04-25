@@ -8,29 +8,20 @@ $query = mysqli_query($conn2, $sql2);
 <div class="bgWhiteOP2 p-3">
 
     <p class="text-center fs-5">ลงประกาศ สำหรับอสังหาริมทรัพย์เท่านั้น</p>
-    <form action="submit_form.php" method="post" enctype="multipart/form-data" id="sale-form">
-    
-    <!-- พื้นที่อัพโหลดรูปภาพ -->
-    <div class="dropzone" id="dropzone">
-        <p class="text-center fs-6">ลากรูปภาพมาใส่ หรือ กดที่นี่เพื่อใส่รูปภาพ</p>
-    </div>
-    <div class="" id="thumbnails"></div>
-    <script src="upload.js"></script>  
-
-    
+    <form id="newpostform" action="newpost_process.php" method="post" >
     
     <!-- รายละเอียดประกาศ -->
     <div class="mb-2 mt-3">
-        <input type="text" class="form-control" id="post_head" name="post_head" placeholder="หัวข้อประกาศ: เช่น บ้าน ติดถนนใหญ่ ใกล้ตัวเมือง" required oninvalid="setCustomMessage(this, 'กรุณาใส่หัวข้อประกาศ')">
+        <input type="text" class="form-control" id="post_head" name="post_head" placeholder="หัวข้อประกาศ: เช่น บ้าน ติดถนนใหญ่ ใกล้ตัวเมือง" oninvalid="setCustomMessage(this, 'กรุณาใส่หัวข้อประกาศ')" required>
     </div>
 
     <div class="mb-2">
-        <input type="text" class="form-control" id="price" placeholder="ใส่ราคาเช่น 1500000 หากไม่ต้องการระบุราคา ใส่ 0" name="price" oninput="clearNonNumericInput(this); formatNumberWithCommas(this);  " >
+        <input type="text" class="form-control" id="price" name="price" placeholder="ใส่ราคาเช่น 1500000 (หากไม่ต้องการระบุใส่ 0)" oninput="clearNonNumericInput(this); formatNumberWithCommas(this);  " >
     </div>
 
     <div class="row my-2">
         <div class="col-12 ">
-            <select name="province_id" id="province" class="form-select form-select-sm" required oninvalid="setCustomMessage(this, 'กรุณาระบุพื้นที่สินทรัพย์ด้วยค่ะ')">
+            <select name="province_id" id="province" class="form-select form-select-sm" oninvalid="setCustomMessage(this, 'กรุณาระบุพื้นที่สินทรัพย์ด้วยค่ะ')" required>
                 <option value="" class="text-center"> เลือกจังหวัด </option>
             <?php while($result = mysqli_fetch_assoc($query)): ?>
                 <option class="text-center" value="<?=$result['id']?>"><?=$result['name_th']?></option>
@@ -98,24 +89,27 @@ $query = mysqli_query($conn2, $sql2);
     
     <h5 class="mt-2 pt-2 ps-2 form-label"> ช่องทางติดต่อ</h5>
     <div class="mb-3">
-        <input type="tel" class="form-control" id="contact_phone"  placeholder="เบอร์โทรติดต่อ เช่น 0633435158" name="phone" maxlength="12" pattern="[0-9]{10}" required>
+        <input type="tel" class="form-control" id="contact_phone"  placeholder="เบอร์โทรติดต่อ เช่น 0633435158" name="phone" maxlength="12" pattern="[0-9]{10}" oninvalid="setCustomMessage(this, 'กรุณาระบุเบอร์โทรศัพท์ด้วยค่ะ')" required>
     </div>
 
     <div class="mb-3 mt-3">
-        <input type="text" class="form-control" id="contact_line" name="contact_line" placeholder="LINE ID ไลน์ไอดี (ถ้ามี)" required>
+        <input type="text" class="form-control" id="contact_line" name="contact_line" placeholder="LINE ID ไลน์ไอดี (ถ้ามี)">
     </div>
 
     <div class="mb-3">
-        <input type="url" class="form-control" id="location" name="location" required placeholder="ลิงค์แผนที่(ถ้ามี) เช่น https://goo.gl/maps/TYJXRquKGHrKcG47A">
+        <input type="url" class="form-control" id="location" name="location" placeholder="ลิงค์แผนที่(ถ้ามี) เช่น https://goo.gl/maps/TYJXRquKGHrKcG47A">
     </div>
 
-    <button type="submit" class="btn btn-primary mt-2">ยืนยัน ลงประกาศ</button>
+    <button id="newpostsubmit" type="submit" class="btn btn-primary mt-2">ยืนยัน ลงประกาศ</button>
     </form>
     <p class="mb-3"></p>
-
+</div>
 
   <script src="loc.js"></script>
   <script>
+    //=======================//
+    // INPUT CONTROL 
+    //=======================//
     function clearNonNumericInput(inputElement) {
       const numericValue = inputElement.value.replace(/[^0-9]/g, '');
       inputElement.value = numericValue;
@@ -141,9 +135,7 @@ $query = mysqli_query($conn2, $sql2);
     $('#phone').keyup(function(){
         $(this).val($(this).val().replace(/(\d{3})\-?(\d{3})\-?(\d{4})/,'$1-$2-$3'))
     });
-  </script>
 
-<script>
     function generateOptions() {
       const raiElement = document.getElementById('rai');
       const vaElement = document.getElementById('va');
@@ -164,9 +156,6 @@ $query = mysqli_query($conn2, $sql2);
         vaElement.add(optionElement);
       }
     }
-
-    
-
     document.addEventListener('DOMContentLoaded', generateOptions);
 
     function setCustomMessage(inputElement, message) {
@@ -177,6 +166,4 @@ $query = mysqli_query($conn2, $sql2);
         inputElement.setCustomValidity('');
       };
     }
-
-    
   </script>

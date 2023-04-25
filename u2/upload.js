@@ -1,6 +1,6 @@
 const dropzone = document.getElementById('dropzone');
 const thumbnails = document.getElementById('thumbnails');
-const NextStep = document.getElementById('NextStep');
+const uploadBtn = document.getElementById('uploadBtn');
 
 let selectedFiles = [];
 
@@ -80,17 +80,11 @@ dropzone.addEventListener('drop', function (event) {
         }
     });
 });
- 
 
-NextStep.addEventListener('click', function () {
-    
-    if (selectedFiles.length === 0){
-        console("File count 0 then return");
-        return;
-    } 
-
+if (uploadBtn) {
+uploadBtn.addEventListener('click', function () {
+    if (selectedFiles.length === 0) return;
     const formData = new FormData();
-
     selectedFiles.forEach((file, index) => {
         formData.append(`file${index}`, file);
     });
@@ -101,10 +95,9 @@ NextStep.addEventListener('click', function () {
         if (response.ok) {
             response.text().then(text => {
                 console.log(text);
-                console.log("Upload success");
                 // Redirect to index.php instead of showing an alert
                 //alert('Images uploaded successfully');
-                window.location.href = 'newpost2.php';
+                window.location.href = 'index.php';
             });
         } else {
             alert('Error uploading images');
@@ -114,7 +107,7 @@ NextStep.addEventListener('click', function () {
         alert('Error uploading images');
     });
 });
-
+}
   
 
 

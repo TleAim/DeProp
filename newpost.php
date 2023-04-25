@@ -1,6 +1,7 @@
 <?php
 include 'display.php';
 include 'init.php';
+session_start();
 ?>
 
 <!DOCTYPE html>
@@ -36,9 +37,11 @@ include 'init.php';
 
         <!-- Form Area -->
         <div class="row">
-            <div class="col mb-4">
-                    <?php include 'newpostform.php'; ?>    
+            <div class="col mb-4 pb-4">
+                    <?php include 'newimage.php'; ?>    
+                <div class="p-5 m-3"></div>
             </div>
+
         </div>
     </div>
     <?php include 'modal.php'; ?>

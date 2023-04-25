@@ -13,5 +13,14 @@ function is_mobile() {
     }
     return false; 
 }
-//test commit
+
+
+function consolelog($output) {
+    // Convert the output to a JSON string to handle special characters
+    $outputJson = json_encode($output);
+
+    // Print JavaScript code with the console.log() function
+    echo "<script>console.log('PHP output: $outputJson');</script>";
+}
+
 ?>

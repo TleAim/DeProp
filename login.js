@@ -46,10 +46,27 @@
       logout.style.display    = "block"
       loginbt.style.display   = "none"
       welcome.innerText       = getName(user)
+      uid = user.uid //set uid global
       console.log("email:"+user.email)
       console.log("displayName:"+user.displayName)
       console.log("phoneNumber:"+user.phoneNumber)
-      console.log("UID:"+user.uid)
+      console.log("User UID :"+user.uid)
+      console.log("UID Global:"+uid)
+
+      // Send the UID to your PHP script using AJAX
+      console.log("Call AJAX for store UID to PHP SESSESION")
+      $.ajax({
+        url: "storeuid.php",
+        method: "POST",
+        data: { uid: uid },
+        success: (response) => {
+            console.log(response);
+        },
+        error: (error) => {
+            console.error("Error sending UID to PHP script:", error);
+        },
+      });
+
     }else{ //หากยังไม่ login
       profile.style.display   = "none"
       //postbt.style.display    = "none"
