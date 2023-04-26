@@ -1,6 +1,6 @@
 const dropzone = document.getElementById('dropzone');
 const thumbnails = document.getElementById('thumbnails');
-const uploadBtn = document.getElementById('uploadBtn');
+const NextStep = document.getElementById('NextStep');
 
 let selectedFiles = [];
 
@@ -80,11 +80,17 @@ dropzone.addEventListener('drop', function (event) {
         }
     });
 });
+ 
 
-if (uploadBtn) {
-uploadBtn.addEventListener('click', function () {
-    if (selectedFiles.length === 0) return;
+NextStep.addEventListener('click', function () {
+    
+    if (selectedFiles.length === 0){
+        console("File count 0 then return");
+        return;
+    } 
+
     const formData = new FormData();
+
     selectedFiles.forEach((file, index) => {
         formData.append(`file${index}`, file);
     });
@@ -95,19 +101,20 @@ uploadBtn.addEventListener('click', function () {
         if (response.ok) {
             response.text().then(text => {
                 console.log(text);
+                console.log("Upload success");
                 // Redirect to index.php instead of showing an alert
                 //alert('Images uploaded successfully');
-                window.location.href = 'index.php';
+                window.location.href = 'newpost2.php';
             });
         } else {
-            alert('Error uploading images');
+            //alert('Error uploading images');
         }
     }).catch(error => {
         console.error(error);
-        alert('Error uploading images');
+        //alert('Error uploading images');
     });
 });
-}
+
   
 
 

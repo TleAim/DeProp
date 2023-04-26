@@ -11,79 +11,87 @@ $query = mysqli_query($conn2, $sql2);
     <form id="newpostform" action="newpost_process.php" method="post" >
     
     <!-- รายละเอียดประกาศ -->
-    <div class="mb-2 mt-3">
-        <input type="text" class="form-control" id="post_head" name="post_head" placeholder="หัวข้อประกาศ: เช่น บ้าน ติดถนนใหญ่ ใกล้ตัวเมือง" oninvalid="setCustomMessage(this, 'กรุณาใส่หัวข้อประกาศ')" required>
-    </div>
-
-    <div class="mb-2">
-        <input type="text" class="form-control" id="price" name="price" placeholder="ใส่ราคาเช่น 1500000 (หากไม่ต้องการระบุใส่ 0)" oninput="clearNonNumericInput(this); formatNumberWithCommas(this);  " >
-    </div>
-
     <div class="row my-2">
         <div class="col-12 ">
             <select name="province_id" id="province" class="form-select form-select-sm" oninvalid="setCustomMessage(this, 'กรุณาระบุพื้นที่สินทรัพย์ด้วยค่ะ')" required>
-                <option value="" class="text-center"> เลือกจังหวัด </option>
+                <option class="text-left ps-2" value=""> เลือกจังหวัด </option>
             <?php while($result = mysqli_fetch_assoc($query)): ?>
-                <option class="text-center" value="<?=$result['id']?>"><?=$result['name_th']?></option>
+                <option class="text-left ps-2" value="<?=$result['id']?>"><?=$result['name_th']?></option>
             <?php endwhile; ?>
             </select>
         </div>
     </div>
     <div class="row my-2">
         <div class="col-12">
-            <select name="amphure_id" id="amphure" class="form-select form-select-sm" disabled>
-                <option value="0" class="text-center"> เลือกอำเภอ </option>
+            <select name="amphure_id" id="amphure" class="form-select form-select-sm" oninvalid="setCustomMessage(this, 'กรุณาระบุพื้นที่สินทรัพย์ด้วยค่ะ')" disabled required>
+                <option class="text-left ps-2" value="" > เลือกอำเภอ </option>
             </select>
         </div>
     </div>
     <div class="row my-2">
         <div class="col-12">
-            <select name="district_id" id="district" class="form-select form-select-sm" disabled>
-                <option value="0" class="text-center"> เลือกตำบล </option>
+            <select name="district_id" id="district" class="form-select form-select-sm" oninvalid="setCustomMessage(this, 'กรุณาระบุพื้นที่สินทรัพย์ด้วยค่ะ')" disabled required>
+                <option class="text-left ps-2" value=""> เลือกตำบล </option>
             </select>
         </div>
     </div>                
-
-    <div class="mb-3">
-        <textarea class="form-control" id="post_desc" name="post_desc" rows="5" cols="30" placeholder="รายละเอียดสินทรัพย์"></textarea>
-    </div>
     
-    <div class="mb-3 form-control">
-        <p class="mb-1 form-label">สินทรัพย์นี้สำหรับ:</p>
-        <div class="form-check">
-            <input class="form-check-input" type="checkbox" id="type-sale" name="type" value="1" checked>
-            <label class="form-check-label" for="type-sale">ขาย</label>
+    <div class="mb-3 pb-4 pt-3 form-control bgForm">
+        <div class="">
+            <input type="text" class="form-control" id="post_head" name="post_head" placeholder="หัวข้อประกาศ: เช่น บ้าน ติดถนนใหญ่ ใกล้ตัวเมือง" oninvalid="setCustomMessage(this, 'กรุณาใส่หัวข้อประกาศ')" required>
         </div>
-        <div class="form-check">
-            <input class="form-check-input" type="checkbox" id="type-rent" name="type" value="1">
-            <label class="form-check-label" for="type-rent">ให้เช่า</label>
-        </div>
-    </div>
 
-    <div class="mb-2 form-control ">
-        <p class="mb-1 form-label">ขนาดพื้นที่:</p>
+        <div class="mt-1">
+            <textarea class="form-control" id="post_desc" name="post_desc" rows="5" cols="30" placeholder="รายละเอียดสินทรัพย์"></textarea>
+        </div>
+   
+        <p class="mt-4 form-label">สินทรัพย์นี้สำหรับ:</p>
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" id="type-sale" name="asset_condition" value="1" checked>
+                <label class="form-check-label" for="type-sale">ขาย</label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" id="type-rent" name="asset_condition" value="2">
+                <label class="form-check-label" for="type-rent">ให้เช่า</label>
+            </div>
+
+        <p class="mt-4 form-label">ราคาสินทรัพย์</p>
+        <div class="">
+            <input type="text" class="form-control" id="price" name="price" placeholder="ใส่ราคาเช่น 1500000 (หากไม่ต้องการระบุใส่ 0)" oninput="clearNonNumericInput(this); formatNumberWithCommas(this);  " >
+        </div>
+    
+        <p class="mt-4 form-label">ประเภทสินทรัพย์</p>
+            <select class="form-select form-select-sm text-left fw-bolder" id="asset_type" name="asset_type">
+                <option value="1" selected>บ้านพร้อมที่ดิน</option>
+                <option value="2">ที่ดินเปล่า</option>
+                <option value="3">คอนโดมิเนียม</option>
+                <option value="4">ทาวน์เฮ้าส์</option>
+                <option value="5">อาคารพาณิชย์</option>
+            </select>
+    
+        <p class="mt-4 form-label">ขนาดพื้นที่:</p>
         <div class="d-flex">
-        <select class="form-select form-select-sm me-1" id="rai" name="rai" style="width: 30%;"></select>
-        <select class="form-select form-select-sm me-1" id="ngan" name="ngan" style="width: 30%;">
-            <option value="0" class="text-center"> 0 งาน </option>
-            <option value="1" class="text-center"> 1 งาน </option>
-            <option value="2" class="text-center"> 2 งาน </option>
-            <option value="3" class="text-center"> 3 งาน </option>
-        </select>
-        <select class="form-select form-select-sm" id="va" name="va" style="width: 30%;"></select>
+            <select class="form-select form-select-sm me-1" id="rai" name="rai" style="width: 30%;"></select>
+            <select class="form-select form-select-sm me-1" id="ngan" name="ngan" style="width: 30%;">
+                <option value="0" class="text-center"> 0 งาน </option>
+                <option value="1" class="text-center"> 1 งาน </option>
+                <option value="2" class="text-center"> 2 งาน </option>
+                <option value="3" class="text-center"> 3 งาน </option>
+            </select>
+            <select class="form-select form-select-sm" id="va" name="va" style="width: 30%;"></select>
         </div> 
-    </div>
 
-    <div class="mb-3 form-control">
-        <p class="mb-1 form-label">ระยะเวลาที่แสดงประกาศ</p>
-        <input type="radio" id="d30" name="duration" value="30">
-        <label for="d30" class="pe-2">30 วัน</label>
-        <input type="radio" id="d60" name="duration" value="60" checked>
-        <label for="d60" class="pe-2">60 วัน</label>
-        <input type="radio" id="d90" name="duration" value="90">
-        <label for="d90" class="pe-2">90 วัน</label>
-        <input type="radio" id="d120" name="duration" value="120">
-        <label for="d120" class="pe-2">120 วัน</label>
+        <p class="mt-4 form-label">ระยะเวลาที่แสดงประกาศ</p>
+            <input type="radio" id="d30" name="duration" value="30">
+            <label for="d30" class="pe-2">30 วัน</label>
+            <input type="radio" id="d60" name="duration" value="60" checked>
+            <label for="d60" class="pe-2">60 วัน</label>
+            <input type="radio" id="d90" name="duration" value="90">
+            <label for="d90" class="pe-2">90 วัน</label>
+            <input type="radio" id="d120" name="duration" value="120">
+            <label for="d120" class="pe-2">120 วัน</label>
+        
+        
     </div>
 
     
@@ -105,7 +113,7 @@ $query = mysqli_query($conn2, $sql2);
     <p class="mb-3"></p>
 </div>
 
-  <script src="loc.js"></script>
+  <script src="./js/loc.js"></script>
   <script>
     //=======================//
     // INPUT CONTROL 

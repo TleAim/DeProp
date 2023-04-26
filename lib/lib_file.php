@@ -1,0 +1,91 @@
+<?php
+function deleteFilesWithPrefix($folder, $prefix) {
+    // Check if the folder exists
+    if (file_exists($folder) && is_dir($folder)) {
+        // Get all files in the folder
+        $files = glob($folder . '*');
+
+        // Loop through the files
+        foreach ($files as $file) {
+            // Check if the file name starts with the specified prefix
+            if (strpos(basename($file), $prefix) === 0) {
+                // Delete the file
+                if (unlink($file)) {
+                    echo "Deleted file: " . $file . "\n";
+                } else {
+                    echo "Error deleting file: " . $file . "\n";
+                }
+            }
+        }
+    } else {
+        echo "Folder not found: " . $folder . "\n";
+    }
+}
+
+
+function moveAndRenameFile($oldFilePath, $newFilePath) {
+
+    // Move and rename the file
+    if (file_exists($oldFilePath)) {
+        if (rename($oldFilePath, $newFilePath)) {
+            echo "File moved and renamed successfully.";
+        } else {
+            echo "Error: Unable to move and rename the file.";
+        }
+    } else {
+        echo "Error: The file does not exist.";
+    }
+}
+
+function saveFile($uploadDir,$fileArr,$uid){
+
+    $i=0;
+    foreach ($fileArr as $file) {
+        if ($file['error'] === 0 && $file['size'] <= 5 * 1024 * 1024) {
+
+            $extension = pathinfo($file['name'], PATHINFO_EXTENSION);
+            $allowedExtensions = array('jpg', 'jpeg', 'png', 'gif');
+
+            if (in_array(strtolower($extension), $allowedExtensions)) {
+                $filename = $uid.'_'.$i++. '.' . '.jpg';
+                $destination = $uploadDir . $filename;
+
+                // Create image resource from the original image
+                switch (strtolower($extension)) {
+                    case 'jpg':
+                    case 'jpeg':
+                        $source = imagecreatefromjpeg($file['tmp_name']);
+                        break;
+                    case 'png':
+                        $source = imagecreatefrompng($file['tmp_name']);
+                        break;
+                    case 'gif':
+                        $source = imagecreatefromgif($file['tmp_name']);
+                        break;
+                }
+
+
+                // Convert the image to JPG and save it
+                if ($source && imagejpeg($source, $destination, 100)) {
+                    echo "File uploaded: $filename\n";
+                } else {
+                    echo "Error uploading file: $file[name]\n";
+                }
+
+                // Free up memory
+                if ($source) {
+                    imagedestroy($source);
+                }
+
+            } else {
+                echo "Invalid file extension: $file[name]\n";
+            }
+        } else {
+            echo "File too large or error: $file[name]\n";
+        }
+    }
+}
+
+?>
+
+

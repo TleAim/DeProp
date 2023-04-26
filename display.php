@@ -23,4 +23,16 @@ function consolelog($output) {
     echo "<script>console.log('PHP output: $outputJson');</script>";
 }
 
+function printPostValues() {
+    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+        echo "<h3>POST Values:</h3>";
+        echo "<pre>";
+        
+        foreach ($_POST as $key => $value) {
+            echo "Key: " . htmlspecialchars($key) . " | Value: " . htmlspecialchars($value) . "\n";
+        }
+        echo "</pre>";
+    }
+}
+
 ?>

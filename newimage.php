@@ -18,7 +18,7 @@
         </button>
     </div>
 </div>
-<script src="upload.js"></script>  
+<script src="./js/upload.js"></script>  
 <?php 
 //echo "PHP OUT : UID stored successfully: " . $_SESSION['uid'];
 ?>

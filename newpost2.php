@@ -31,7 +31,7 @@ session_start();
         <div class="row ">
             <div class="col m-0 p-0">
                 <?php include 'login.php'; ?>
-                <script src="login.js" ></script>
+                <script src="./js/login.js" ></script>
             </div>
         </div>
 

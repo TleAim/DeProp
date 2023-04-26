@@ -31,14 +31,19 @@ session_start();
         <div class="row ">
             <div class="col m-0 p-0">
                 <?php include 'login.php'; ?>
-                <script src="./js/login.js" ></script>
+                <script src="login.js" ></script>
             </div>
         </div>
 
         <!-- Form Area -->
         <div class="row">
             <div class="col mb-4 pb-4">
-                    <?php include 'newimage.php'; ?>    
+            <?php
+            $postid = uniqid();
+            echo "POST ID = ".$postid;
+            echo "<br>UID = ".$_SESSION['uid'];
+            printPostValues();
+            ?>   
                 <div class="p-5 m-3"></div>
             </div>
 
