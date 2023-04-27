@@ -47,17 +47,17 @@ $query = mysqli_query($conn2, $sql2);
    
         <p class="mt-4 form-label">สินทรัพย์นี้สำหรับ:</p>
             <div class="form-check">
-                <input class="form-check-input" type="checkbox" id="type-sale" name="asset_condition" value="1" checked>
+                <input class="form-check-input" type="checkbox" id="type-sale" name="asset_condition_sale" value="1" checked>
                 <label class="form-check-label" for="type-sale">ขาย</label>
             </div>
             <div class="form-check">
-                <input class="form-check-input" type="checkbox" id="type-rent" name="asset_condition" value="2">
+                <input class="form-check-input" type="checkbox" id="type-rent" name="asset_condition_rent" value="1">
                 <label class="form-check-label" for="type-rent">ให้เช่า</label>
             </div>
 
         <p class="mt-4 form-label">ราคาสินทรัพย์</p>
         <div class="">
-            <input type="text" class="form-control" id="price" name="price" placeholder="ใส่ราคาเช่น 1500000 (หากไม่ต้องการระบุใส่ 0)" oninput="clearNonNumericInput(this); formatNumberWithCommas(this);  " >
+            <input type="text" class="form-control" id="asset_price" name="asset_price" placeholder="ใส่ราคาเช่น 1500000 (หากไม่ต้องการระบุใส่ 0)" oninput="clearNonNumericInput(this); formatNumberWithCommas(this);  " >
         </div>
     
         <p class="mt-4 form-label">ประเภทสินทรัพย์</p>
@@ -71,24 +71,24 @@ $query = mysqli_query($conn2, $sql2);
     
         <p class="mt-4 form-label">ขนาดพื้นที่:</p>
         <div class="d-flex">
-            <select class="form-select form-select-sm me-1" id="rai" name="rai" style="width: 30%;"></select>
-            <select class="form-select form-select-sm me-1" id="ngan" name="ngan" style="width: 30%;">
+            <select class="form-select form-select-sm me-1" id="area_rai" name="area_rai" style="width: 30%;"></select>
+            <select class="form-select form-select-sm me-1" id="area_ngan" name="area_ngan" style="width: 30%;">
                 <option value="0" class="text-center"> 0 งาน </option>
                 <option value="1" class="text-center"> 1 งาน </option>
                 <option value="2" class="text-center"> 2 งาน </option>
                 <option value="3" class="text-center"> 3 งาน </option>
             </select>
-            <select class="form-select form-select-sm" id="va" name="va" style="width: 30%;"></select>
+            <select class="form-select form-select-sm" id="area_va" name="area_va" style="width: 30%;"></select>
         </div> 
 
         <p class="mt-4 form-label">ระยะเวลาที่แสดงประกาศ</p>
-            <input type="radio" id="d30" name="duration" value="30">
+            <input type="radio" id="d30" name="post_duration" value="30">
             <label for="d30" class="pe-2">30 วัน</label>
-            <input type="radio" id="d60" name="duration" value="60" checked>
+            <input type="radio" id="d60" name="post_duration" value="60" checked>
             <label for="d60" class="pe-2">60 วัน</label>
-            <input type="radio" id="d90" name="duration" value="90">
+            <input type="radio" id="d90" name="post_duration" value="90">
             <label for="d90" class="pe-2">90 วัน</label>
-            <input type="radio" id="d120" name="duration" value="120">
+            <input type="radio" id="d120" name="post_duration" value="120">
             <label for="d120" class="pe-2">120 วัน</label>
         
         
@@ -97,7 +97,7 @@ $query = mysqli_query($conn2, $sql2);
     
     <h5 class="mt-2 pt-2 ps-2 form-label"> ช่องทางติดต่อ</h5>
     <div class="mb-3">
-        <input type="tel" class="form-control" id="contact_phone"  placeholder="เบอร์โทรติดต่อ เช่น 0633435158" name="phone" maxlength="12" pattern="[0-9]{10}" oninvalid="setCustomMessage(this, 'กรุณาระบุเบอร์โทรศัพท์ด้วยค่ะ')" required>
+        <input type="tel" class="form-control" id="contact_phone"  placeholder="เบอร์โทรติดต่อ เช่น 0633435158" name="contact_phone" maxlength="12" pattern="[0-9]{10}{-}" oninvalid="setCustomMessage(this, 'กรุณาระบุเบอร์โทรศัพท์ด้วยค่ะ')" required>
     </div>
 
     <div class="mb-3 mt-3">
@@ -105,7 +105,7 @@ $query = mysqli_query($conn2, $sql2);
     </div>
 
     <div class="mb-3">
-        <input type="url" class="form-control" id="location" name="location" placeholder="ลิงค์แผนที่(ถ้ามี) เช่น https://goo.gl/maps/TYJXRquKGHrKcG47A">
+        <input type="url" class="form-control" id="contact_location" name="contact_location" placeholder="ลิงค์แผนที่(ถ้ามี) เช่น https://goo.gl/maps/TYJXRquKGHrKcG47A">
     </div>
 
     <button id="newpostsubmit" type="submit" class="btn btn-primary mt-2">ยืนยัน ลงประกาศ</button>
@@ -140,13 +140,13 @@ $query = mysqli_query($conn2, $sql2);
       }
     }
 
-    $('#phone').keyup(function(){
+    $('#contact_phone').keyup(function(){
         $(this).val($(this).val().replace(/(\d{3})\-?(\d{3})\-?(\d{4})/,'$1-$2-$3'))
     });
 
     function generateOptions() {
-      const raiElement = document.getElementById('rai');
-      const vaElement = document.getElementById('va');
+      const raiElement = document.getElementById('area_rai');
+      const vaElement = document.getElementById('area_va');
       //raiElement.style.width = '30%';
       for (let i = 0; i <= 100; i++) {
         const optionElement = document.createElement('option');

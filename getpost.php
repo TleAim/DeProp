@@ -27,10 +27,6 @@
       5=>"อาคารพาณิชย์"     
     );
 
-    $assetConARR = array(
-      1=>"ขาย",
-      2=>"ให้เช่า"
-    );
 
     //(condition ? true : false);
     ($assetType>0 ? $_assetType = " and asset_type = ".$assetType : $_assetType = "");
@@ -60,7 +56,7 @@
     $offset = ($page - 1) * $limit;
 
   
-    $sqlPostList = "SELECT * FROM proppost WHERE 1 ".$sqlFilter." ORDER BY post_id DESC LIMIT $offset, $limit;";
+    $sqlPostList = "SELECT * FROM proppost WHERE 1 ".$sqlFilter." ORDER BY post_date DESC LIMIT $offset, $limit;";
     $resultPostList = mysqli_query($conn, $sqlPostList);
 ?>
 
@@ -134,7 +130,7 @@
             <span class="fs-9"><em><small>--Post เมื่อ <?=$row["post_date"]?></small></em></span>
           </div>
         </div>
-        <div class="row svgbg02 m-0 pt-2" >
+        <div class="row svgbg02 m-0 pt-4" >
           <div class="col-sm-4">
           
             <div class="thumb album-thumb">
@@ -154,12 +150,21 @@
             </div>
             </div>
           
-          <div class="col-sm-8 ps-0 text-black ">
-              <p class="ps-3 text-primary ps-0 mt-2"><span class="fw-bolder bgHilighttext2 p-2 rounded">รหัสสินทรัพย์: DEP<?=$row["post_id"]?></p>
-              <p class="ps-4 text-break ">[<?=$assetConARR[$row["asset_condition"]]?>]<?=$assetTypeARR[$row["asset_type"]]?> </p>
+          <div class="col-sm-8 ps-0 mt-2 text-black ">
+              
+              <p class="ps-3 text-primary text-break fw-bolder ">
+                <span class="bgHilighttext2 py-2 px-2 rounded">
+            
+                <?php
+                  echo ($row["asset_condition_sale"] ?? null) == '1' ? "[ขาย]" : "";
+                  echo ($row["asset_condition_rent"] ?? null) == '1' ? "[ให้เช่า]" : "";
+                ?>
+            
+                <?=$assetTypeARR[$row["asset_type"]]?> </p>
+                </span>
               <p class="ps-4 ">ขนาดเนื้อที่: <?=$row["count_sizerai"]?> ไร่ <?=$row["count_sizengan"]?> งาน <?=$row["count_sizeva"]?> ตร.วา</p>
               <p class="ps-4 fs-9 fst-italic text-secondary"><small>เขตพื้นที่ <?=$row2["districts"]?> <?=$row2["amphures"]?> , จังหวัด<?=$row2["provinces"]?></small></p>
-              <p class="ps-4 text-break"><?=substr($row["post_desc"],0,150)."..."?></p>
+              <p class="ps-4 text-break"><?=substr($row["post_desc"],0,250)."..."?></p>
               <p class="ps-3 "><span class="bgHilighttext2 text-success p-2 rounded"><span class="fw-bolder">ราคา: </span><span class="fs-5 fw-bold"><?=number_format($row["asset_price"])?> บาท </span></span></p>
               <div class="ms-4 mt-2 mb-4">
                 <button class="button" onclick="window.open('map.html', '_blank');"><i class="fas fa-map"></i> แผนที่สินทรัพย์</button>

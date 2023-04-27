@@ -1,6 +1,7 @@
 <?php
 include 'display.php';
 include 'init.php';
+include 'connect.php';
 session_start();
 ?>
 
@@ -31,7 +32,7 @@ session_start();
         <div class="row ">
             <div class="col m-0 p-0">
                 <?php include 'login.php'; ?>
-                <script src="login.js" ></script>
+                <script src="./js/login.js" ></script>
             </div>
         </div>
 
@@ -39,10 +40,43 @@ session_start();
         <div class="row">
             <div class="col mb-4 pb-4">
             <?php
-            $postid = uniqid();
-            echo "POST ID = ".$postid;
-            echo "<br>UID = ".$_SESSION['uid'];
+            $qrval          = "(";
+            $post_id        = uniqid();                     $qrval .= "'".$post_id."',";
+            $post_date      = $today = date('Y-m-d');       $qrval .= "'".$post_date."',";
+            $post_duration  = $_POST['post_duration'];      $qrval .= "'".$post_duration."',";
+            $post_head      = $_POST['post_head'];          $qrval .= "'".$post_head."',";
+            $post_desc      = $_POST['post_desc'];          $qrval .= "'".$post_desc."',";
+            $uid            = $_SESSION['uid'];             $qrval .= "'".$uid."',";
+            $contact_phone  = $_POST['contact_phone'];      $qrval .= "'".removeHyphens($contact_phone)."',";
+            $contact_line   = $_POST['contact_line'];       $qrval .= "'".$contact_line."',";    
+            $loc_province   = $_POST['province_id'];        $qrval .= "'".$loc_province."',"; 
+            $loc_amphur     = $_POST['amphure_id'];         $qrval .= "'".$loc_amphur."',"; 
+            $loc_district   = $_POST['district_id'];        $qrval .= "'".$loc_district."',"; 
+            $contact_maps   = $_POST['contact_location'];   $qrval .= "'".$contact_maps."',"; 
+            $asset_price    = $_POST['asset_price'] ?? 0 ;  $qrval .= "'".removeCommas($asset_price)."',"; 
+            $asset_type     = $_POST['asset_type'];         $qrval .= "'".$asset_type."',"; 
+            $asset_condition_sale = $_POST['asset_condition_sale'] ?? 0 ; $qrval .= "'".$asset_condition_sale."',"; 
+            $asset_condition_rent = $_POST['asset_condition_rent'] ?? 0 ; $qrval .= "'".$asset_condition_rent."',"; 
+            $count_sizerai  = $_POST['area_rai'] ?? 0 ;     $qrval .= "'".$count_sizerai."',"; 
+            $count_sizengan = $_POST['area_ngan'] ?? 0 ;    $qrval .= "'".$count_sizengan."',"; 
+            $count_sizeva   = $_POST['area_va'] ?? 0 ;      $qrval .= "'".$count_sizeva."')"; 
+    
+            $sql = "INSERT INTO `proppost` ( 
+                `post_id`,`post_date`,`post_duration`,`post_head`,`post_desc`,
+                `uid`,`contact_phone`,`contact_line`,`loc_province`,`loc_amphur`,`loc_district`,`asset_maps`,
+                `asset_price`,`asset_type`,`asset_condition_sale`,`asset_condition_rent`,
+                `count_sizerai`,`count_sizengan`,`count_sizeva`)
+                
+                VALUES".$qrval;
+
+            echo "<br>QR = ".$sql;
             printPostValues();
+
+            if ($conn->query($sql) === TRUE) {
+                echo "<p>New record created successfully</p>";
+              } else {
+                echo "Error: " . $sql . "<br>" . $conn->error;
+              }
             ?>   
                 <div class="p-5 m-3"></div>
             </div>

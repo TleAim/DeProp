@@ -35,4 +35,18 @@ function printPostValues() {
     }
 }
 
+function removeCommas($inputString) {
+    $outputString = str_replace(',', '', $inputString);
+    return $outputString;
+}
+
+function addCommas($number) {
+    $formattedNumber = number_format($number);
+    return $formattedNumber;
+}
+
+function removeHyphens($inputString) {
+    $outputString = str_replace('-', '', $inputString);
+    return $outputString;
+}
 ?>
