@@ -1,6 +1,9 @@
 <?php
 include 'display.php';
 include 'init.php';
+include 'connect.php';
+session_start();
+echo ("SESSION :".$_SESSION['uid']);
 ?>
 
 <!DOCTYPE html>
@@ -8,16 +11,16 @@ include 'init.php';
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ประกาศขายบ้านและที่ดิน อสังหาริมทรัพย์</title>
+    <title>เพิ่มประกาศขายบ้านและที่ดิน อสังหาริมทรัพย์</title>
 </head>
 <body class="bg-light">
-
+    <?php include 'modal.php'; ?>
     <?php if (is_mobile()) { ?>
         <div class="container bg-white" >
     <?php }else{ ?>
         <div class="container bg-white" style="width: 1200px;">
-
     <?php } ?>
+
 
         <!-- Header -->
         <div class="row">
@@ -30,30 +33,36 @@ include 'init.php';
         <div class="row ">
             <div class="col m-0 p-0">
                 <?php include 'login.php'; ?>
-                <script src="./js/login.js" ></script>
+                
             </div>
         </div>
 
         <!-- Main -->
-        <div class="row ">
-            <div class="col m-0 p-0">
-                    <?php include 'postlist.php'; ?>    
+
+        <div class="container">
+            <div class="row ">
+              <div class="col">
+                <main>
+
+                    <div id="account_login">
+                      <?php include 'loginbox.php'; ?>
+                    </div>
+
+                </main>
+              </div>
             </div>
         </div>
 
 
-         <!-- Footer -->
-        <div class="row ">
+
+        <!-- Footer -->
+        <div class="row mt-5 ">
             <div class="col m-0 p-0">
                 <?php include 'footer.php'; ?>
             </div>
         </div>
-        
-    </div><!-- End Container -->
-
+    </div>
 
 </body>
 
 </html>
-
-

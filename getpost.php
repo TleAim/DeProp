@@ -1,14 +1,23 @@
 <?php
     include 'connect.php';
     include 'connect2.php';
+    include 'display.php';
+
+    foreach ($_GET as $key => $value) {
+      consolelog("Key: " . htmlspecialchars($key) . ", Value: " . htmlspecialchars($value));
+  }
 
     $page           = isset($_GET['page']) ? $_GET['page'] : 1;
     $assetType      = isset($_GET['assetType']) ? $_GET['assetType'] : 0;
-    $assetCondition = isset($_GET['assetCondition']) ? $_GET['assetCondition'] : 0;
     $assetPrice     = isset($_GET['assetPrice']) ? $_GET['assetPrice'] : 0;
     $selectProvince = isset($_GET['selectProvince']) ? $_GET['selectProvince'] : 0;
     $selectAmphure  = isset($_GET['selectAmphure']) ? $_GET['selectAmphure'] : 0;
     $selectDistrict = isset($_GET['selectDistrict']) ? $_GET['selectDistrict'] : 0;
+
+    $assetCondition = isset($_GET['assetCondition']) ? $_GET['assetCondition'] : 0;
+    $assetCondition_sale = ($assetCondition == 1) ? 1 : 0;
+    $assetCondition_rent = ($assetCondition == 2) ? 1 : 0;
+
 
     $priceRange = array(
       1=>" and asset_price <= 1000000",
@@ -29,21 +38,26 @@
 
 
     //(condition ? true : false);
-    ($assetType>0 ? $_assetType = " and asset_type = ".$assetType : $_assetType = "");
-    ($assetCondition>0 ? $_assetCondition  = " and asset_condition = ".$assetCondition : $_assetCondition = "");
-    ($selectProvince>0 ? $_selectProvince  = " and loc_province = ".$selectProvince : $_selectProvince = "");
-    ($selectAmphure>0  ? $_selectAmphure   = " and loc_amphur = ".$selectAmphure : $_selectAmphure = "");
-    ($selectDistrict>0 ? $_selectDistrict  = " and loc_district = ".$selectDistrict : $_selectDistrict = "");
-    ($assetPrice>0 ? $_assetPrice =  $priceRange[$assetPrice] : $_assetPrice = "");
+    ($assetType>0 ? $_assetType                       = " and asset_type = ".$assetType : $_assetType = "");
+    ($assetCondition_sale>0 ? $_assetCondition_sale   = " and asset_condition_sale = ".$assetCondition_sale : $_assetCondition_sale = "");
+    ($assetCondition_rent>0 ? $_assetCondition_rent   = " and asset_condition_rent = ".$assetCondition_rent : $_assetCondition_rent = "");
+    ($selectProvince>0 ? $_selectProvince             = " and loc_province = ".$selectProvince : $_selectProvince = "");
+    ($selectAmphure>0  ? $_selectAmphure              = " and loc_amphur = ".$selectAmphure : $_selectAmphure = "");
+    ($selectDistrict>0 ? $_selectDistrict             = " and loc_district = ".$selectDistrict : $_selectDistrict = "");
+    ($assetPrice>0 ? $_assetPrice                     =  $priceRange[$assetPrice] : $_assetPrice = "");
   
 
-    $sqlFilter = $_assetType.$_assetCondition.$_selectProvince.$_selectAmphure.$_selectDistrict.$_assetPrice;
+    $sqlFilter = $_assetType.$_assetCondition_sale.$_assetCondition_rent.$_selectProvince.$_selectAmphure.$_selectDistrict.$_assetPrice;
 
     //Get Count Record
     $count_query = "SELECT COUNT(*) as count FROM proppost WHERE 1".$sqlFilter;
     $count_result = mysqli_query($conn, $count_query);
     $count_row = mysqli_fetch_assoc($count_result);
     $total_count = $count_row['count'];
+
+  
+    consolelog($count_query);
+    consolelog($sqlFilter);
 
     $page = isset($_GET['page']) ? $_GET['page'] : 1;
     if($total_count > 100){
@@ -60,16 +74,7 @@
     $resultPostList = mysqli_query($conn, $sqlPostList);
 ?>
 
-<script>
-  console.log("Count SQL:"+"<?=$count_query?>");
-  console.log("Total Count:"+"<?=$total_count?>");
-  console.log("Total Result ="+"<?=$total_count?>"
-   +"Check var Page="+<?=$page?>
-   +" Type="+<?=$assetType?>+" Con="+<?=$assetCondition?>+" Price="+<?=$assetPrice?>
-   +" Prov="+<?=$selectProvince?>+" Amp="+<?=$selectAmphure?>+" Dis="+<?=$selectDistrict?>);
 
-  console.log("SQL Filter :"+"<?=$sqlFilter?>");
-</script>
 
 
 <!-- TOP Page Selection -->
@@ -185,7 +190,7 @@
       } else {
       ?>
         <div class=" mb-3 bg-white rounded text-center">
-        <h2 class="pt-20 text-danger"><br>ขออภัย ไม่พบสินทรัพย์จากตัวเลือกของคุณในขณะนี้<br><br><br></h2>
+        <h2 class="pt-20 px-5 text-danger"><br>ขออภัย ไม่พบสินทรัพย์จากตัวเลือกของคุณในขณะนี้<br><br><br></h2>
         <p class=""><a href="./index.php">ดูสินทรัพย์มาใหม่ล่าสุด กดที่นี่ </a></p>
         <br>
       </div>

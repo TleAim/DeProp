@@ -1,6 +1,7 @@
 
 
-<div class="bgWhiteOP2 p-3">
+<div class="container bg-white">
+    <div class="p-3">
     <p class="text-center fs-5">ลงประกาศ สำหรับอสังหาริมทรัพย์เท่านั้น</p>
     <form method="post" enctype="multipart/form-data" >
     
@@ -10,12 +11,14 @@
     </div>
     <div class="" id="thumbnails"></div>
     
-    <div class="btn5 r0 mt-5 pt-3">
-        <button id="NextStep">Next Step
+    <div class="btn5 mt-5 pt-3 d-flex justify-content-end" >
+    <button id="NextStep">Next Step
         <div class="arrow-wrapper">
             <div class="arrow"></div>
         </div>
-        </button>
+    </button>
+    </div>
+
     </div>
 </div>
 <script src="./js/upload.js"></script>  

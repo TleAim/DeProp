@@ -3,6 +3,23 @@ body {
   font-family: 'Sarabun', sans-serif;
 }
 
+#cflogout {
+  display: flex;
+  justify-content: space-between;
+}
+
+#cflogout .btn {
+  width: 50%;
+}
+
+a.no-underline {
+  text-decoration: none;
+}
+
+a.no-underline:hover {
+  color: #FF5733; /* Change the color on hover, if desired */
+}
+
 /* Position <DIV> */
 div.RB {
   position: absolute;
@@ -30,7 +47,7 @@ div.RT {
 
 div.R0 {
   position: absolute;
-  right: 0px;
+  right: 10px;
 }
 
 /*************************/
@@ -236,7 +253,7 @@ div.R0 {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh; /* Full viewport height */
+    height: 80vh; /* Full viewport height */
   }
 
 /*************************/

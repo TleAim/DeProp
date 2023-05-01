@@ -13,11 +13,11 @@
             <a class="nav-link nav-color  m-1 py-2 px-1 rounded scale-button" href="index.php"><i class="fas fa-search"></i> ค้นหาสินทรัพย์</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link   nav-color  m-1 py-2 px-1 rounded scale-button" href="newpost.php"> ลงประกาศฟรี (+) </a>
+            <a class="nav-link   nav-color  m-1 py-2 px-1 rounded scale-button" href="myaccount.php?p=add"> ลงประกาศฟรี (+) </a>
           </li>
 
           <li class="nav-item">
-            <a class="nav-link  nav-color m-1 py-2 px-1 rounded scale-button" href="#">ประกาศของฉัน</a>
+            <a class="nav-link  nav-color m-1 py-2 px-1 rounded scale-button" href="myaccount.php">ประกาศของฉัน</a>
           </li>
           <li class="nav-item">
             <a class="nav-link nav-color  m-1 py-2 px-1 rounded scale-button" href="#">ติดต่อเรา <i class="fas fa-comment"></i></a>

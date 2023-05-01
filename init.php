@@ -16,7 +16,7 @@ $pagename = "ดีพร๊อพ ตลาดบ้านและที่ด
     <link href="https://fonts.googleapis.com/css2?family=Dongle:wght@700&display=swap" rel="stylesheet">
     
     <!-- Font AweSome -->
-    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/72b9ebe0e3.js" crossorigin="anonymous"></script>
     
     <!-- Jquery -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
@@ -24,7 +24,33 @@ $pagename = "ดีพร๊อพ ตลาดบ้านและที่ด
     <!-- Firebase Authen -->
     <script src="https://www.gstatic.com/firebasejs/8.3.0/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.3.0/firebase-auth.js"></script>
+    <script>
+        const firebaseConfig = {
+            apiKey: "AIzaSyBsmB5fIa2sJ9SbdGNbRAHtGiHCNax5YOE",
+            authDomain: "basic-firebase-d5dbc.firebaseapp.com",
+            projectId: "basic-firebase-d5dbc",
+            storageBucket: "basic-firebase-d5dbc.appspot.com",
+            messagingSenderId: "273388886612",
+            appId: "1:273388886612:web:2497888a8126d49f6eabc1",
+            measurementId: "G-KRECQE5FS0"
+        };
+        
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+        firebase.auth().languageCode = 'th';
+            
+        // Initialize Firebase Authentication and get a reference to the service
+        const auth = firebase.auth();
+            
+        //Create an instance provider
+        var ggprovider = new firebase.auth.GoogleAuthProvider();
+        var fbprovider = new firebase.auth.FacebookAuthProvider();
 
+    </script>
+
+    <!-- Global Var -->
     <script>
         let uid = "none";
+
+        
     </script>
