@@ -85,7 +85,10 @@ dropzone.addEventListener('drop', function (event) {
 NextStep.addEventListener('click', function () {
     
     if (selectedFiles.length === 0){
-        console("File count 0 then return");
+        alert("กรุณาใส่รูปสินทรัพย์อย่างน้อย 1 รูป");
+        return;
+    }else if(selectedFiles.length>10){
+        alert("ใส่รูปสินทรัพย์ได้สูงสุด 10 รูปเท่านั้น");
         return;
     } 
 

@@ -20,7 +20,6 @@ session_start();
         <div class="container bg-white" style="width: 1200px;">
     <?php } ?>
 
-
         <!-- Header -->
         <div class="row">
             <div class="col m-0 p-0">
@@ -74,9 +73,14 @@ session_start();
 
             if ($conn->query($sql) === TRUE) {
                 echo "<p>New record created successfully</p>";
-              } else {
+                for ($x = 0; $x < 10; $x++) {
+                    $oldFilePath = $imgPathTemp.$uid."_".$x.".jpg";
+                    $newFilePath = $imgPath.$pid."_".$x.".jpg";
+                    moveAndRenameFile($oldFilePath, $newFilePath)
+                }
+            } else {
                 echo "Error: " . $sql . "<br>" . $conn->error;
-              }
+            }
             ?>   
                 <div class="p-5 m-3"></div>
             </div>

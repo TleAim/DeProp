@@ -10,7 +10,7 @@ if (!isset($_SESSION['uid']) || $_SESSION['uid'] === null) {
 }
 $page = $_GET['p'] ?? "manage";
 
-echo ("SESSION :".$_SESSION['uid']);
+//echo ("SESSION :".$_SESSION['uid']);
 
 ?>
 
@@ -29,19 +29,17 @@ echo ("SESSION :".$_SESSION['uid']);
         <div class="container bg-white" style="width: 1200px;">
     <?php } ?>
 
+        <!-- Authentication -->
+        <div class="row ">
+          <div class="col m-0 p-0">
+              <?php include 'login.php'; ?>
+          </div>
+        </div>
 
         <!-- Header -->
         <div class="row">
             <div class="col m-0 p-0">
                 <?php include 'usertop.php'; ?>
-            </div>
-        </div>
-
-        <!-- Authentication -->
-        <div class="row ">
-            <div class="col m-0 p-0">
-                <?php include 'login.php'; ?>
-                
             </div>
         </div>
 
@@ -64,6 +62,10 @@ echo ("SESSION :".$_SESSION['uid']);
                               
                               <div class="text-black fw-bold p-3 bgWhiteOP2 scale-button" id="link_account_addpost">
                                 <a href="#" class="no-underline ps-2"><i class="fas fa-plus"></i> เพิ่มประกาศ</a>
+                              </div>
+
+                              <div class="text-black fw-bold p-3 bgWhiteOP2 scale-button" id="link_account_sigout" data-bs-toggle="modal" data-bs-target="#modalcflogout" >
+                                <a href="#" class="no-underline ps-2"> ออกจากระบบ <i class="fas fa-sign-out-alt"></i></a>
                               </div>
 
                             </div>

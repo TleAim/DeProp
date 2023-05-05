@@ -22,7 +22,6 @@
     if(user){ //หาก login แล้ว
       profile.style.display   = "block"
       welcome.style.display   = "block"
-      logout.style.display    = "block"
       loginbt.style.display   = "none"
       welcome.innerText       = getName(user)
       uid = user.uid //set uid global
@@ -40,7 +39,6 @@
 
     }else{ //หากยังไม่ login
       profile.style.display   = "none"
-      logout.style.display    = "none"
       loginbt.style.display   = "block"
       welcome.style.display   = "none"
 

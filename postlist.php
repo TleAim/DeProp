@@ -47,6 +47,7 @@
   }
 
 
+
   // Function to get data using AJAX
   function getData(page){
     var assetType       = $('#asset_type').val();

@@ -3,6 +3,60 @@ body {
   font-family: 'Sarabun', sans-serif;
 }
 
+/* For mobile devices */
+@media (max-width: 767px) {
+  #deschead  {
+      display: none;
+  }
+}
+
+/* For desktop devices */
+@media (min-width: 768px) {
+    #deschead  {
+        display: block;
+    }
+}
+
+a {
+  color: inherit; /* Don't change text color */
+  text-decoration: none; /* Remove underline */
+}
+
+a:hover {
+  color: inherit; /* Don't change text color */
+  text-decoration: underline; /* Show underline on hover */
+}
+
+.dynamic-font{
+  display: inline-block;
+  text-align: center;
+  font-size: calc(10px + 1vw);
+  white-space: nowrap;
+  text-decoration: none;
+}
+
+.f8 { font-size:  8px;}
+.f10{ font-size: 10px;}
+.f12{ font-size: 12px;}
+.f14{ font-size: 14px;}
+.f16{ font-size: 16px;}
+.f18{ font-size: 18px;}
+.f20{ font-size: 20px;}
+.f22{ font-size: 22px;}
+
+.thumb-image1 {
+  border: 2px solid #ffffff;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.4);
+  display: inline-block;
+  width: 100%;
+}
+
+.flex-item {
+  padding: 2px;
+  flex: 0 0 33%; /* Set flex-grow, flex-shrink, and flex-basis */
+  box-sizing: border-box; /* Include padding and border in the width calculation */
+}
+
 #cflogout {
   display: flex;
   justify-content: space-between;
@@ -228,111 +282,6 @@ div.R0 {
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Shadow */
   }
   
-/*************************/
-/* CSS LOADER */
-/*************************/
-  .custom-loader {
-    width:45px;
-    height:40px;
-    --c:linear-gradient(#6D45F4 0 0);
-    background: 
-      var(--c) 0%   50%,
-      var(--c) 50%  50%,
-      var(--c) 100% 50%;
-    background-size:9px 100%;
-    background-repeat: no-repeat;
-    animation:b1 1s infinite linear;
-  }
-  @keyframes b1 {
-      33%{background-size:9px 10% ,9px 100%,9px 100%}
-      50%{background-size:9px 100%,9px 10% ,9px 100%}
-      66%{background-size:9px 100%,9px 100%,9px 10% }
-  }
-  
-  .loader-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 80vh; /* Full viewport height */
-  }
-
-/*************************/
-/* CSS LOADER 2 */
-/*************************/
-.loader {
-  position: relative;
-  width: 2.5em;
-  height: 2.5em;
-  transform: rotate(165deg);
- }
- 
- .loader:before, .loader:after {
-  content: "";
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  display: block;
-  width: 0.5em;
-  height: 0.5em;
-  border-radius: 0.25em;
-  transform: translate(-50%, -50%);
- }
- 
- .loader:before {
-  animation: before8 2s infinite;
- }
- 
- .loader:after {
-  animation: after6 2s infinite;
- }
- 
- @keyframes before8 {
-  0% {
-   width: 0.5em;
-   box-shadow: 1em -0.5em rgba(225, 20, 98, 0.75), -1em 0.5em rgba(111, 202, 220, 0.75);
-  }
- 
-  35% {
-   width: 2.5em;
-   box-shadow: 0 -0.5em rgba(225, 20, 98, 0.75), 0 0.5em rgba(111, 202, 220, 0.75);
-  }
- 
-  70% {
-   width: 0.5em;
-   box-shadow: -1em -0.5em rgba(225, 20, 98, 0.75), 1em 0.5em rgba(111, 202, 220, 0.75);
-  }
- 
-  100% {
-   box-shadow: 1em -0.5em rgba(225, 20, 98, 0.75), -1em 0.5em rgba(111, 202, 220, 0.75);
-  }
- }
- 
- @keyframes after6 {
-  0% {
-   height: 0.5em;
-   box-shadow: 0.5em 1em rgba(61, 184, 143, 0.75), -0.5em -1em rgba(233, 169, 32, 0.75);
-  }
- 
-  35% {
-   height: 2.5em;
-   box-shadow: 0.5em 0 rgba(61, 184, 143, 0.75), -0.5em 0 rgba(233, 169, 32, 0.75);
-  }
- 
-  70% {
-   height: 0.5em;
-   box-shadow: 0.5em -1em rgba(61, 184, 143, 0.75), -0.5em 1em rgba(233, 169, 32, 0.75);
-  }
- 
-  100% {
-   box-shadow: 0.5em 1em rgba(61, 184, 143, 0.75), -0.5em -1em rgba(233, 169, 32, 0.75);
-  }
- }
- 
- .loader {
-  position: absolute;
-  top: calc(50% - 1.25em);
-  left: calc(50% - 1.25em);
- }
 
 /*************************/
 /* Scale Button */
@@ -399,297 +348,3 @@ div.R0 {
     }
   }
 
-/*************************/
-/* CSS Button */
-/*************************/
-  .button {
-    display: inline-block;
-    padding: 6px 12px;
-    border: 2px solid #4f4f4f;
-    border-radius: 4px;
-    transition: all 0.2s ease-in;
-    position: relative;
-    overflow: hidden;
-    font-size: 19px;
-    color: white;
-    z-index: 1;
-    background-color: #378bf9;
-   }
-   
-   .button:before {
-    content: "";
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%) scaleY(1) scaleX(1.25);
-    top: 100%;
-    width: 140%;
-    height: 180%;
-   
-    border-radius: 50%;
-    display: block;
-    transition: all 0.5s 0.1s cubic-bezier(0.55, 0, 0.1, 1);
-    z-index: -1;
-   }
-   
-   .button:after {
-    content: "";
-    position: absolute;
-    left: 55%;
-    transform: translateX(-50%) scaleY(1) scaleX(1.45);
-    top: 180%;
-    width: 160%;
-    height: 190%;
-    background-color: #39bda7;
-    border-radius: 50%;
-    display: block;
-    transition: all 0.5s 0.1s cubic-bezier(0.55, 0, 0.1, 1);
-    z-index: -1;
-   }
-   
-   .button:hover {
-    color: #ffffff;
-    border: 1px solid #39bda7;
-   }
-   
-   .button:hover:before {
-    top: -35%;
-    background-color: #39bda7;
-    transform: translateX(-50%) scaleY(1.3) scaleX(0.8);
-   }
-   
-   .button:hover:after {
-    top: -45%;
-    background-color: #39bda7;
-    transform: translateX(-50%) scaleY(1.3) scaleX(0.8);
-   }
-  
-/*************************/
-/* Button 2 */
-/*************************/
-.btn2 {
-  
-  height: 40px;
-  font-size: 1.1em;
-  cursor: pointer;
-  background-color: #171717;
-  color: #fff;
-  border: none;
-  border-radius: 5px;
-  transition: all .4s;
- }
- 
- .btn2:hover {
-  border-radius: 5px;
-  transform: translateY(-10px);
-  box-shadow: 0 7px 0 -2px #f85959,
-   0 15px 0 -4px #39a2db,
-   0 16px 10px -3px #39a2db;
- }
- 
- .btn2:active {
-  transition: all 0.2s;
-  transform: translateY(-5px);
-  box-shadow: 0 2px 0 -2px #f85959,
-   0 8px 0 -4px #39a2db,
-   0 12px 10px -3px #39a2db;
- }
-
-/*************************/
-/* BTN3 Button */
-/*************************/
-.btn3 button {
-  position: relative;
-  border: none;
-  background: transparent;
-  padding: 0;
-  cursor: pointer;
-  outline-offset: 4px;
-  transition: filter 250ms;
-  user-select: none;
-  touch-action: manipulation;
- }
- 
- .shadow {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  border-radius: 12px;
-  background: hsl(0deg 0% 0% / 0.25);
-  will-change: transform;
-  transform: translateY(2px);
-  transition: transform
-     600ms
-     cubic-bezier(.3, .7, .4, 1);
- }
- 
- .edge {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  border-radius: 12px;
-  background: linear-gradient(
-     to left,
-     hsl(340deg 100% 16%) 0%,
-     hsl(340deg 100% 32%) 8%,
-     hsl(340deg 100% 32%) 92%,
-     hsl(340deg 100% 16%) 100%
-   );
- }
- 
- .front {
-  display: block;
-  position: relative;
-  padding: 12px 27px;
-  border-radius: 12px;
-  font-size: 1.1rem;
-  color: white;
-  background: hsl(345deg 100% 47%);
-  will-change: transform;
-  transform: translateY(-4px);
-  transition: transform
-     600ms
-     cubic-bezier(.3, .7, .4, 1);
- }
- 
- .btn3 button:hover {
-  filter: brightness(110%);
- }
- 
- .btn3 button:hover .front {
-  transform: translateY(-6px);
-  transition: transform
-     250ms
-     cubic-bezier(.3, .7, .4, 1.5);
- }
- 
- .btn3 button:active .front {
-  transform: translateY(-2px);
-  transition: transform 34ms;
- }
- 
- .btn3 button:hover .shadow {
-  transform: translateY(4px);
-  transition: transform
-     250ms
-     cubic-bezier(.3, .7, .4, 1.5);
- }
- 
- .btn3 button:active .shadow {
-  transform: translateY(1px);
-  transition: transform 34ms;
- }
- 
- .btn3 button:focus:not(:focus-visible) {
-  outline: none;
- }
-
-/*************************/
-/* BTN4 Button */
-/*************************/
-
- .btn4 button {
-  font-size: 18px;
-  color: #e1e1e1;
-  font-family: inherit;
-  font-weight: 800;
-  cursor: pointer;
-  position: relative;
-  border: none;
-  background: none;
-  text-transform: uppercase;
-  transition-timing-function: cubic-bezier(0.25, 0.8, 0.25, 1);
-  transition-duration: 400ms;
-  transition-property: color;
-}
-
-.btn4 button:focus,
-.btn4 button:hover {
-  color: #fff;
-}
-
-.btn4 button:focus:after,
-.btn4 button:hover:after {
-  width: 100%;
-  left: 0%;
-}
-
-.btn4 button:after {
-  content: "";
-  pointer-events: none;
-  bottom: -2px;
-  left: 50%;
-  position: absolute;
-  width: 0%;
-  height: 2px;
-  background-color: #fff;
-  transition-timing-function: cubic-bezier(0.25, 0.8, 0.25, 1);
-  transition-duration: 400ms;
-  transition-property: width, left;
-}
-
-/*************************/
-/* BTN5 Button */
-/*************************/
-.btn5 button {
-  --primary-color: #0062ff;
-  --secondary-color: #fff;
-  --hover-color: #111;
-  --arrow-width: 10px;
-  --arrow-stroke: 2px;
-  box-sizing: border-box;
-  border: 0;
-  border-radius: 20px;
-  color: var(--secondary-color);
-  padding: 0.5em 1.2em;
-  background: var(--primary-color);
-  display: flex;
-  transition: 0.2s background;
-  align-items: center;
-  gap: 0.6em;
-  font-weight: bold;
-}
-
-.btn5 button .arrow-wrapper {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.btn5 button .arrow {
-  margin-top: 2px;
-  width: var(--arrow-width);
-  background: var(--primary-color);
-  height: var(--arrow-stroke);
-  position: relative;
-  transition: 0.2s;
-}
-
-.btn5 button .arrow::before {
-  content: "";
-  box-sizing: border-box;
-  position: absolute;
-  border: solid var(--secondary-color);
-  border-width: 0 var(--arrow-stroke) var(--arrow-stroke) 0;
-  display: inline-block;
-  top: -3px;
-  right: 3px;
-  transition: 0.2s;
-  padding: 3px;
-  transform: rotate(-45deg);
-}
-
-.btn5 button:hover {
-  background-color: var(--hover-color);
-}
-
-.btn5 button:hover .arrow {
-  background: var(--secondary-color);
-}
-
-.btn5 button:hover .arrow:before {
-  right: 0;
-}

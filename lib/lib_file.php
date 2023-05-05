@@ -28,16 +28,44 @@ function moveAndRenameFile($oldFilePath, $newFilePath) {
     // Move and rename the file
     if (file_exists($oldFilePath)) {
         if (rename($oldFilePath, $newFilePath)) {
-            echo "File moved and renamed successfully.";
+            echo "<br>Renamed successfully : ".$oldFilePath." => ".$newFilePath;
         } else {
-            echo "Error: Unable to move and rename the file.";
+            echo "<br>Error : ".$oldFilePath." => ".$newFilePath;
         }
-    } else {
-        echo "Error: The file does not exist.";
+    } 
+}
+
+function saveFile($uploadDir, $fileArr, $uid)
+{
+    $i = 0;
+    foreach ($fileArr as $file) {
+        if ($file['error'] === 0 && $file['size'] <= 5 * 1024 * 1024) {
+
+            $extension = pathinfo($file['name'], PATHINFO_EXTENSION);
+            $allowedExtensions = array('jpg', 'jpeg', 'png', 'gif');
+
+            if (in_array(strtolower($extension), $allowedExtensions)) {
+                $filename = $uid . '_' . $i++ . '.' . 'jpg';
+                $destination = $uploadDir . $filename;
+
+                // Just move the uploaded file to the destination without converting
+                if (move_uploaded_file($file['tmp_name'], $destination)) {
+                    echo "File uploaded: $filename\n";
+                } else {
+                    echo "Error uploading file: $file[name]\n";
+                }
+
+            } else {
+                echo "Invalid file extension: $file[name]\n";
+            }
+        } else {
+            echo "File too large or error: $file[name]\n";
+        }
     }
 }
 
-function saveFile($uploadDir,$fileArr,$uid){
+
+function saveFile2($uploadDir,$fileArr,$uid){
 
     $i=0;
     foreach ($fileArr as $file) {

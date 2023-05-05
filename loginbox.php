@@ -1,4 +1,4 @@
-<div class="container bgWhiteOP1 p-5" id="login_area">
+<div class="container bgWhiteOP1 px-2 py-5" id="login_area">
 
         <div class="p-1 d-flex justify-content-center">
             <h2 class="modal-title">กรุณาเข้าสู่ระบบ</h2>
@@ -13,10 +13,17 @@
         </div>
 
         <div class="p-2 mb-3 d-flex justify-content-center">
-            <button id="phonebt" type="button" class="btn btn-secondary rounded p-2 scale-button">เข้าสู่ระบบด้วยเบอร์โทรศัพท์</button>
+            <button id="phonebt" type="button" class="button2 p-2 scale-button">เชื่อมต่อด้วยเบอร์โทรศัพท์</button>
         </div>
 
 </div>
+
+<style>
+    #phonebt,#ggbt,#fbbt {
+      width: 90%;
+      max-width: 400px;
+    }
+</style>
 
 
 <!-- The Modal Input Phone Number  -->

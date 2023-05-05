@@ -1,6 +1,6 @@
 <div class="d-flex flex-row-reverse align-items-end p-0 " id="profile">
-    <div class="d-flex flex-row-reverse align-items-end rounded py-2 px-3 mt-1 me-0">
-        <div class="btn3">
+    <div class="d-flex flex-row-reverse align-items-end rounded py-1 px-2 me-0">
+        <div class="btn3 mt-1">
             <button  id="login-bt" class=""  style="display: none;" onclick="redirectToLogin();">
                 <span class="shadow"></span>
                 <span class="edge"></span>
@@ -8,8 +8,11 @@
             </button>
         </div>
 
-        <div><button id="logout" class="btn2 px-2" data-bs-toggle="modal" data-bs-target="#modalcflogout" style="display: none;"> ออกจากระบบ <i class="fas fa-sign-out-alt"></i></button></div>
-        <div><a href="myaccount.php" class="no-underline"><h5 id="welcome" class="scale-button fw-bold  pe-2"></h5></a></div>
+        <div id="myaccount">
+            <a href="myaccount.php" class="no-underline" >
+                <span id="welcome" class="text-black scale-button f14 fw-bold pb-1 dynamic-font"></span>
+            </a>
+        </div>
     </div>
 </div>
 
@@ -38,7 +41,6 @@
     cflogoutbt.addEventListener("click",(e)=>{
         firebase.auth().signOut().then(() => {
             profile.style.display   = "none"
-            logout.style.display    = "none"
             loginbt.style.display   = "block"
             welcome.style.display   = "none"
             cfModal.style.display   = "none"

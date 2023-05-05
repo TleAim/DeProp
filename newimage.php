@@ -2,12 +2,12 @@
 
 <div class="container bg-white">
     <div class="p-3">
-    <p class="text-center fs-5">ลงประกาศ สำหรับอสังหาริมทรัพย์เท่านั้น</p>
+    <p class="text-center fs-5 dynamic-font">ลงประกาศ สำหรับอสังหาริมทรัพย์เท่านั้น</p>
     <form method="post" enctype="multipart/form-data" >
     
     <!-- พื้นที่อัพโหลดรูปภาพ -->
     <div class="dropzone" id="dropzone">
-        <p class="text-center fs-6">ลากรูปภาพมาใส่ หรือ กดที่นี่เพื่อใส่รูปภาพ</p>
+        <p class="text-center fs-6 dynamic-font">ลากรูปภาพมาใส่ หรือ กดที่นี่เพื่อใส่รูปภาพ</p>
     </div>
     <div class="" id="thumbnails"></div>
     

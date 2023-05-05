@@ -1,5 +1,19 @@
 <?php
 
+function prnRadio($name,$value,$txt,$checked){
+    
+    echo"
+        <div class=\"form-check\">
+            <input type=\"radio\" class=\"form-check-input\" 
+            id=\"".$name.$value."\"
+            name=\"".$name."\" 
+            value=\"".$value."\" 
+            ".$checked.">
+            <label class=\"form-check-label\" for=\"".$name.$value."\">".$txt."</label>
+        </div>
+
+    ";
+}
 
 function is_mobile() {
     $user_agent = $_SERVER['HTTP_USER_AGENT'];
@@ -21,6 +35,12 @@ function consolelog($output) {
 
     // Print JavaScript code with the console.log() function
     echo "<script>console.log('PHP output: $outputJson');</script>";
+}
+
+function printArrayWithNewLine($array) {
+    foreach ($array as $key => $value) {
+        echo $key . ': ' . $value . "<br>";
+    }
 }
 
 function printPostValues() {

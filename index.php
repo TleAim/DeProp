@@ -11,20 +11,12 @@ include 'init.php';
     <title>ประกาศขายบ้านและที่ดิน อสังหาริมทรัพย์</title>
 </head>
 <body class="bg-light">
-
     <?php if (is_mobile()) { ?>
         <div class="container bg-white" >
     <?php }else{ ?>
         <div class="container bg-white" style="width: 1200px;">
 
     <?php } ?>
-
-        <!-- Header -->
-        <div class="row">
-            <div class="col m-0 p-0">
-                <?php include 'usertop.php'; ?>
-            </div>
-        </div>
 
         <!-- Authentication -->
         <div class="row ">
@@ -33,6 +25,14 @@ include 'init.php';
                 <script src="./js/login.js" ></script>
             </div>
         </div>
+
+        <!-- Header -->
+        <div class="row">
+            <div class="col m-0 p-0">
+                <?php include 'usertop.php'; ?>
+            </div>
+        </div>
+
 
         <!-- Main -->
         <div class="row ">

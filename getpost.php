@@ -2,7 +2,8 @@
     include 'connect.php';
     include 'connect2.php';
     include 'display.php';
-
+    include 'lib/myvar.php';
+    
     foreach ($_GET as $key => $value) {
       consolelog("Key: " . htmlspecialchars($key) . ", Value: " . htmlspecialchars($value));
   }
@@ -17,25 +18,6 @@
     $assetCondition = isset($_GET['assetCondition']) ? $_GET['assetCondition'] : 0;
     $assetCondition_sale = ($assetCondition == 1) ? 1 : 0;
     $assetCondition_rent = ($assetCondition == 2) ? 1 : 0;
-
-
-    $priceRange = array(
-      1=>" and asset_price <= 1000000",
-      2=>" and asset_price BETWEEN 1000000 and 2000000",
-      3=>" and asset_price BETWEEN 2000000 and 3000000",
-      5=>" and asset_price BETWEEN 3000000 and 5000000",
-      10=>" and asset_price BETWEEN 5000000 and 10000000",
-      11=>" and asset_price > 10000000"
-    );
-
-    $assetTypeARR = array(
-      1=>"บ้านพร้อมที่ดิน",
-      2=>"ที่ดินเปล่า",
-      3=>"คอนโดมิเนียม",
-      4=>"ทาวน์เฮ้าส์",
-      5=>"อาคารพาณิชย์"     
-    );
-
 
     //(condition ? true : false);
     ($assetType>0 ? $_assetType                       = " and asset_type = ".$assetType : $_assetType = "");
@@ -120,67 +102,56 @@
           //echo($sqlGetLOC);
           $resultLOC = mysqli_query($conn2, $sqlGetLOC);
           $row2 = $resultLOC->fetch_assoc();
+
+          $url = $row["post_id"];
 ?>
 
 
       
-      <div class="bg-primary m-0 scale-button" onclick="window.open('a.html', '_blank');" style="padding-top: 0px; padding-bottom: 0px; border-radius: 24px 24px 24px 24px; position: relative;"> 
-        <div class="row ">
-          <div class="col m-2"></div>
-        </div>
+      <div class="bgWhiteOP2 m-0 scale-button" onclick="window.open('post.php?pid=<?=$url?>', '_blank');" > 
 
-        <div class="row svgbg03">
-          <div class="col p-3 m-1  text-white" >
-            <h5 class="text-break"><?=$row["post_head"]?></h5>
-            <span class="fs-9"><em><small>--Post เมื่อ <?=$row["post_date"]?></small></em></span>
-          </div>
-        </div>
-        <div class="row svgbg02 m-0 pt-4" >
+        <div class="row m-0 pt-4" >
           <div class="col-sm-4">
+            <div><img class="thumb-image1 " src="./img/baan.jpg"/></div>
+            <div class="d-flex mb-3 bg-light">
+              <div class="py-1 px-0 flex-item"><img class="thumb-image1 " src="./img/baan.jpg"/></div>
+              <div class="p-1 flex-item"><img class="thumb-image1 " src="./img/condo.jpg"/></div>
+              <div class="py-1 px-0 flex-item"><img class="thumb-image1 " src="./img/townhome.jpg"/></div>
+            </div>
+          </div>
           
-            <div class="thumb album-thumb">
-              <div class="thumb-container">
-                <div class="images-container">
-                  <img class="thumb-image" src="./img/baan.jpg"/>
-                  <img class="thumb-image" src="./img/baan.jpg"/>
-                  <img class="thumb-image" src="./img/baan.jpg"/>
-                </div>
-                <div class="photo-count">
-                  <div class="content">
-                    <div class="number">90</div>
-                    <div class="label">PHOTOS</div>
-                  </div>
-                </div>
-              </div>
+          <div class="col-sm-8 ps-0 text-black ">
+            <div class="ps-4 fw-bold f20">
+              <?=number_format($row["asset_price"])?> บาท 
             </div>
-            </div>
-          
-          <div class="col-sm-8 ps-0 mt-2 text-black ">
-              
-              <p class="ps-3 text-primary text-break fw-bolder ">
-                <span class="bgHilighttext2 py-2 px-2 rounded">
-            
-                <?php
-                  echo ($row["asset_condition_sale"] ?? null) == '1' ? "[ขาย]" : "";
-                  echo ($row["asset_condition_rent"] ?? null) == '1' ? "[ให้เช่า]" : "";
-                ?>
-            
-                <?=$assetTypeARR[$row["asset_type"]]?> </p>
-                </span>
-              <p class="ps-4 ">ขนาดเนื้อที่: <?=$row["count_sizerai"]?> ไร่ <?=$row["count_sizengan"]?> งาน <?=$row["count_sizeva"]?> ตร.วา</p>
-              <p class="ps-4 fs-9 fst-italic text-secondary"><small>เขตพื้นที่ <?=$row2["districts"]?> <?=$row2["amphures"]?> , จังหวัด<?=$row2["provinces"]?></small></p>
-              <p class="ps-4 text-break"><?=substr($row["post_desc"],0,250)."..."?></p>
-              <p class="ps-3 "><span class="bgHilighttext2 text-success p-2 rounded"><span class="fw-bolder">ราคา: </span><span class="fs-5 fw-bold"><?=number_format($row["asset_price"])?> บาท </span></span></p>
-              <div class="ms-4 mt-2 mb-4">
-                <button class="button" onclick="window.open('map.html', '_blank');"><i class="fas fa-map"></i> แผนที่สินทรัพย์</button>
-              </div>
-              
 
+            <div class="ps-4 p-1 pb-2 text-secondary f14 fw-bolder">
+              <?=$row["post_head"]?><span class="f12 ps-2"><em>--Post เมื่อ <?=$row["post_date"]?></em></span>
             </div>
-        </div>
 
-        <div class="row ">
-          <div class="col m-2 "></div>
+            <div class="ps-4  text-break fw-bolder ">
+              <?= ($row["asset_condition_sale"] ?? null) == '1' ? "<span class=\"badge bg-primary\">ขาย</span>" : "" ?> 
+              <?= ($row["asset_condition_rent"] ?? null) == '1' ? "<span class=\"badge bg-success\">ให้เช่า</span>" : ""; ?> 
+              <span class="badge bg-dark"><?= $assetTypeARR[$row["asset_type"]] ?> </span>
+            </div>
+
+            <div class="ps-4 p-1 "><i class='fas fa-chart-area'></i>
+              <?= $row["count_sizerai"] > 0 ? $row["count_sizerai"] . " ไร่" : "" ?>
+              <?= $row["count_sizengan"] > 0 ? $row["count_ngan"] . " งาน" : "" ?>
+              <?= $row["count_sizeva"] > 0 ? $row["count_sizeva"] . " ตร.วา" : "" ?>
+            </div>
+
+            <div class="ps-4 pb-3 f12 dynamic-font text-secondary">
+              <i class="fa fa-map-marker"></i> <?=$row2["districts"]?> <?=$row2["amphures"]?> , จังหวัด<?=$row2["provinces"]?>
+            </div>
+
+            <div class="ps-4 pb-3 f14 text-break"><?=substr($row["post_desc"],0,250)."..."?></div>
+
+            <div class="ms-4 mt-2 mb-4">
+              <button class="button" onclick="window.open('map.html', '_blank');"><i class="fas fa-map"></i> แผนที่สินทรัพย์</button>
+            </div>
+
+          </div>
         </div>
       
       </div>

@@ -8,7 +8,8 @@ $pagename = "ดีพร๊อพ ตลาดบ้านและที่ด
 
     <link href="./css/bs5.css" rel="stylesheet">
     <link href="./css/bg.css" rel="stylesheet">
-    <link href="./css/thumbnail.css" rel="stylesheet">
+    <link href="./css/loader.css" rel="stylesheet">
+    <link href="./css/button.css" rel="stylesheet">
 
     <!-- Google Font --> 
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -48,9 +49,8 @@ $pagename = "ดีพร๊อพ ตลาดบ้านและที่ด
 
     </script>
 
-    <!-- Global Var -->
-    <script>
-        let uid = "none";
+<!-- Global Var -->
+<script>
+    let uid = "none";
+</script>
 
-        
-    </script>

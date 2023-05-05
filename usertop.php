@@ -15,20 +15,3 @@
 </div>
 </header>
 
-<style>
-        /* For mobile devices */
-        @media (max-width: 767px) {
-            #deschead {
-                display: none;
-            }
-
-        }
-
-        /* For desktop devices */
-        @media (min-width: 768px) {
-            #deschead {
-                display: block;
-            }
-
-        }
-</style>

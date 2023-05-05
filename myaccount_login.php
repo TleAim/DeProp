@@ -3,7 +3,7 @@ include 'display.php';
 include 'init.php';
 include 'connect.php';
 session_start();
-echo ("SESSION :".$_SESSION['uid']);
+//echo ("SESSION :".$_SESSION['uid']);
 ?>
 
 <!DOCTYPE html>

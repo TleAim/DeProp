@@ -16,7 +16,7 @@ $query = mysqli_query($conn2, $sql2);
             <select name="province_id" id="province" class="form-select form-select-sm" oninvalid="setCustomMessage(this, 'กรุณาระบุพื้นที่สินทรัพย์ด้วยค่ะ')" required>
                 <option class="text-left ps-2" value=""> เลือกจังหวัด </option>
             <?php while($result = mysqli_fetch_assoc($query)): ?>
-                <option class="text-left ps-2" value="<?=$result['id']?>"><?=$result['name_th']?></option>
+                <option class="text-center ps-2" value="<?=$result['id']?>"><?=$result['name_th']?></option>
             <?php endwhile; ?>
             </select>
         </div>
