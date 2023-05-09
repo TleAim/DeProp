@@ -5,16 +5,20 @@ body {
 
 /* For mobile devices */
 @media (max-width: 767px) {
-  #deschead  {
+  #deschead,#myaccount,#topbar {
       display: none;
   }
 }
 
 /* For desktop devices */
 @media (min-width: 768px) {
-    #deschead  {
+    #deschead,#myaccount,#topbar {
         display: block;
     }
+}
+
+#collapsibleNavbar ul {
+  justify-content: flex-end;
 }
 
 a {
@@ -43,6 +47,20 @@ a:hover {
 .f18{ font-size: 18px;}
 .f20{ font-size: 20px;}
 .f22{ font-size: 22px;}
+
+
+.scaleloop {
+  animation: scaleUpLoop 3s ease-in-out infinite;
+}
+
+@keyframes scaleUpLoop {
+  0%, 100% {
+    transform: scale(1.0);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+}
 
 .thumb-image1 {
   border: 2px solid #ffffff;
@@ -137,6 +155,28 @@ div.R0 {
 /*************************/
 /* Custom Background */
 /*************************/
+  .bgRed{
+    border-radius: 0px;
+    background: #ff0000;
+    box-shadow:  5px 5px 1px #181818,
+             -5px -5px 1px #fff9f9;
+  }
+
+  .bgGreen{
+    border-radius: 0px;
+    background: #047719;
+    box-shadow:  5px 5px 1px #181818,
+             -5px -5px 1px #fff9f9;
+  }
+
+  .bgFB{
+    background-color: #3b5998;
+  }
+
+  .bgTW{
+    background-color: #00acee;
+  }
+
   .bgHeader{
     background: linear-gradient(0deg, #343434 0%, #000000 100%);
   }
@@ -207,47 +247,6 @@ div.R0 {
     text-decoration: underline;
   }
 
-/*************************/
-/* Navigate */
-/*************************/
-  .nav-color{
-    position: relative;
-    font-size: 1.2em;
-    padding: 0.7em 1.4em;
-    background-color: #BF0426;
-    text-decoration: none;
-    text-align: center;
-    border: none;
-    border-radius: 0.5em;
-    color: #DEDEDE;
-    box-shadow: 0.5em 0.5em 0.5em rgba(0, 0, 0, 0.3);
-  }
-
-  .navbar-nav {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-  }
-
-  .nav-item {
-    width: 100%;
-  }
-  
-  .navbar-dark .navbar-nav .nav-link {
-    color: #ffffff;
-  }
-  
-  .navbar-toggler{
-    background-color:#000000;
-    color: #ffffff;
-    padding: 5px;
-  }
-
-  .navbar-toggler-icon{
-    background-color:#ce1515;
-    margin: 2px;
-  }
 
   .page-item {
     margin-bottom: 10px; /* add a margin of 10 pixels below each item */

@@ -19,19 +19,20 @@ session_start();
         <div class="container bg-white" style="width: 1200px;">
     <?php } ?>
 
+        <!-- Authentication -->
+        <div class="row bg-black" id="topbar">
+            <div id="deschead" class="col text-white fw-bold pt-2 m-0 ps-4">
+                ประกาศขายฟรี ที่ดินเปล่า บ้านเดี่ยว บ้านแฝด คอนโดมิเนียม ทาวน์เฮ้าส์ อาคารพาณิชย์ 
+            </div>
+            <div class="col text-warning f14 m-0 pt-2 px-2">
+                <?php include 'login.php'; ?>
+            </div>
+        </div>
 
         <!-- Header -->
         <div class="row">
             <div class="col m-0 p-0">
                 <?php include 'usertop.php'; ?>
-            </div>
-        </div>
-
-        <!-- Authentication -->
-        <div class="row ">
-            <div class="col m-0 p-0">
-                <?php include 'login.php'; ?>
-                <script src="./js/login.js" ></script>
             </div>
         </div>
 
@@ -44,7 +45,7 @@ session_start();
 
         </div>
     </div>
-    <?php include 'modal.php'; ?>
+    <script src="./js/login.js" ></script>
 </body>
 
 </html>

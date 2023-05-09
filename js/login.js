@@ -16,7 +16,7 @@
   ////////////////////////////////
   //ตรวจสอบการ login จากทุกช่องทาง//
   ////////////////////////////////
-  console.log("==============IN APP.JS==============");
+  console.log("==============IN login.js==============");
   firebase.auth().onAuthStateChanged((user) => {
     
     if(user){ //หาก login แล้ว
@@ -37,18 +37,28 @@
       console.log("User UID :"+user.uid)
       console.log("UID Global:"+uid)
 
+      // Send the user UID to your server-side script using AJAX
+      const xhr = new XMLHttpRequest();
+      xhr.open("POST", "session_storeuid.php", true);
+      xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+      xhr.onreadystatechange = function() {
+          if (this.readyState === XMLHttpRequest.DONE && this.status === 200) {
+              console.log("Set up $_SESSION successfully");
+              //console.log(this.responseText);
+          }
+      };
+      xhr.send("uid=" + user.uid + "&name=" + user.displayName + "&email=" + user.email + "&phone=" + user.phoneNumber);
+
     }else{ //หากยังไม่ login
       profile.style.display   = "none"
       loginbt.style.display   = "block"
       welcome.style.display   = "none"
-
-      
     }
   })
 
   function getName(user){
     if(user.displayName){
-      return "สวัสดี "+user.displayName
+      return "สวัสดี "+user.displayName 
     }else if(user.email){
       return "สวัสดีผู้ใช้ "+user.email
     }else if(user.phoneNumber){
@@ -59,4 +69,26 @@
 
   }
   
+  function signout(){
+    firebase.auth().signOut().then(() => {
+      profile.style.display   = "none"
+      loginbt.style.display   = "block"
+      welcome.style.display   = "none"
+      cfModal.style.display   = "none"
 
+      // Send request to your server-side script to unset the user UID using AJAX
+      const xhr = new XMLHttpRequest();
+      xhr.open("POST", "session_reset.php", true);
+      xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+      xhr.onreadystatechange = function() {
+          if (this.readyState === XMLHttpRequest.DONE && this.status === 200) {
+              // Redirect to login.php
+              
+          }
+        };
+      xhr.send("logout=true");
+
+      }).catch((error) => {
+      // An error happened.
+      });
+  }

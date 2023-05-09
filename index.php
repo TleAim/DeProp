@@ -12,19 +12,15 @@ include 'init.php';
 </head>
 <body class="bg-light">
     <?php if (is_mobile()) { ?>
-        <div class="container bg-white" >
+        <div class="container bg-white " >
     <?php }else{ ?>
-        <div class="container bg-white" style="width: 1200px;">
+        <div class="container bg-white " style="width: 1200px;">
 
     <?php } ?>
 
-        <!-- Authentication -->
-        <div class="row ">
-            <div class="col m-0 p-0">
-                <?php include 'login.php'; ?>
-                <script src="./js/login.js" ></script>
-            </div>
-        </div>
+        <!-- Top Bar -->
+        <?php include 'usertopbar.php'; ?>
+
 
         <!-- Header -->
         <div class="row">
@@ -50,7 +46,7 @@ include 'init.php';
         </div>
         
     </div><!-- End Container -->
-
+    <script src="./js/login.js" ></script>
 
 </body>
 

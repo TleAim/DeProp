@@ -4,14 +4,15 @@ include 'init.php';
 include 'connect.php';
 session_start();
 consolelog("UID = ".$_SESSION['uid']);
+consolelog("NAME = ".$_SESSION['name']);
+consolelog("EMAIL = ".$_SESSION['email']);
+consolelog("Phone = ".$_SESSION['phone']);
+//echo ("SESSION :".$_SESSION['uid']);
 if (!isset($_SESSION['uid']) || $_SESSION['uid'] === null) {
   header('Location: myaccount_login.php');
   exit();
 }
 $page = $_GET['p'] ?? "manage";
-
-//echo ("SESSION :".$_SESSION['uid']);
-
 ?>
 
 <!DOCTYPE html>
@@ -19,7 +20,7 @@ $page = $_GET['p'] ?? "manage";
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>เพิ่มประกาศขายบ้านและที่ดิน อสังหาริมทรัพย์</title>
+    <title>จัดการบัญชี</title>
 </head>
 <body class="bg-light">
     <?php include 'modal.php'; ?>
@@ -29,12 +30,8 @@ $page = $_GET['p'] ?? "manage";
         <div class="container bg-white" style="width: 1200px;">
     <?php } ?>
 
-        <!-- Authentication -->
-        <div class="row ">
-          <div class="col m-0 p-0">
-              <?php include 'login.php'; ?>
-          </div>
-        </div>
+        <!-- Top Bar -->
+        <?php include 'usertopbar.php'; ?>
 
         <!-- Header -->
         <div class="row">
@@ -121,13 +118,19 @@ $page = $_GET['p'] ?? "manage";
 
 document.getElementById('link_account_info').addEventListener('click', function(event) {
   event.preventDefault();
-  showDiv('account_info');
+  showDiv('account_info'); 
 });
 
 
 document.getElementById('link_account_addpost').addEventListener('click', function(event) {
   event.preventDefault();
-  showDiv('account_addpost');
+  console.log("NAME : "+name.value);
+  console.log("PHONE : "+phone.value);
+  if(name.value.length == 0 || phone.value.length < 10){ 
+      showDiv('account_info'); 
+  }else{
+      showDiv('account_addpost');
+  }
 });
 
 document.getElementById('link_account_managepost').addEventListener('click', function(event) {
@@ -142,7 +145,11 @@ document.getElementById('account_managepost').style.display = 'none';
 
 switch ("<?=$page?>") {
   case "add":
-    showDiv('account_addpost');
+    if(name.value.length == 0 || phone.value.length < 10){ 
+      showDiv('account_info'); 
+    }else{
+      showDiv('account_addpost');
+    }
     break;
   case "info":
     showDiv('account_info');
@@ -151,4 +158,6 @@ switch ("<?=$page?>") {
     showDiv('account_managepost');
     break;
 }
+
+
 </script>

@@ -94,16 +94,6 @@ $query = mysqli_query($conn2, $sql2);
         
     </div>
 
-    
-    <h5 class="mt-2 pt-2 ps-2 form-label"> ช่องทางติดต่อ</h5>
-    <div class="mb-3">
-        <input type="tel" class="form-control" id="contact_phone"  placeholder="เบอร์โทรติดต่อ เช่น 0633435158" name="contact_phone" maxlength="12" pattern="[0-9]{10}{-}" oninvalid="setCustomMessage(this, 'กรุณาระบุเบอร์โทรศัพท์ด้วยค่ะ')" required>
-    </div>
-
-    <div class="mb-3 mt-3">
-        <input type="text" class="form-control" id="contact_line" name="contact_line" placeholder="LINE ID ไลน์ไอดี (ถ้ามี)">
-    </div>
-
     <div class="mb-3">
         <input type="url" class="form-control" id="contact_location" name="contact_location" placeholder="ลิงค์แผนที่(ถ้ามี) เช่น https://goo.gl/maps/TYJXRquKGHrKcG47A">
     </div>

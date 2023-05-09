@@ -50,12 +50,8 @@ mysqli_close($conn);
         <div class="container bg-white" style="width: 1200px;">
     <?php } ?>
 
-        <!-- Authentication -->
-        <div class="row ">
-            <div class="col m-0 p-0">
-                <?php include 'login.php'; ?>
-            </div>
-        </div>
+        <!-- Top Bar -->
+        <?php include 'usertopbar.php'; ?>
 
         <!-- Header -->
         <div class="row">
@@ -85,7 +81,7 @@ mysqli_close($conn);
                     <div class="col-sm-8 f22 fw-bold ">
                         <?=$row['post_head']?>
                     </div>
-                    <div class="col-sm-4 f22 text-primary">
+                    <div class="col-sm-4 f20 text-primary text-start">
                         ราคา  <?=number_format($row["asset_price"])?> บาท 
                     </div>
                 </div>

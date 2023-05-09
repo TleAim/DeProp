@@ -45,9 +45,7 @@ session_start();
             $post_duration  = $_POST['post_duration'];      $qrval .= "'".$post_duration."',";
             $post_head      = $_POST['post_head'];          $qrval .= "'".$post_head."',";
             $post_desc      = $_POST['post_desc'];          $qrval .= "'".$post_desc."',";
-            $uid            = $_SESSION['uid'];             $qrval .= "'".$uid."',";
-            $contact_phone  = $_POST['contact_phone'];      $qrval .= "'".removeHyphens($contact_phone)."',";
-            $contact_line   = $_POST['contact_line'];       $qrval .= "'".$contact_line."',";    
+            $uid            = $_SESSION['uid'];             $qrval .= "'".$uid."',";  
             $loc_province   = $_POST['province_id'];        $qrval .= "'".$loc_province."',"; 
             $loc_amphur     = $_POST['amphure_id'];         $qrval .= "'".$loc_amphur."',"; 
             $loc_district   = $_POST['district_id'];        $qrval .= "'".$loc_district."',"; 
@@ -62,7 +60,7 @@ session_start();
     
             $sql = "INSERT INTO `proppost` ( 
                 `post_id`,`post_date`,`post_duration`,`post_head`,`post_desc`,
-                `uid`,`contact_phone`,`contact_line`,`loc_province`,`loc_amphur`,`loc_district`,`asset_maps`,
+                `uid`,`loc_province`,`loc_amphur`,`loc_district`,`asset_maps`,
                 `asset_price`,`asset_type`,`asset_condition_sale`,`asset_condition_rent`,
                 `count_sizerai`,`count_sizengan`,`count_sizeva`)
                 

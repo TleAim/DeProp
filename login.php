@@ -10,7 +10,7 @@
 
         <div id="myaccount">
             <a href="myaccount.php" class="no-underline" >
-                <span id="welcome" class="text-black scale-button f14 fw-bold pb-1 dynamic-font"></span>
+                <span id="welcome" class="f14 dynamic-font"></span>
             </a>
         </div>
     </div>

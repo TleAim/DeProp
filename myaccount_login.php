@@ -3,7 +3,7 @@ include 'display.php';
 include 'init.php';
 include 'connect.php';
 session_start();
-//echo ("SESSION :".$_SESSION['uid']);
+echo ("SESSION :".$_SESSION['uid']);
 ?>
 
 <!DOCTYPE html>
@@ -21,19 +21,13 @@ session_start();
         <div class="container bg-white" style="width: 1200px;">
     <?php } ?>
 
+        <!-- Top Bar -->
+        <?php include 'usertopbar.php'; ?>
 
         <!-- Header -->
         <div class="row">
             <div class="col m-0 p-0">
                 <?php include 'usertop.php'; ?>
-            </div>
-        </div>
-
-        <!-- Authentication -->
-        <div class="row ">
-            <div class="col m-0 p-0">
-                <?php include 'login.php'; ?>
-                
             </div>
         </div>
 

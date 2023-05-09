@@ -20,18 +20,13 @@ session_start();
     <?php } ?>
 
 
+        <!-- Top Bar -->
+        <?php include 'usertopbar.php'; ?>
+
         <!-- Header -->
         <div class="row">
             <div class="col m-0 p-0">
                 <?php include 'usertop.php'; ?>
-            </div>
-        </div>
-
-        <!-- Authentication -->
-        <div class="row ">
-            <div class="col m-0 p-0">
-                <?php include 'login.php'; ?>
-                <script src="./js/login.js" ></script>
             </div>
         </div>
 
@@ -42,7 +37,7 @@ session_start();
             </div>
         </div>
     </div>
-    <?php include 'modal.php'; ?>
+    <script src="./js/login.js" ></script>
 <?php 
 //echo "PHP OUT : UID stored successfully: " . $_SESSION['uid'];
 ?>
