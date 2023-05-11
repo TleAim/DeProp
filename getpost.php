@@ -57,28 +57,6 @@
 ?>
 
 
-
-
-<!-- TOP Page Selection -->
-<?php if(0){?>
-<div class=" mt-0 mb-0 d-flex justify-content-end">
-  <ul class="pagination flex-wrap m-0">
-    <li class="page-item"><a class="page-link" href="#" data-page="<?=$prevpage?>"><< ย้อน</a></li>
-    <?php
-      $total_pages = ceil($total_count / $limit);
-        for ($i = 1; $i <= $total_pages; $i++) {
-          $bgcolor = "bg-white";
-          if($page==$i){
-            $bgcolor= "bg-warning text-black";
-          }
-          echo '<li class="page-item scale-li"><a class="page-link '.$bgcolor.'" href="#" data-page="' . $i . '">' . $i . '</a></li>';
-        }
-    ?>
-    <li class="page-item"><a class="page-link" href="#" data-page="<?=$nextpage?>">หน้าถัดไป >></a></li>
-  </ul>
-</div>
-<?php } ?>
-
 <!-- Loading Display -->
 <div id="loading" class="bg-white m-0" style="position: relative;">  
   <div class="loader-container">
@@ -87,7 +65,7 @@
 </div>
 
 <!-- Result AREA -->
-<div class="mt-2 p-0" id="resultArea">
+<div class="mt-0 p-0" id="resultArea">
 <?php
 
   if ($resultPostList->num_rows > 0) {

@@ -23,13 +23,14 @@ $page = $_GET['p'] ?? "manage";
     <title>จัดการบัญชี</title>
 </head>
 <body class="bg-light">
-    <?php include 'modal.php'; ?>
     <?php if (is_mobile()) { ?>
-        <div class="container bg-white" >
+        <div class="container bg-white px-0" >
     <?php }else{ ?>
-        <div class="container bg-white" style="width: 1200px;">
+        <div class="container bg-white px-0" style="width: 1200px;">
+
     <?php } ?>
 
+      <div class="container-fluid bgTop1 p-0">
         <!-- Top Bar -->
         <?php include 'usertopbar.php'; ?>
 
@@ -39,8 +40,11 @@ $page = $_GET['p'] ?? "manage";
                 <?php include 'usertop.php'; ?>
             </div>
         </div>
+      </div>
 
+      
         <!-- Main -->
+      <div class="container-fluid bg-white">
         <div class="row">
             <div class="col mb-4 pb-4">
                 <div class="container  p-0 m-0">
@@ -70,15 +74,12 @@ $page = $_GET['p'] ?? "manage";
                           </div>
                         </aside>  
                       </div>
-                      <div class="col-sm-9 ">
+                      <div class="col-sm-9 mx-0">
                         <main>
+
                           <div id="account_area">
                             <div id="account_info">
                               <?php include 'myaccount_info.php'; ?>  
-                            </div>
-
-                            <div id="account_login">
-                              <?php include 'loginbox.php'; ?>
                             </div>
 
                             <div id="account_managepost">
@@ -89,15 +90,15 @@ $page = $_GET['p'] ?? "manage";
                               <?php include 'newimage.php'; ?>    
                               <?php //include 'newpostform.php'; ?>  
                             </div>
-
                           </div>
+
                         </main>
                       </div>
                     </div>
                 </div>
             </div>
         </div>
-
+    </div>
 
     </div>
  
@@ -109,7 +110,6 @@ $page = $_GET['p'] ?? "manage";
 <script>
   function showDiv(divId) {
     document.getElementById('account_info').style.display = 'none';
-    document.getElementById('account_login').style.display = 'none';
     document.getElementById('account_addpost').style.display = 'none';
     document.getElementById('account_managepost').style.display = 'none';
       
@@ -139,7 +139,6 @@ document.getElementById('link_account_managepost').addEventListener('click', fun
 });
 
 document.getElementById('account_info').style.display = 'none';
-document.getElementById('account_login').style.display = 'none';
 document.getElementById('account_addpost').style.display = 'none';
 document.getElementById('account_managepost').style.display = 'none';
 

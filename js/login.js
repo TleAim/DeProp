@@ -1,17 +1,11 @@
   //TOP BAR USER PROFILE 
-  const profile   = document.getElementById("profile")    //สำหรับควบคุม แสดง/ซ่อน เมื่อ login แล้ว
   const welcome   = document.getElementById("welcome")    //สำหรับแสดง user info
   const logout    = document.getElementById("logout")     //สำหรับ logout
-  const loginbt   = document.getElementById("login-bt")
+  const loginbt   = document.getElementById("loginbt")
 
   //MADAL LOGOUT CONFIRM
   const cfModal   = document.getElementById("modalcflogout")
   const cflogoutbt= document.getElementById("cflogoutbt") 
-
-  //account info
-  const info_name = document.getElementById("info_name")
-  const info_email = document.getElementById("info_email")
-  const info_phone = document.getElementById("info_phone")
 
   ////////////////////////////////
   //ตรวจสอบการ login จากทุกช่องทาง//
@@ -20,16 +14,10 @@
   firebase.auth().onAuthStateChanged((user) => {
     
     if(user){ //หาก login แล้ว
-      profile.style.display   = "block"
       welcome.style.display   = "block"
       loginbt.style.display   = "none"
       welcome.innerText       = getName(user)
       uid = user.uid //set uid global
-
-      //Update Bar info
-      if(info_name)   info_name.innerText     = user.displayName ? user.displayName : " -"
-      if(info_email)  info_email.innerText    = user.email ? user.email : " -"
-      if(info_phone)  info_phone.innerText    = user.phoneNumber ? user.phoneNumber : " -"
 
       console.log("email:"+user.email)
       console.log("displayName:"+user.displayName)
@@ -50,8 +38,8 @@
       xhr.send("uid=" + user.uid + "&name=" + user.displayName + "&email=" + user.email + "&phone=" + user.phoneNumber);
 
     }else{ //หากยังไม่ login
-      profile.style.display   = "none"
       loginbt.style.display   = "block"
+      console.log("SHOW LOGIN BUTTON");
       welcome.style.display   = "none"
     }
   })
@@ -71,7 +59,6 @@
   
   function signout(){
     firebase.auth().signOut().then(() => {
-      profile.style.display   = "none"
       loginbt.style.display   = "block"
       welcome.style.display   = "none"
       cfModal.style.display   = "none"

@@ -1,20 +1,17 @@
-<div class="d-flex flex-row-reverse align-items-end p-0 " id="profile">
-    <div class="d-flex flex-row-reverse align-items-end rounded py-1 px-2 me-0">
-        <div class="btn3 mt-1">
-            <button  id="login-bt" class=""  style="display: none;" onclick="redirectToLogin();">
+
+        <div id="myaccount"  onclick="redirectToMyAccount();">
+                <span id="welcome"></span>
+        </div>
+
+        <div class="btn3 mb-1" >
+            <button id="loginbt" style="display: none;" onclick="redirectToLogin();">
                 <span class="shadow"></span>
                 <span class="edge"></span>
                 <span class="front text"><i class="fas fa-sign-in-alt"></i> เข้าสู่ระบบ </span>
             </button>
         </div>
 
-        <div id="myaccount">
-            <a href="myaccount.php" class="no-underline" >
-                <span id="welcome" class="f14 dynamic-font"></span>
-            </a>
-        </div>
-    </div>
-</div>
+
 
 <!-- The Modal for LOGOUT-->
 <div class="modal" id="modalcflogout">
@@ -23,7 +20,7 @@
 
       <!-- Modal Header -->
       <div class="modal-header">
-        <h4 class="modal-title">คุณต้องการออกจากระบบหรือไม่?</h4>
+        <h4 class="modal-title text-center text-black">คุณต้องการออกจากระบบหรือไม่?</h4>
         <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
       </div>
 
@@ -40,9 +37,9 @@
 <script>
     cflogoutbt.addEventListener("click",(e)=>{
         firebase.auth().signOut().then(() => {
-            profile.style.display   = "none"
             loginbt.style.display   = "block"
             welcome.style.display   = "none"
+            myaccount.style.display = "none"
             cfModal.style.display   = "none"
 
             // Send request to your server-side script to unset the user UID using AJAX
@@ -65,5 +62,9 @@
 
     function redirectToLogin() {
         window.location.href = "myaccount_login.php";
+    }
+
+    function redirectToMyAccount(){
+        window.location.href = "myaccount.php";
     }
 </script>

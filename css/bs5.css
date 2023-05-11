@@ -5,16 +5,16 @@ body {
 
 /* For mobile devices */
 @media (max-width: 767px) {
-  #deschead,#myaccount,#topbar {
-      display: none;
+  #deschead,#welcome {
+    display: none;
   }
 }
 
 /* For desktop devices */
 @media (min-width: 768px) {
-    #deschead,#myaccount,#topbar {
-        display: block;
-    }
+  #deschead,#welcome {
+    display: block;
+  }
 }
 
 #collapsibleNavbar ul {
@@ -60,6 +60,16 @@ a:hover {
   50% {
     transform: scale(1.05);
   }
+}
+
+.myRoundedL {
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 0px;
+}
+
+.myRoundedR {
+  border-top-right-radius: 0px;
+  border-bottom-right-radius: 10px;
 }
 
 .thumb-image1 {

@@ -1,8 +1,8 @@
-<div class="container  p-0 m-0">
+<div class="container">
 <div class="row ">
   <div class="col-sm-3">
     <aside>
-      <div class="p-2 mb-3 bgWhiteOP2">
+      <div class="p-2 mb-0 bg-light">
         <div class ="bg-primary rounded mb-1 text-center" style="cursor:pointer;" role="button" data-bs-toggle="collapse" data-bs-target="#FilterItem" aria-expanded="false" aria-controls="FilterItem">
           <div class="text-white   fw-bold px-0 py-2   d-inline-block " >
           <i class="fas fa-filter"></i> คัดกรองสินทรัพย์ 

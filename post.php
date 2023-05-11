@@ -40,18 +40,20 @@ mysqli_close($conn);
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>เพิ่มประกาศขายบ้านและที่ดิน อสังหาริมทรัพย์</title>
+    <title><?=$row['post_head']?></title>
 </head>
 <body class="bg-light">
-    <?php include 'modal.php'; ?>
     <?php if (is_mobile()) { ?>
-        <div class="container bg-white" >
+        <div class="container bg-white px-0" >
     <?php }else{ ?>
-        <div class="container bg-white" style="width: 1200px;">
+        <div class="container bg-white px-0" style="width: 1200px;">
+
     <?php } ?>
 
+    <div class="container-fluid bgTop1 p-0">
         <!-- Top Bar -->
         <?php include 'usertopbar.php'; ?>
+    
 
         <!-- Header -->
         <div class="row">
@@ -59,6 +61,7 @@ mysqli_close($conn);
                 <?php include 'usertop.php'; ?>
             </div>
         </div>
+    </div>
 
         <!-- Main -->
         <div class="row px-2 pt-3">

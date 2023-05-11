@@ -5,7 +5,7 @@ $sql2 = "SELECT * FROM `provinces` ORDER BY `provinces`.`name_th`";
 $query = mysqli_query($conn2, $sql2);
 ?>
 <div class="collapse d-md-block" id="FilterItem">
-    <div class="d-flex flex-column my-1">
+    <div class="d-flex flex-column my-0">
     
             <div class="my-1">
                 <select class="form-select form-select-sm text-center fw-bolder bgHilighttext" id="asset_type">

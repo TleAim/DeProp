@@ -1,6 +1,12 @@
 <?php
 include 'display.php';
 include 'init.php';
+session_start();
+consolelog("UID = ".$_SESSION['uid']);
+consolelog("NAME = ".$_SESSION['name']);
+consolelog("EMAIL = ".$_SESSION['email']);
+consolelog("Phone = ".$_SESSION['phone']);
+consolelog("SESSION :".$_SESSION['uid']);
 ?>
 
 <!DOCTYPE html>
@@ -12,15 +18,16 @@ include 'init.php';
 </head>
 <body class="bg-light">
     <?php if (is_mobile()) { ?>
-        <div class="container bg-white " >
+        <div class="container bg-white px-0" >
     <?php }else{ ?>
-        <div class="container bg-white " style="width: 1200px;">
+        <div class="container bg-white px-0" style="width: 1200px;">
 
     <?php } ?>
 
+    <div class="container-fluid bgTop1 p-0">
         <!-- Top Bar -->
         <?php include 'usertopbar.php'; ?>
-
+    
 
         <!-- Header -->
         <div class="row">
@@ -28,7 +35,7 @@ include 'init.php';
                 <?php include 'usertop.php'; ?>
             </div>
         </div>
-
+    </div>
 
         <!-- Main -->
         <div class="row ">

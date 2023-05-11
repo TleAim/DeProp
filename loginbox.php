@@ -1,4 +1,4 @@
-<div class="container bgWhiteOP1 px-2 py-5" id="login_area">
+<div class="container-fluid bg-white py-5" id="login_area" >
 
         <div class="p-1 d-flex justify-content-center">
             <h2 class="modal-title">กรุณาเข้าสู่ระบบ</h2>

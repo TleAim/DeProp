@@ -3,7 +3,7 @@ include 'display.php';
 include 'init.php';
 include 'connect.php';
 session_start();
-echo ("SESSION :".$_SESSION['uid']);
+
 ?>
 
 <!DOCTYPE html>
@@ -14,13 +14,14 @@ echo ("SESSION :".$_SESSION['uid']);
     <title>เพิ่มประกาศขายบ้านและที่ดิน อสังหาริมทรัพย์</title>
 </head>
 <body class="bg-light">
-    <?php include 'modal.php'; ?>
     <?php if (is_mobile()) { ?>
-        <div class="container bg-white" >
+        <div class="container bg-white px-0" >
     <?php }else{ ?>
-        <div class="container bg-white" style="width: 1200px;">
+        <div class="container bg-white px-0" style="width: 1200px;">
+
     <?php } ?>
 
+      <div class="container-fluid bgTop1 p-0">
         <!-- Top Bar -->
         <?php include 'usertopbar.php'; ?>
 
@@ -30,24 +31,14 @@ echo ("SESSION :".$_SESSION['uid']);
                 <?php include 'usertop.php'; ?>
             </div>
         </div>
+      </div>
 
         <!-- Main -->
-
-        <div class="container">
-            <div class="row ">
-              <div class="col">
-                <main>
-
-                    <div id="account_login">
-                      <?php include 'loginbox.php'; ?>
-                    </div>
-
-                </main>
-              </div>
+        <div class="container-fluid">
+            <div id="account_login">
+              <?php include 'loginbox.php'; ?>
             </div>
         </div>
-
-
 
         <!-- Footer -->
         <div class="row mt-5 ">
