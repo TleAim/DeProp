@@ -44,6 +44,11 @@ mysqli_close($conn);
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?=$row['post_head']?></title>
+    <!-- META FOR SOCIAL SHARE --> 
+    <meta property="og:url" content="<?=$weburl?>post.php?pid=<?=$row["post_id"]?>">
+    <meta property="og:title" content="Page Title">
+    <meta property="og:description" content="Description of the page.">
+    <meta property="og:image" content="<?=$thumb[0]?>">
 </head>
 <body class="bg-light">
     <?php if (is_mobile()) { ?>
@@ -67,10 +72,11 @@ mysqli_close($conn);
     </div>
 
         <!-- Main -->
-        <div class="row px-2 pt-3">
+        <div class="row ps-3 pe-1 pt-3">
             <div class="col-sm-8 ">
+
                 <!-- Navi Location Link -->
-                <div id="navloc" class="f12 text-secondary fw-bold pb-2">
+                <div id="navloc" class="f12 text-secondary fw-bold px-1 pb-2">
                     <a href="#"><?=$assetTypeARR[$row["asset_type"]]?></a> >
                     <a href="#"><?=$row2["provinces"]?> </a> >
                     <a href="#"><?=$row2["amphures"]?>  </a> >
@@ -83,19 +89,40 @@ mysqli_close($conn);
                 </div>
 
                 <!-- Headline & Price -->
-                <div class="row pt-1">
-                    <div class="col-sm-8 f22 fw-bold ">
+                <div class="container px-1 m-0 pt-1">
+                    <div class="f22 fw-bold ">
                         <?=$row['post_head']?>
                     </div>
-                    <div class="col-sm-4 f20 text-primary text-start">
-                        ราคา  <?=number_format($row["asset_price"])?> บาท 
+                    <div class="f20 text-primary text-start">
+                      ราคา  <?=number_format($row["asset_price"])?><span class="f12">บาท</span> 
                     </div>
                 </div>
 
-                <!-- Location -->
-                <div class="pb-3 f12 dynamic-font text-secondary">
-                    <i class="fa fa-map-marker"></i> <?=$row2["districts"]?> <?=$row2["amphures"]?> , จังหวัด<?=$row2["provinces"]?>
+                <div class="d-flex">
+                    <!-- Create By/Date/Location -->
+                    <div class="px-1 py-2 f12 text-secondary">
+                        <i class='fas fa-user-alt'></i> <span class="pe-2">โดย abcdefg</span>
+                        <i class='far fa-clock'></i> <span class="pe-2">เผยแพร่ <?=convertDateFormat($row["post_date"])?></span>
+                        <i class="fa fa-map-marker"></i> <?=$row2["districts"]?> <?=$row2["amphures"]?> , จังหวัด<?=$row2["provinces"]?>
+                    </div>
                 </div>
+                <!-- Social Share -->
+                <div class="pt-1 f12 text-start">
+                    
+                    <a href="https://www.facebook.com/sharer/sharer.php?u=<?=$weburl?>post.php?pid=<?=$row["post_id"]?>" target="_blank">
+                        <span class="bgFB px-2 py-1 ms-1 text-white rounded"><i class='fab fa-facebook-f'></i><span class="ps-2">Share</span></span>
+                    </a>
+                    
+                    <a href="https://twitter.com/intent/tweet?url=<?=$weburl?>post.php?pid=<?=$row["post_id"]?>"  target="_blank">
+                        <span class="bgTW px-2 py-1 ms-1 text-white rounded"><i class='fab fa-twitter'></i><span class="ps-1"> Tweet</span></span>
+                    </a>
+
+                    <a href="https://social-plugins.line.me/lineit/share?url=<?=$weburl?>post.php?pid=<?=$row["post_id"]?>"  target="_blank">
+                        <span class="bgLINE px-2 py-1 ms-1 text-white rounded"> LINE</span>
+                    </a>
+                </div>
+
+                
 
                 <!-- Main Photo -->
                 <?php if($thumb[0] != $noimgPath){ ?>
@@ -104,17 +131,18 @@ mysqli_close($conn);
                     </div>
                 <?php } ?>
 
+
                 <!-- Head & Post ID -->
-                <div class="row pt-3 px-2">
+                <div class="row pt-2 px-2">
                     <div class="col-12 d-flex justify-content-between">
-                        <div class="f12 align-baseline fw-bold">รายละเอียด</div>
+                        <div class="f12 align-baseline fw-bold text-secondary">รายละเอียด</div>
                         <div class="f12 align-baseline text-secondary">รหัสสินทรัพย์: <?=$row["post_id"]?></div>
                     </div>
                 </div>
 
                 <!-- Description -->
                 <div class="container f14 text-dark px-2 mb-3">
-                    <hr>
+                    <hr class="m-0 p-0">
                     <div class="py-2 text-black">
                         <?= ($row["asset_condition_sale"] ?? null) == '1' ? "ขาย" : "" ?> 
                         <?= ($row["asset_condition_rent"] ?? null) == '1' ? " ให้เช่า" : ""; ?>

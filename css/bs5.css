@@ -28,7 +28,6 @@ a {
 
 a:hover {
   color: inherit; /* Don't change text color */
-  text-decoration: underline; /* Show underline on hover */
 }
 
 .dynamic-font{
@@ -192,11 +191,15 @@ div.R0 {
   }
 
   .bgFB{
-    background-color: #3b5998;
+    background-color: #3975ea;
   }
 
   .bgTW{
-    background-color: #00acee;
+    background-color: #4d9feb;
+  }
+
+  .bgLINE{
+    background-color:#70c46f;
   }
 
   .bgHeader{

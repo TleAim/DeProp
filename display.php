@@ -1,5 +1,9 @@
 <?php
-
+function convertDateFormat($dateString) {
+    $date = DateTime::createFromFormat('Y-m-d', $dateString);
+    return $date->format('d F Y');
+}
+  
 function prnRadio($name,$value,$txt,$checked){
     
     echo"

@@ -82,36 +82,35 @@ $_SESSION["tw"] = $user_row['tw'] ?? '';
         <!-- USER LineID -->
         <div class="row d-flex p-2">
             <div class="col-3 text-end text-secondary f14 dynamic-font pt-2 text-white">
-               <span class="bg-success rounded px-2 py-1"> LINE: </span>
+               <span class="bg-success rounded px-2 py-1">LINE</span>
             </div>
-            <div class="col-9">
-                <input type="text" class="form-control" id="user_lineid" name="user_lineid" value="<?=$_SESSION["lineid"]?>" placeholder="LINE ID" style="max-width: 400px;">
+            <div class="col-9 d-flex">
+                <span class="pt-2 pe-1 text-secondary">ไลน์ไอดี : </span>
+                <input type="text" class="form-control" id="user_lineid" name="user_lineid" value="<?=$_SESSION["lineid"]?>" placeholder="LINE ID" style="max-width: 330px;">
             </div>
         </div>
 
         <!-- USER Facebook -->
         <div class="row d-flex p-2">
             <div class="col-3 text-end text-secondary f20 dynamic-font pt-2 text-white">
-            <span class="bgFB rounded px-2 py-1">
-            <i class='fab fa-facebook-square' style='font-size:24px'></i>
-            </span>
+            
+            <i class='fab fa-facebook-square' style='font-size:28px;color:#3975ea;'></i>
+           
             </div>
             <div class="col-9 d-flex">
                 <span class="pt-2 pe-1 text-secondary">facebook.com/ </span>
-                <input type="text" class="form-control" id="user_fb" name="user_fb" value="<?=$_SESSION["fb"]?>" placeholder="username" style="max-width: 200px;">
+                <input type="text" class="form-control" id="user_fb" name="user_fb" value="<?=$_SESSION["fb"]?>" placeholder="username" style="max-width: 285px;">
             </div>
         </div>
 
         <!-- USER twitter -->
         <div class="row d-flex p-2 mb-3">
-            <div class="col-3 text-end text-secondary f20 dynamic-font pt-2 text-white">
-            <span class="bgTW rounded px-2 py-1">
-                <i class="fa fa-twitter" style='font-size:20px'></i> 
-            </span>
+            <div class="col-3 text-end text-secondary f20 dynamic-font pt-2 text-white"> 
+                <i class="	fab fa-twitter-square" style='font-size:28px;color:#4d9feb;'></i> 
             </div>
             <div class="col-9 d-flex">
                 <span class="pt-2 pe-1 text-secondary">twitter.com/</span>
-                    <input type="text" class="form-control" id="user_tw" name="user_tw" value="<?=$_SESSION["tw"]?>" placeholder="username" style="max-width: 200px;">
+                    <input type="text" class="form-control" id="user_tw" name="user_tw" value="<?=$_SESSION["tw"]?>" placeholder="username" style="max-width: 300px;">
             </div>
         </div>
 

@@ -95,7 +95,7 @@
           }
 ?>
 
-      <div class="bgWhiteOP2 m-0 scale-button" onclick="window.open('post.php?pid=<?=$url?>', '_blank');" > 
+      <div class="bgWhiteOP2 m-0 scale-button" onclick="window.open('post.php?pid=<?=$url?>', '_self');" > 
 
         <div class="row m-0 pt-3" >
           <div class="col-sm-4">

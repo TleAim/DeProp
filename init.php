@@ -1,5 +1,6 @@
 <?php
 $pagename = "ดีพร๊อพ ตลาดบ้านและที่ดิน";
+$weburl = "https://deprop.finance/";
 ?>
 
     <!-- Bootstrap 5 CSS --> 
