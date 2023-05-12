@@ -90,7 +90,16 @@ a:hover {
   justify-content: space-between;
 }
 
+#cfPostDel {
+  display: flex;
+  justify-content: space-between;
+}
+
 #cflogout .btn {
+  width: 50%;
+}
+
+#cfPostDel .btn {
   width: 50%;
 }
 
@@ -172,6 +181,9 @@ div.R0 {
              -5px -5px 1px #fff9f9;
   }
 
+  .bgRed2{
+    background: #ff0000;
+  }
   .bgGreen{
     border-radius: 0px;
     background: #047719;

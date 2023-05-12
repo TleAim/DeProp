@@ -26,11 +26,14 @@ if ($result->num_rows > 0) {
     $row2 = $resultLOC->fetch_assoc();
     //printArrayWithNewLine($row2);
 
-    //echo $assetTypeARR[$row["asset_type"]];
-}
+    $thumb = array();
+    for ($i = 0; $i < 10; $i++) {
+      $file_path = $imgPath.$row["post_id"]."_".$i.".jpg";
+      $file_path = file_exists($file_path) ? $file_path : $noimgPath ;
+      $thumb[$i] = $file_path;
+    }
 
-//echo ("SESSION :".$_SESSION['uid']);
-//echo $sql;
+}
 
 mysqli_close($conn);
 ?>
@@ -95,7 +98,11 @@ mysqli_close($conn);
                 </div>
 
                 <!-- Main Photo -->
-                <div class="container p-2"><img class="thumb-image1 " src="./upload/<?=$row['post_id']?>_0.jpg"></div>
+                <?php if($thumb[0] != $noimgPath){ ?>
+                    <div class="container p-2">
+                        <img class="thumb-image1 " src="<?=$thumb[0]?>">
+                    </div>
+                <?php } ?>
 
                 <!-- Head & Post ID -->
                 <div class="row pt-3 px-2">
@@ -119,18 +126,19 @@ mysqli_close($conn);
                 </div>
 
                 <!-- Photos --> 
-                <div class="container p-2">
-                <?php for ($x = 1; $x < 10; $x++) {
-                        $fileName = $imgPath.$row["post_id"]."_".$x.".jpg";
-                        //echo $fileName;
-                        if (file_exists($fileName)) {
-                ?>
-                    <img class="thumb-image1 mb-4" src="<?=$fileName?>">
-                <?php   }
-                      }
-                ?>
-                </div>
-
+                <?php if($thumb[1] != $noimgPath){ ?>
+                    <div class="container p-2">
+                    <?php for ($x = 1; $x < 10; $x++) {
+                            $fileName = $imgPath.$row["post_id"]."_".$x.".jpg";
+                            //echo $fileName;
+                            if (file_exists($fileName)) {
+                    ?>
+                        <img class="thumb-image1 mb-4" src="<?=$fileName?>">
+                    <?php   }
+                          }
+                    ?>
+                    </div>
+                <?php }else{ echo "<div class=\"p-2\"></div>";} ?>
             </div>
             <div class="col-sm-4 bg-warning">
                 contact

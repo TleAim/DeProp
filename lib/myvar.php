@@ -1,6 +1,7 @@
 <?php 
     $imgPathTemp    =   "./upload/tmp/";
     $imgPath        =   "./upload/";
+    $noimgPath      =   "./img/noimage.png";
 
     $assetTypeARR = array(
         1=>"บ้านพร้อมที่ดิน",

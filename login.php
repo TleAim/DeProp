@@ -1,6 +1,6 @@
 
         <div id="myaccount"  onclick="redirectToMyAccount();">
-                <span id="welcome"></span>
+                <span id="welcome" class="scale-button"></span>
         </div>
 
         <div class="btn3 mb-1" >

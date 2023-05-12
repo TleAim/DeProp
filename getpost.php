@@ -57,6 +57,7 @@
 ?>
 
 
+
 <!-- Loading Display -->
 <div id="loading" class="bg-white m-0" style="position: relative;">  
   <div class="loader-container">
@@ -82,25 +83,41 @@
           $row2 = $resultLOC->fetch_assoc();
 
           $url = $row["post_id"];
+          $thumb = array();
+
+          for ($i = 0; $i < 4; $i++) {
+            $file_path = $imgPath.$row["post_id"]."_".$i.".jpg";
+            //echo "CHK:".$file_path."<br>";
+            $file_path = file_exists($file_path) ? $file_path : $noimgPath ;
+            $thumb[$i] = $file_path;
+            //echo "IMG".$i.":".$file_path."<br>";
+            
+          }
 ?>
 
-
-      
       <div class="bgWhiteOP2 m-0 scale-button" onclick="window.open('post.php?pid=<?=$url?>', '_blank');" > 
 
-        <div class="row m-0 pt-4" >
+        <div class="row m-0 pt-3" >
           <div class="col-sm-4">
-            <div><img class="thumb-image1 " src="./img/baan.jpg"/></div>
-            <div class="d-flex mb-3 bg-light">
-              <div class="py-1 px-0 flex-item"><img class="thumb-image1 " src="./img/baan.jpg"/></div>
-              <div class="p-1 flex-item"><img class="thumb-image1 " src="./img/condo.jpg"/></div>
-              <div class="py-1 px-0 flex-item"><img class="thumb-image1 " src="./img/townhome.jpg"/></div>
-            </div>
+            <div><img class="thumb-image1 " src="<?=$thumb[0]?>"/></div>
+            <?php if($thumb[0] != $noimgPath){ ?>
+              <div class="d-flex mb-3 bg-light">
+                <div class="py-1 px-0 flex-item">
+                  <?php if($thumb[1] != $noimgPath){ ?><img class="thumb-image1 " src="<?=$thumb[1]?>"/><?php } ?>
+                </div>
+                <div class="p-1 flex-item">
+                  <?php if($thumb[2] != $noimgPath){ ?><img class="thumb-image1 " src="<?=$thumb[2]?>"/><?php } ?>
+                </div>
+                <div class="py-1 px-0 flex-item">
+                  <?php if($thumb[3] != $noimgPath){ ?><img class="thumb-image1 " src="<?=$thumb[3]?>"/><?php } ?>
+                </div>
+              </div>
+            <?php }else{ echo "<div class=\"p-2\"></div>";} ?>
           </div>
           
           <div class="col-sm-8 ps-0 text-black ">
             <div class="ps-4 fw-bold f20">
-              <?=number_format($row["asset_price"])?> บาท 
+              <?=number_format($row["asset_price"])?> <span class="f12"> บาท</span>
             </div>
 
             <div class="ps-4 p-1 pb-2 text-secondary f14 fw-bolder">
@@ -114,9 +131,9 @@
             </div>
 
             <div class="ps-4 p-1 "><i class='fas fa-chart-area'></i>
-              <?= $row["count_sizerai"] > 0 ? $row["count_sizerai"] . " ไร่" : "" ?>
-              <?= $row["count_sizengan"] > 0 ? $row["count_ngan"] . " งาน" : "" ?>
-              <?= $row["count_sizeva"] > 0 ? $row["count_sizeva"] . " ตร.วา" : "" ?>
+              <?= $row["count_sizerai"] = isset($row["count_sizerai"]) && $row["count_sizerai"] > 0 ? $row["count_sizerai"] . " ไร่" : ""; ?>
+              <?= $row["count_sizengan"] = isset($row["count_sizengan"]) && $row["count_sizengan"] > 0 ? $row["count_ngan"] . " งาน" : "" ?>
+              <?= $row["count_sizeva"] = isset($row["count_sizeva"]) && $row["count_sizeva"] > 0 ? $row["count_sizeva"] . " ตร.วา" : "" ?>
             </div>
 
             <div class="ps-4 pb-3 f12 dynamic-font text-secondary">

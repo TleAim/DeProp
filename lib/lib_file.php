@@ -5,6 +5,11 @@ function deleteFilesWithPrefix($folder, $prefix) {
         // Get all files in the folder
         $files = glob($folder . '*');
 
+        // Print out the number of files found
+        $numFiles = count($files);
+        echo "Found " . $numFiles . " files\n";
+        
+        echo "\n--------- DELETE FILE ---------\n";
         // Loop through the files
         foreach ($files as $file) {
             // Check if the file name starts with the specified prefix

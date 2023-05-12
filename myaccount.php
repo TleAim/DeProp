@@ -2,6 +2,7 @@
 include 'display.php';
 include 'init.php';
 include 'connect.php';
+
 session_start();
 consolelog("UID = ".$_SESSION['uid']);
 consolelog("NAME = ".$_SESSION['name']);
@@ -78,15 +79,15 @@ $page = $_GET['p'] ?? "manage";
                         <main>
 
                           <div id="account_area">
-                            <div id="account_info">
+                            <div id="account_info" style="display: none;">
                               <?php include 'myaccount_info.php'; ?>  
                             </div>
 
-                            <div id="account_managepost">
+                            <div id="account_managepost" style="display: none;">
                               <?php include 'myaccount_post.php'; ?>    
                             </div>
 
-                            <div id="account_addpost">
+                            <div id="account_addpost" style="display: none;">
                               <?php include 'newimage.php'; ?>    
                               <?php //include 'newpostform.php'; ?>  
                             </div>
