@@ -59,14 +59,14 @@
 
 
 <!-- Loading Display -->
-<div id="loading" class="bg-white m-0" style="position: relative;">  
+<div id="loading" class="bg-white" style="position: relative;">  
   <div class="loader-container">
     <div class="loader"></div>
   </div>
 </div>
 
 <!-- Result AREA -->
-<div class="mt-0 p-0" id="resultArea">
+<div id="resultArea">
 <?php
 
   if ($resultPostList->num_rows > 0) {
@@ -95,9 +95,8 @@
           }
 ?>
 
-      <div class="bgWhiteOP2 m-0 scale-button" onclick="window.open('post.php?pid=<?=$url?>', '_self');" > 
-
-        <div class="row m-0 pt-3" >
+      <div class="container bgWhiteOP2 scale-button" onclick="window.open('post.php?pid=<?=$url?>', '_self');" > 
+        <div class="row pt-3" >
           <div class="col-sm-4">
             <div><img class="thumb-image1 " src="<?=$thumb[0]?>"/></div>
             <?php if($thumb[0] != $noimgPath){ ?>
@@ -132,7 +131,7 @@
 
             <div class="ps-4 p-1 "><i class='fas fa-chart-area'></i>
               <?= $row["count_sizerai"] = isset($row["count_sizerai"]) && $row["count_sizerai"] > 0 ? $row["count_sizerai"] . " ไร่" : ""; ?>
-              <?= $row["count_sizengan"] = isset($row["count_sizengan"]) && $row["count_sizengan"] > 0 ? $row["count_ngan"] . " งาน" : "" ?>
+              <?= $row["count_sizengan"] = isset($row["count_sizengan"]) && $row["count_sizengan"] > 0 ? $row["count_sizengan"] . " งาน" : "" ?>
               <?= $row["count_sizeva"] = isset($row["count_sizeva"]) && $row["count_sizeva"] > 0 ? $row["count_sizeva"] . " ตร.วา" : "" ?>
             </div>
 
@@ -140,11 +139,13 @@
               <i class="fa fa-map-marker"></i> <?=$row2["districts"]?> <?=$row2["amphures"]?> , จังหวัด<?=$row2["provinces"]?>
             </div>
 
-            <div class="ps-4 pb-3 f14 text-break"><?=substr($row["post_desc"],0,250)."..."?></div>
+            <div class="ps-4 pb-3 f14 text-break"><?=mb_substr($row["post_desc"],0,250)."..."?></div>
 
+            <?php if($row["asset_maps"]){ $link = $row["asset_maps"]; ?>
             <div class="ms-4 mt-2 mb-4">
-              <button class="button" onclick="window.open('map.html', '_blank');"><i class="fas fa-map"></i> แผนที่สินทรัพย์</button>
+              <button class="button" onclick="window.open('<?=$link?>', '_blank');"><i class="fas fa-map"></i> แผนที่สินทรัพย์</button>
             </div>
+            <?php } ?>
 
           </div>
         </div>
@@ -167,8 +168,8 @@
 
 <!-- Bottom Page Selection -->
 <?php if($total_count>0){?>
-<div class=" mt-0 mb-0 d-flex justify-content-end">
-  <ul class="pagination flex-wrap m-0">
+<div class="d-flex justify-content-end">
+  <ul class="pagination flex-wrap">
     <li class="page-item"><a class="page-link" href="#" data-page="<?=$prevpage?>"><< ย้อน</a></li>
     <?php
       $total_pages = ceil($total_count / $limit);

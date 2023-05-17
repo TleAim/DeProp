@@ -67,6 +67,8 @@ $query = mysqli_query($conn2, $sql2);
                 <option value="3">คอนโดมิเนียม</option>
                 <option value="4">ทาวน์เฮ้าส์</option>
                 <option value="5">อาคารพาณิชย์</option>
+                <option value="6">วิลล่า</option>
+                <option value="7">รีสอร์ท</option>
             </select>
     
         <p class="mt-4 form-label">ขนาดพื้นที่:</p>

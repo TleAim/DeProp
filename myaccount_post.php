@@ -90,12 +90,14 @@ $assetTypeARR = array(
         <i class="fa fa-map-marker"></i> <?=$row2["districts"]?> <?=$row2["amphures"]?> , จังหวัด<?=$row2["provinces"]?>
       </div>
 
-      <div class="ps-4 pb-3 f14 text-break"><?=substr($row["post_desc"],0,250)."..."?></div>
+      <div class="ps-4 pb-3 f14 text-break"><?=mb_substr($row["post_desc"],0,250)."..."?></div>
     </div>
     
     <div class="ms-4 mt-2 mb-4 d-flex justify-content-between">
       <div>
-        <button class="button" onclick="window.open('map.html', '_blank');"><i class="fas fa-map"></i> แผนที่สินทรัพย์</button>
+        <?php if($row["asset_maps"]){ $link = $row["asset_maps"]; ?>
+          <button class="button" onclick="window.open('map.html', '_blank');"><i class="fas fa-map"></i> แผนที่สินทรัพย์</button>
+        <?php } ?>
       </div>
 
       <div id="del" class="py-2 px-3 f14 bgRed2 rounded text-white scale-button " data-bs-toggle="modal" data-bs-target="#modalCFdel" onclick="setPostDel('<?=$url?>')">

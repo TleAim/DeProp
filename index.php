@@ -7,6 +7,7 @@ consolelog("NAME = ".$_SESSION['name']);
 consolelog("EMAIL = ".$_SESSION['email']);
 consolelog("Phone = ".$_SESSION['phone']);
 consolelog("SESSION :".$_SESSION['uid']);
+
 ?>
 
 <!DOCTYPE html>
@@ -18,9 +19,9 @@ consolelog("SESSION :".$_SESSION['uid']);
 </head>
 <body class="bg-light">
     <?php if (is_mobile()) { ?>
-        <div class="container bg-white px-0" >
+        <div class="container bg-warning px-0" >
     <?php }else{ ?>
-        <div class="container bg-white px-0" style="width: 1200px;">
+        <div class="container bg-warning px-0" style="width: 1200px;">
 
     <?php } ?>
 
@@ -30,29 +31,26 @@ consolelog("SESSION :".$_SESSION['uid']);
     
 
         <!-- Header -->
-        <div class="row">
-            <div class="col m-0 p-0">
-                <?php include 'usertop.php'; ?>
-            </div>
+        <div class="container">
+            <?php include 'usertop.php'; ?>
         </div>
     </div>
 
         <!-- Main -->
-        <div class="row ">
-            <div class="col m-0 p-0">
-                    <?php include 'postlist.php'; ?>    
-            </div>
+        <div class="container p-0 pb-5 bg-white">
+            <?php include 'postlist.php'; ?>    
         </div>
 
 
          <!-- Footer -->
-        <div class="row ">
-            <div class="col m-0 p-0">
-                <?php include 'footer.php'; ?>
-            </div>
+         <div class="container">
+            <?php include 'footer.php'; ?>
         </div>
+
+        
         
     </div><!-- End Container -->
+    <div class="p-4 m-3"></div>
     <script src="./js/login.js" ></script>
 
 </body>

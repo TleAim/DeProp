@@ -31,19 +31,16 @@ $page = $_GET['p'] ?? "manage";
 
     <?php } ?>
 
-      <div class="container-fluid bgTop1 p-0">
+    <div class="container-fluid bgTop1 p-0">
         <!-- Top Bar -->
         <?php include 'usertopbar.php'; ?>
+    
 
         <!-- Header -->
-        <div class="row">
-            <div class="col m-0 p-0">
-                <?php include 'usertop.php'; ?>
-            </div>
+        <div class="container">
+            <?php include 'usertop.php'; ?>
         </div>
-      </div>
-
-      
+    </div>
         <!-- Main -->
       <div class="container-fluid bg-white">
         <div class="row">

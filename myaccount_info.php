@@ -6,7 +6,7 @@ if (!isset($_SESSION['uid']) || $_SESSION['uid'] === null) {
     exit();
 }
 
-$user_sql = "SELECT * FROM `userprofile` WHERE user = '".$_SESSION['uid']."'"; //echo $user_sql;
+$user_sql = "SELECT * FROM `userprofile` WHERE uid = '".$_SESSION['uid']."'"; //echo $user_sql;
 $user_result = mysqli_query($conn, $user_sql);
 $user_row = mysqli_fetch_assoc($user_result);
 
@@ -81,7 +81,7 @@ $_SESSION["tw"] = $user_row['tw'] ?? '';
 
         <!-- USER LineID -->
         <div class="row d-flex p-2">
-            <div class="col-3 text-end text-secondary f14 dynamic-font pt-2 text-white">
+            <div class="col-3 text-end f14 dynamic-font pt-2 text-white">
                <span class="bg-success rounded px-2 py-1">LINE</span>
             </div>
             <div class="col-9 d-flex">
@@ -92,7 +92,7 @@ $_SESSION["tw"] = $user_row['tw'] ?? '';
 
         <!-- USER Facebook -->
         <div class="row d-flex p-2">
-            <div class="col-3 text-end text-secondary f20 dynamic-font pt-2 text-white">
+            <div class="col-3 text-end f20 dynamic-font pt-2 text-white">
             
             <i class='fab fa-facebook-square' style='font-size:28px;color:#3975ea;'></i>
            
@@ -105,7 +105,7 @@ $_SESSION["tw"] = $user_row['tw'] ?? '';
 
         <!-- USER twitter -->
         <div class="row d-flex p-2 mb-3">
-            <div class="col-3 text-end text-secondary f20 dynamic-font pt-2 text-white"> 
+            <div class="col-3 text-end f20 dynamic-font pt-2 text-white"> 
                 <i class="	fab fa-twitter-square" style='font-size:28px;color:#4d9feb;'></i> 
             </div>
             <div class="col-9 d-flex">

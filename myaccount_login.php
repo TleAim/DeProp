@@ -21,17 +21,16 @@ session_start();
 
     <?php } ?>
 
-      <div class="container-fluid bgTop1 p-0">
+    <div class="container-fluid bgTop1 p-0">
         <!-- Top Bar -->
         <?php include 'usertopbar.php'; ?>
+    
 
         <!-- Header -->
-        <div class="row">
-            <div class="col m-0 p-0">
-                <?php include 'usertop.php'; ?>
-            </div>
+        <div class="container">
+            <?php include 'usertop.php'; ?>
         </div>
-      </div>
+    </div>
 
         <!-- Main -->
         <div class="container-fluid">
@@ -40,13 +39,12 @@ session_start();
             </div>
         </div>
 
-        <!-- Footer -->
-        <div class="row mt-5 ">
-            <div class="col m-0 p-0">
-                <?php include 'footer.php'; ?>
-            </div>
+         <!-- Footer -->
+         <div class="container">
+            <?php include 'footer.php'; ?>
         </div>
-    </div>
+        
+    </div><!-- End Container -->
 
 </body>
 

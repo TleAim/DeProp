@@ -5,7 +5,7 @@ session_start();
 
 printPostValues();
 
-$sql = "INSERT INTO `userprofile` (`user`, `name`, `phone`, `email`, `lineid`, `fb`, `tw`)
+$sql = "INSERT INTO `userprofile` (`uid`, `name`, `phone`, `email`, `lineid`, `fb`, `tw`)
 VALUES (
     '".$_POST['uid']."',
     '".$_POST['name']."',

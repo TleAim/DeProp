@@ -1,25 +1,78 @@
-<div class="container">
-<div class="row ">
-  <div class="col-sm-3">
-    <aside>
-      <div class="p-2 mb-0 bg-light">
-        <div class ="bg-primary rounded mb-1 text-center" style="cursor:pointer;" role="button" data-bs-toggle="collapse" data-bs-target="#FilterItem" aria-expanded="false" aria-controls="FilterItem">
-          <div class="text-white   fw-bold px-0 py-2   d-inline-block " >
-          <i class="fas fa-filter"></i> คัดกรองสินทรัพย์ 
+<?php 
+include 'connect2.php';
+include './lib/lib_db.php';
+include './lib/myvar.php';
+$sqlProvince = "SELECT * FROM `provinces` ORDER BY `provinces`.`name_th`";
+$resultProvince = mysqli_query($conn2, $sqlProvince);
+
+$pv = $_GET['pv'] ?? 0;
+$ap = $_GET['ap'] ?? 0;
+$ds = $_GET['ds'] ?? 0;
+$at = $_GET['at'] ?? 0;
+
+?>
+  <div class="p-0 bg-white d-flex" >
+      <aside>
+        <div class="container-fluid " id="Filter" style="min-width: 300px;">
+          <div class ="p-0 mt-1 bgFB text-center" style="cursor:pointer;" role="button" data-bs-toggle="collapse" data-bs-target="#FilterItem" >
+            <div class="text-white fw-bold px-0 py-2 " ><i class="fas fa-filter"></i> คัดกรองสินทรัพย์ </div>
           </div>
+          <div class="bg-warning">
+            <?php include 'filter.php'; ?>
+          </div>
+
+          <!-- Province Link -->
+          <div class="container p-0 mt-4 text-start bgWhiteOP4" id="FilterPV">
+            <div class="bgGray text-black fw-bold p-2 f14">
+              <i class='fas fa-braille'></i> ค้นหาสินทรัพย์ตามพื้นที่
+            </div>
+                    
+            <?php while($rowPV = $resultProvince->fetch_assoc()) { ?>
+            <div class="bg-light text-secondary p-2 f14 fw-bold border-bottom scale-button ">
+              <span class="hoverblue">
+              <i class="fa fa-map-marker"></i> <a href="./index.php?pv=<?=$rowPV['id']?>"><?=$rowPV['name_th']?></a>
+              </span>
+            </div>
+            <?php } ?>
+                    
+          </div>
+
         </div>
-          <?php include 'filter.php'; ?>
-      </div>
-    </aside>  
+      </aside>  
+
+    <div class="flex-grow-1">
+      <main>
+        <?php  
+        $search = "";
+        if( $pv>0 )  { $search = getnamePV($conn2,$pv);}
+        elseif($ap>0){ $search = getnameAP($conn2,$ap);
+        ?>
+        <script>
+          var amphureObject = $('#amphure');
+          amphureObject.html('<option value="<?=$ap?>" class="text-center ps-2"><?=$search?></option>');
+        </script>
+        <?php
+        }elseif($ds>0){ $search = getnameDS($conn2,$ds);
+        ?>
+        <script>
+          $(function(){
+            var districtObject = $('#district');
+            districtObject.html('<option value="<?=$ds?>" class="text-center ps-2"><?=$search?></option>');
+          });
+        </script>
+        <?php } ?>
+        <div id="postResult"></div>
+      </main>
+    </div>
+
   </div>
-  <div class="col-sm-9 ">
-    <main>
-      <div id="postResult"></div>
-    </main>
-  </div>
-</div>
-</div>
+
 <script>
+  $('#asset_type').val(<?=$at?>);
+  $('#province').val(<?=$pv?>);
+  $('#amphure').val(<?=$ap?>);
+  $('#district').val(<?=$ds?>);
+
   $(document).ready(function(){
       // Get initial records
       getData(1);

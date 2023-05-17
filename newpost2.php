@@ -12,23 +12,23 @@ session_start();
     <title>เพิ่มประกาศขายบ้านและที่ดิน อสังหาริมทรัพย์</title>
 </head>
 <body class="bg-light">
-    <?php include 'modal.php'; ?>
     <?php if (is_mobile()) { ?>
-        <div class="container bg-white" >
+        <div class="container bg-warning px-0" >
     <?php }else{ ?>
-        <div class="container bg-white" style="width: 1200px;">
+        <div class="container bg-warning px-0" style="width: 1200px;">
+
     <?php } ?>
 
-
+    <div class="container-fluid bgTop1 p-0">
         <!-- Top Bar -->
         <?php include 'usertopbar.php'; ?>
+    
 
         <!-- Header -->
-        <div class="row">
-            <div class="col m-0 p-0">
-                <?php include 'usertop.php'; ?>
-            </div>
+        <div class="container">
+            <?php include 'usertop.php'; ?>
         </div>
+    </div>
 
         <!-- Form Area -->
         <div class="row">

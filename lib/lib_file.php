@@ -37,7 +37,9 @@ function moveAndRenameFile($oldFilePath, $newFilePath) {
         } else {
             echo "<br>Error : ".$oldFilePath." => ".$newFilePath;
         }
-    } 
+    }else{
+        echo $oldFilePath." File not exists <br>";
+    }
 }
 
 function saveFile($uploadDir, $fileArr, $uid)

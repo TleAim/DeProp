@@ -3,12 +3,16 @@
     $imgPath        =   "./upload/";
     $noimgPath      =   "./img/noimage.png";
 
+    $ggapiKey       =   "AIzaSyBBWOQ9LZBRJ1HKPv_YdGqWyBk6xyL2tpc";
+
     $assetTypeARR = array(
         1=>"บ้านพร้อมที่ดิน",
         2=>"ที่ดินเปล่า",
         3=>"คอนโดมิเนียม",
         4=>"ทาวน์เฮ้าส์",
-        5=>"อาคารพาณิชย์"     
+        5=>"อาคารพาณิชย์",
+        6=>"วิลล่า",
+        7=>"รีสอร์ท"
       );
   
       $priceRange = array(

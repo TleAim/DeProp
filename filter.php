@@ -1,20 +1,23 @@
 <?php
 include 'connect2.php';
-
 $sql2 = "SELECT * FROM `provinces` ORDER BY `provinces`.`name_th`";
 $query = mysqli_query($conn2, $sql2);
+
+
 ?>
-<div class="collapse d-md-block" id="FilterItem">
-    <div class="d-flex flex-column my-0">
+<div class="collapse d-md-block bg-white" id="FilterItem">
+    <div class="d-flex flex-column my-0 bgWhiteOP2 p-2">
     
             <div class="my-1">
                 <select class="form-select form-select-sm text-center fw-bolder bgHilighttext" id="asset_type">
-                    <option value="0" selected>อสังหาฯทุกประเภท</option>
-                    <option value="1">บ้านพร้อมที่ดิน</option>
-                    <option value="2">ที่ดินเปล่า</option>
-                    <option value="3">คอนโดมิเนียม</option>
-                    <option value="4">ทาวน์เฮ้าส์</option>
-                    <option value="5">อาคารพาณิชย์</option>
+                    <option value="0" <?php echo strlen($asset_type) > 0 ? '' : 'selected' ?> >อสังหาฯทุกประเภท</option>
+                    <option value="1" <?php echo $asset_type == 1 ? 'selected' : '' ?> >บ้านพร้อมที่ดิน</option>
+                    <option value="2" <?php echo $asset_type == 2 ? 'selected' : '' ?> >ที่ดินเปล่า</option>
+                    <option value="3" <?php echo $asset_type == 3 ? 'selected' : '' ?> >คอนโดมิเนียม</option>
+                    <option value="4" <?php echo $asset_type == 4 ? 'selected' : '' ?> >ทาวน์เฮ้าส์</option>
+                    <option value="5" <?php echo $asset_type == 5 ? 'selected' : '' ?> >อาคารพาณิชย์</option>
+                    <option value="6" <?php echo $asset_type == 6 ? 'selected' : '' ?> >วิลล่า</option>
+                    <option value="7" <?php echo $asset_type == 7 ? 'selected' : '' ?> >รีสอร์ท</option>
                 </select>
             </div>
             <div class="my-1"> 
@@ -42,7 +45,10 @@ $query = mysqli_query($conn2, $sql2);
                     <select name="province_id" id="province" class="form-select form-select-sm bgHilighttext2">
                         <option value="0" class="text-center"> เลือกจังหวัด </option>
                     <?php while($result = mysqli_fetch_assoc($query)): ?>
-                        <option class="text-center" value="<?=$result['id']?>"><?=$result['name_th']?></option>
+                        <option class="text-center" value="<?=$result['id']?>" 
+                            <?php echo $result['id'] == $province_select ? 'selected' : '';?>>
+                            <?=$result['name_th']?>
+                        </option>
                     <?php endwhile; ?>
                     </select>
                     
@@ -60,7 +66,9 @@ $query = mysqli_query($conn2, $sql2);
                         <option value="0" class="text-center"> เลือกตำบล </option>
                     </select>
                     
-            </div>                
+            </div>        
+            
+            <button type="button" class="btn btn-primary" data-bs-toggle="collapse" data-bs-target="#FilterItem" id="hidefilterBT">ซ่อนตัวกรอง</button>
                     
     </div>
 </div>
