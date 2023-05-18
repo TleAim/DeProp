@@ -258,7 +258,9 @@ mysqli_close($conn);
                         <i class='fab fa-facebook-square' style='font-size:28px;color:#3975ea;'></i>
                     </div>    
                     <div class="col-9 text-start">
-                        <span class="pe-1 text-black f14">: <?=$rowName['fb']?></span>
+                        <a href="https://www.facebook.com/<?=$rowName['fb']?>">
+                        <span class="pe-1 textFB f14">: <?=$rowName['fb']?></span> <span class="f12 textFB"><i class='fas fa-external-link-alt'></i></span>
+                        </a>
                     </div>
                 </div>
                 <?php }?>
@@ -270,7 +272,9 @@ mysqli_close($conn);
                         <i class="	fab fa-twitter-square" style='font-size:28px;color:#4d9feb;'></i> 
                     </div>
                     <div class="col-9 text-start ">
-                        <span class="pe-1 text-black f14">: <?=$rowName['tw']?></span>
+                        <a href="https://twitter.com/<?=$rowName['tw']?>">
+                        <span class="pe-1 textTW f14">: <?=$rowName['tw']?></span> <span class="f12 textTW"><i class='fas fa-external-link-alt'></i></span>
+                        </a>
                     </div>
                 </div>
                 <?php }?>

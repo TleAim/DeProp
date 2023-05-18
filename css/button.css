@@ -1,7 +1,7 @@
 /*************************/
 /* CSS Button */
 /*************************/
-.button {
+.btn1 {
     display: inline-block;
     padding: 6px 12px;
     border: 2px solid #4f4f4f;
@@ -15,7 +15,7 @@
     background-color: #378bf9;
    }
    
-   .button:before {
+   .btn1:before {
     content: "";
     position: absolute;
     left: 50%;
@@ -30,7 +30,7 @@
     z-index: -1;
    }
    
-   .button:after {
+   .btn1:after {
     content: "";
     position: absolute;
     left: 55%;
@@ -45,18 +45,18 @@
     z-index: -1;
    }
    
-   .button:hover {
+   .btn1:hover {
     color: #ffffff;
     border: 1px solid #39bda7;
    }
    
-   .button:hover:before {
+   .btn1:hover:before {
     top: -35%;
     background-color: #39bda7;
     transform: translateX(-50%) scaleY(1.3) scaleX(0.8);
    }
    
-   .button:hover:after {
+   .btn1:hover:after {
     top: -45%;
     background-color: #39bda7;
     transform: translateX(-50%) scaleY(1.3) scaleX(0.8);

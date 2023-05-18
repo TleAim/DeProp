@@ -17,6 +17,7 @@ $weburl = "https://deprop.finance/";
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Dongle:wght@700&display=swap" rel="stylesheet">
     
+
     <!-- Font AweSome -->
     <script src="https://kit.fontawesome.com/72b9ebe0e3.js" crossorigin="anonymous"></script>
     

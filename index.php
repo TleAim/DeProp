@@ -19,13 +19,13 @@ consolelog("SESSION :".$_SESSION['uid']);
 </head>
 <body class="bg-light">
     <?php if (is_mobile()) { ?>
-        <div class="container bg-warning px-0" >
+        <div class="container bg-white p-0" >
     <?php }else{ ?>
-        <div class="container bg-warning px-0" style="width: 1200px;">
+        <div class="container bg-white p-0" style="width: 1200px; min-height: 500px;">
 
     <?php } ?>
 
-    <div class="container-fluid bgTop1 p-0">
+    <div class="container-fluid p-0">
         <!-- Top Bar -->
         <?php include 'usertopbar.php'; ?>
     
@@ -43,14 +43,14 @@ consolelog("SESSION :".$_SESSION['uid']);
 
 
          <!-- Footer -->
-         <div class="container">
+         <div class="container p-0">
             <?php include 'footer.php'; ?>
         </div>
 
         
         
     </div><!-- End Container -->
-    <div class="p-4 m-3"></div>
+    
     <script src="./js/login.js" ></script>
 
 </body>

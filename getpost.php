@@ -143,7 +143,7 @@
 
             <?php if($row["asset_maps"]){ $link = $row["asset_maps"]; ?>
             <div class="ms-4 mt-2 mb-4">
-              <button class="button" onclick="window.open('<?=$link?>', '_blank');"><i class="fas fa-map"></i> แผนที่สินทรัพย์</button>
+              <button class="btn1" onclick="window.open('<?=$link?>', '_blank');"><i class="fas fa-map"></i> แผนที่สินทรัพย์</button>
             </div>
             <?php } ?>
 

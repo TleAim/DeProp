@@ -5,32 +5,19 @@ body {
 
 /* For mobile devices */
 @media (max-width: 767px) {
-  #deschead,#welcome {
-    display: none;
+  #deschead { display: none !important; }
+  #hidefilterBT { display:block; }
+  #FilterPV { display: none; }
+  #icon-menu { display: block; }
+
+  #mymenu1{
+    display: none !important;
   }
 
-  #hidefilterBT{
-    display:block; 
-  }
-}
-
-/* For desktop devices */
-@media (min-width: 768px) {
-  #deschead,#welcome {
-    display: block;
+  #welcome{
+    font-size:  12px;
   }
 
-  #hidefilterBT{
-    display: none;
-  }
-
-  #FilterPV{
-    display: block;
-  }
-}
-
-/* Media query for mobile devices */
-@media only screen and (max-width: 767px) {
   #Filter {
     position: fixed;
     bottom: 0;
@@ -38,14 +25,38 @@ body {
     background-color: #3975ea;
   }
 
-  #FilterPV{
-    display: none;
+}
+
+/* For desktop devices */
+@media (min-width: 768px) {
+  #deschead,#welcome { display: block; }
+  #hidefilterBT{ display: none; }
+  #FilterPV{ display: block; }
+  #icon-menu{  display: none !important; }
+  #mymenu1 { 
+    height: 100%; 
+    flex-direction: row;
   }
+  
+}
+
+.btclassic:is(:hover,:focus){
+  outline-offset: 3px;
 }
 
 .hoverblue:hover {
   /* Set the text color to blue */
   color: rgb(0, 106, 255);
+}
+
+.hoveryellow:hover {
+  /* Set the text color to blue */
+  color: rgb(255, 238, 0);
+}
+
+.hoverwhite:hover {
+  /* Set the text color to blue */
+  color: rgb(255, 255, 255);
 }
 
 #collapsibleNavbar ul {
@@ -229,8 +240,16 @@ div.R0 {
     background-color: #3975ea;
   }
 
+  .textFB{
+    color: #3975ea;
+  }
+
   .bgTW{
     background-color: #4d9feb;
+  }
+
+  .textTW{
+    color: #4d9feb;
   }
 
   .bgLINE{
@@ -397,26 +416,4 @@ div.R0 {
     }
   }
 
-/*************************/
-/* CSS Footer */
-/*************************/
-  .footer-menu {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
-
-    background: black;
-  
-
-  }
-
-  @media (max-width: 767px) {
-    .footer-menu {
-      flex-direction: column;
-    }
-
-    .footer-link:last-child {
-      border-bottom: none;
-    }
-  }
 

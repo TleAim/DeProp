@@ -17,7 +17,7 @@ session_start();
     <?php if (is_mobile()) { ?>
         <div class="container bg-white px-0" >
     <?php }else{ ?>
-        <div class="container bg-white px-0" style="width: 1200px;">
+        <div class="container bg-white px-0" style="width: 1200px; min-height: 500px;">
 
     <?php } ?>
 
@@ -33,7 +33,7 @@ session_start();
     </div>
 
         <!-- Main -->
-        <div class="container-fluid">
+        <div class="container-fluid" style="min-height: 900px;">
             <div id="account_login">
               <?php include 'loginbox.php'; ?>
             </div>

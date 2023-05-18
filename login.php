@@ -1,5 +1,5 @@
 
-        <div id="myaccount"  onclick="redirectToMyAccount();">
+        <div id="myaccount"  onclick="redirectToMyAccount();" class="bgFB py-1 px-3 text-white rounded-pill">
                 <span id="welcome" class="scale-button"></span>
         </div>
 
