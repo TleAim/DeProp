@@ -21,29 +21,24 @@ consolelog("SESSION :".$_SESSION['uid']);
     <?php if (is_mobile()) { ?>
         <div class="container bg-white p-0" >
     <?php }else{ ?>
-        <div class="container bg-white p-0" style="width: 1200px; min-height: 500px;">
+        <div class="container-fluid bg-white p-0 f12" style="max-width: 1200px;">
 
     <?php } ?>
 
-    <div class="container-fluid p-0">
-        <!-- Top Bar -->
-        <?php include 'usertopbar.php'; ?>
-    
-
         <!-- Header -->
-        <div class="container">
+        <div class="container-fluid">
+            <?php include 'usertopbar.php'; ?>
             <?php include 'usertop.php'; ?>
         </div>
-    </div>
 
         <!-- Main -->
-        <div class="container p-0 pb-5 bg-white">
+        <div class="container-fluid p-0 pb-5 bg-white">
             <?php include 'postlist.php'; ?>    
         </div>
 
 
          <!-- Footer -->
-         <div class="container p-0">
+         <div class="container-fluid p-0">
             <?php include 'footer.php'; ?>
         </div>
 

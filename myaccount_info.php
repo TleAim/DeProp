@@ -19,7 +19,7 @@ $_SESSION["tw"] = $user_row['tw'] ?? '';
 
 ?>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
-<div class="container bgWhiteOP1 ">
+<div class="container-fluid bgWhiteOP1 ">
     <div class="py-3">
         <div class="p-2 d-flex justify-content-center">
             <h2>รายละเอียดบัญชี</h2>

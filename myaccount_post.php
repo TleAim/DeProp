@@ -96,7 +96,7 @@ $assetTypeARR = array(
     <div class="ms-4 mt-2 mb-4 d-flex justify-content-between">
       <div>
         <?php if($row["asset_maps"]){ $link = $row["asset_maps"]; ?>
-          <button class="button" onclick="window.open('map.html', '_blank');"><i class="fas fa-map"></i> แผนที่สินทรัพย์</button>
+          <button class="btn1" onclick="window.open('map.html', '_blank');"><i class="fas fa-map"></i> แผนที่สินทรัพย์</button>
         <?php } ?>
       </div>
 

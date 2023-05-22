@@ -43,6 +43,7 @@ if ($result->num_rows > 0) {
 }
 
 mysqli_close($conn);
+mysqli_close($conn2);
 ?>
 
 <!DOCTYPE html>
@@ -64,26 +65,22 @@ mysqli_close($conn);
 </head>
 <body class="bg-light">
     <?php if (is_mobile()) { ?>
-        <div class="container bg-white px-0" >
+        <div class="container bg-white p-0" >
     <?php }else{ ?>
-        <div class="container bg-white px-0" style="width: 1200px;">
+        <div class="container-fluid bg-white p-0 f12" style="max-width: 1200px; min-height: 500px;">
 
     <?php } ?>
 
-    <div class="container-fluid bgTop1 p-0">
-        <!-- Top Bar -->
-        <?php include 'usertopbar.php'; ?>
-    
-
         <!-- Header -->
-        <div class="container">
+        <div class="container-fluid">
+            <?php include 'usertopbar.php'; ?>
             <?php include 'usertop.php'; ?>
         </div>
-    </div>
 
     <!-- Main -->
-    <div class="row ps-3 pe-1 pt-3">
-        <div class="col-sm-9 ">
+    <div class="container-fluid">
+        <div class="row ps-3 pe-1 pt-3">
+            <div class="col-sm-9 ">
 
             <!-- Navi Location Link -->
             <div id="navloc" class="f12 text-secondary fw-bold px-1 pb-2">
@@ -211,7 +208,7 @@ mysqli_close($conn);
                 <div class="bgWhiteOP4">
                     <div class="text-secondary f12 fw-bold pt-2">ลงประกาศโดย :</div>
                     <div class="text-black fw-bold f16 pb-4"><?=$rowName['name']?></div>
-                    <div class="pb-3"><span class="text-info border border-info py-2 px-4 f12 rounded">ช่องทางติดต่อ</span></div>
+                    <div class="pb-3"><span class="text-secondary bg-light border border-secondary py-2 px-4 f12 rounded">ช่องทางติดต่อ</span></div>
                 </div>
                 
 
@@ -222,7 +219,7 @@ mysqli_close($conn);
                         <i class="fa fa-mobile-phone" style='font-size:24px'></i> <span class="text-danger fw-bold"></span>
                     </div>
                     <div class="col-9 text-start ">
-                        <span class="pe-1 text-black f14">: <?=$rowName['phone']?></span>
+                        <span class="txtWrap pe-1 text-black f12">: <?=$rowName['phone']?></span>
                     </div>
                 </div>
                 <?php }?>
@@ -234,7 +231,7 @@ mysqli_close($conn);
                         อีเมล
                     </div>
                     <div class="col-9 text-start " id="emaildisplay">
-                        <div class="text-wrap text-black f14">: <?=$rowName['email']?></div>
+                        <div class="txtWrap text-black f12">: <?=$rowName['email']?></div>
                     </div>
                 </div>
                 <?php }?>
@@ -246,7 +243,7 @@ mysqli_close($conn);
                        <span class="bg-success rounded px-2 py-1">LINE</span>
                     </div>
                     <div class="col-9 text-start ">
-                        <span class="pe-1 text-black f14">: <?=$rowName['lineid']?></span>
+                        <span class="txtWrap pe-1 text-black f12">: <?=$rowName['lineid']?></span>
                     </div>
                 </div>
                 <?php }?>
@@ -259,7 +256,7 @@ mysqli_close($conn);
                     </div>    
                     <div class="col-9 text-start">
                         <a href="https://www.facebook.com/<?=$rowName['fb']?>">
-                        <span class="pe-1 textFB f14">: <?=$rowName['fb']?></span> <span class="f12 textFB"><i class='fas fa-external-link-alt'></i></span>
+                        <span class="txtWrap pe-1 textFB f12">: <?=$rowName['fb']?></span> <span class="f12 textFB"><i class='fas fa-external-link-alt'></i></span>
                         </a>
                     </div>
                 </div>
@@ -273,40 +270,27 @@ mysqli_close($conn);
                     </div>
                     <div class="col-9 text-start ">
                         <a href="https://twitter.com/<?=$rowName['tw']?>">
-                        <span class="pe-1 textTW f14">: <?=$rowName['tw']?></span> <span class="f12 textTW"><i class='fas fa-external-link-alt'></i></span>
+                        <span class="txtWrap pe-1 textTW f12">: <?=$rowName['tw']?></span> <span class="f12 textTW"><i class='fas fa-external-link-alt'></i></span>
                         </a>
                     </div>
                 </div>
                 <?php }?>
 
-                <!-- Province Link -->
-                <div class="container p-0 mt-4 text-start bgWhiteOP4">
-                    <div class="bgGray text-black fw-bold p-2 f14">
-                    <i class='fas fa-braille'></i> ค้นหาสินทรัพย์ตามพื้นที่
-                    </div>
-                    
-                    <?php
-                    while($rowPV = $resultProvince->fetch_assoc()) {
-                    ?>
-                    <div class="bg-light text-secondary p-2 f14 fw-bold border-bottom scale-button ">
-                    <span class="hoverblue">
-                    <i class="fa fa-map-marker"></i> <a href="./index.php?pv=<?=$rowPV['id']?>"><?=$rowPV['name_th']?></a>
-                    </span>
-                    </div>
-                    <?php } ?>
-                    
-                </div>
+                <?php 
+                include 'menu_province.php'; 
+                ?>
             </div>
 
         </div>
 
-    </div> <!-- END TAG MAIN -->
+        </div> <!-- END TAG MAIN -->
+    </div>
     <!-- Footer -->
-    <div class="container">
+    <div class="container-fluid p-0">
         <?php include 'footer.php'; ?>
     </div>
 </div><!-- END Container -->
- <p class="m-5 p-5"></p>
+
 </body>
 
 </html>

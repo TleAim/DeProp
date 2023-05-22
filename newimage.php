@@ -1,6 +1,6 @@
 
 
-<div class="container bg-white">
+<div class="container-fluid bg-white">
     <div class="p-3">
     <p class="text-center fs-5 dynamic-font">ลงประกาศ สำหรับอสังหาริมทรัพย์เท่านั้น</p>
     <form method="post" enctype="multipart/form-data" >

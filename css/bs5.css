@@ -5,18 +5,14 @@ body {
 
 /* For mobile devices */
 @media (max-width: 767px) {
-  #deschead { display: none !important; }
+  #deschead,#linkft1,#linkft2 { display: none !important; }
   #hidefilterBT { display:block; }
   #FilterPV { display: none; }
   #icon-menu { display: block; }
-
-  #mymenu1{
-    display: none !important;
-  }
-
-  #welcome{
-    font-size:  12px;
-  }
+  #descfooter { width: 100% !important;}
+  #mymenu1{ display: none !important; }
+  #welcome{ font-size:  12px;}
+  #contactbox { flex-direction: column !important; }
 
   #Filter {
     position: fixed;
@@ -33,6 +29,7 @@ body {
   #hidefilterBT{ display: none; }
   #FilterPV{ display: block; }
   #icon-menu{  display: none !important; }
+  #topmenu2 { display: none !important;}
   #mymenu1 { 
     height: 100%; 
     flex-direction: row;
@@ -40,8 +37,21 @@ body {
   
 }
 
+.txtWrap{
+  word-wrap: break-word;
+}
+
 .btclassic:is(:hover,:focus){
   outline-offset: 3px;
+}
+
+.bgPVMENU{
+  background-color: #f7f7f7;
+}
+
+.bgPVMENU:hover{
+  background-color: #fff;
+  
 }
 
 .hoverblue:hover {

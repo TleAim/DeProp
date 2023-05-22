@@ -1,12 +1,10 @@
-<div class="d-flex justify-content-between text-black" id="topbar">
+<div class="d-flex justify-content-between" id="topbar">
 
-        <div id="deschead" class="pt-2 fw-bold ps-4 ">
+        <div id="deschead" class="pt-2 text-secondary fw-bold ps-2 ">
             ประกาศขายฟรี ที่ดินเปล่า บ้านเดี่ยว บ้านแฝด คอนโดมิเนียม ทาวน์เฮ้าส์ อาคารพาณิชย์ 
         </div>
 
-        <div></div>
-
-        <div class="pt-2 px-2 fw-bold" >
+        <div class="pt-2 px-2 fw-bold text-white" >
             <?php include 'login.php'; ?>
         </div>
 

@@ -15,22 +15,17 @@ session_start();
 </head>
 <body class="bg-light">
     <?php if (is_mobile()) { ?>
-        <div class="container bg-white px-0" >
+        <div class="container bg-white p-0" >
     <?php }else{ ?>
-        <div class="container bg-white px-0" style="width: 1200px; min-height: 500px;">
+        <div class="container-fluid bg-white p-0 f12" style="max-width: 1200px; min-height: 500px;">
 
     <?php } ?>
 
-    <div class="container-fluid bgTop1 p-0">
-        <!-- Top Bar -->
-        <?php include 'usertopbar.php'; ?>
-    
-
         <!-- Header -->
-        <div class="container">
+        <div class="container-fluid">
+            
             <?php include 'usertop.php'; ?>
         </div>
-    </div>
 
         <!-- Main -->
         <div class="container-fluid" style="min-height: 900px;">
@@ -40,7 +35,7 @@ session_start();
         </div>
 
          <!-- Footer -->
-         <div class="container">
+         <div class="container-fluid">
             <?php include 'footer.php'; ?>
         </div>
         

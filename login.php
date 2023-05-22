@@ -1,17 +1,15 @@
 
-        <div id="myaccount"  onclick="redirectToMyAccount();" class="bgFB py-1 px-3 text-white rounded-pill">
-                <span id="welcome" class="scale-button"></span>
-        </div>
+<div id="myaccount"  onclick="redirectToMyAccount();" class="" >
+    <span id="welcome" class="bgFB py-1 px-3 text-white rounded-pill scale-button"></span>
+</div>
 
-        <div class="btn3 mb-1" >
-            <button id="loginbt" style="display: none;" onclick="redirectToLogin();">
-                <span class="shadow"></span>
-                <span class="edge"></span>
-                <span class="front text"><i class="fas fa-sign-in-alt"></i> เข้าสู่ระบบ </span>
-            </button>
-        </div>
-
-
+<div class="btn3 mb-1" >
+    <button id="loginbt" style="display: none;" onclick="redirectToLogin();">
+        <span class="shadow"></span>
+        <span class="edge"></span>
+        <span class="front text"><i class="fas fa-sign-in-alt"></i> เข้าสู่ระบบ </span>
+    </button>
+</div>
 
 <!-- The Modal for LOGOUT-->
 <div class="modal" id="modalcflogout">

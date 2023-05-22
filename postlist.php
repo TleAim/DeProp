@@ -21,21 +21,9 @@ $at = $_GET['at'] ?? 0;
             <?php include 'filter.php'; ?>
           </div>
 
-          <!-- Province Link -->
-          <div class="container p-0 mt-4 text-start bgWhiteOP4" id="FilterPV">
-            <div class="bgGray text-black fw-bold p-2 f14">
-              <i class='fas fa-braille'></i> ค้นหาสินทรัพย์ตามพื้นที่
-            </div>
-                    
-            <?php while($rowPV = $resultProvince->fetch_assoc()) { ?>
-            <div class="bg-light text-secondary p-2 f14 fw-bold border-bottom scale-button ">
-              <span class="hoverblue">
-              <i class="fa fa-map-marker"></i> <a href="./index.php?pv=<?=$rowPV['id']?>"><?=$rowPV['name_th']?></a>
-              </span>
-            </div>
-            <?php } ?>
-                    
-          </div>
+          <?php 
+                include 'menu_province.php'; 
+          ?>
 
         </div>
       </aside>  

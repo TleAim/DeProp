@@ -25,27 +25,23 @@ $page = $_GET['p'] ?? "manage";
 </head>
 <body class="bg-light">
     <?php if (is_mobile()) { ?>
-        <div class="container bg-white px-0" >
+        <div class="container bg-white p-0" >
     <?php }else{ ?>
-        <div class="container bg-white px-0" style="width: 1200px;">
+        <div class="container-fluid bg-white p-0 f12" style="max-width: 1200px; min-height: 500px;">
 
     <?php } ?>
 
-    <div class="container-fluid bgTop1 p-0">
-        <!-- Top Bar -->
-        <?php include 'usertopbar.php'; ?>
-    
-
         <!-- Header -->
-        <div class="container">
+        <div class="container-fluid">
+            <?php include 'usertopbar.php'; ?>
             <?php include 'usertop.php'; ?>
         </div>
-    </div>
+
         <!-- Main -->
       <div class="container-fluid bg-white">
         <div class="row">
             <div class="col mb-4 pb-4">
-                <div class="container  p-0 m-0">
+                <div class="container-fluid  p-0 m-0">
                     <div class="row ">
                       <div class="col-sm-3">
                         <aside>
@@ -98,7 +94,7 @@ $page = $_GET['p'] ?? "manage";
         </div>
     </div>
 
-    </div>
+  </div>
  
 </body>
 
