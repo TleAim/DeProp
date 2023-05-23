@@ -1,29 +1,26 @@
-<div class="container-fluid bg-white py-5" id="login_area" >
-
-        <div class="p-1 d-flex justify-content-center">
-            <h2 class="modal-title">กรุณาเข้าสู่ระบบ</h2>
+<div class="container-fluid  mt-3 mb-5" id="login_area" >
+  <div class="d-flex justify-content-center " >
+    <div class="container bgWhiteOP1 pt-3 pb-4" style="width: 400px;">
+        <div class="p-1">
+            <h2 class="text-center">กรุณาเข้าสู่ระบบ</h2>
         </div>    
 
-        <div class="p-1 d-flex justify-content-center">
-            <img id="fbbt" src="img/fb-bt.jpg" class="img-fluid rounded p-2 scale-button">
+        <div class="text-white f16 bgFB rounded p-2 m-2 d-flex justify-content-center scale-button" id="fbbt">
+          <i class='fab fa-facebook-square' style='font-size:22px;color:#fff;'></i><span class="ps-2">เข้าสู่ระบบด้วย Facebook</span> 
         </div>
 
-        <div class="p-1 d-flex justify-content-center">
-            <img id="ggbt" src="img/gg-bt.jpg" class="img-fluid rounded p-2 scale-button">
+        <div class="text-white f16 bgGG rounded p-2 m-2 d-flex justify-content-center scale-button" id="ggbt">
+          <i class='fab fa-google' style='font-size:22px;color:#fff;'></i><span class="ps-2">เข้าสู่ระบบด้วย Google</span> 
         </div>
 
-        <div class="p-2 mb-3 d-flex justify-content-center">
-            <button id="phonebt" type="button" class="button2 p-2 scale-button">เชื่อมต่อด้วยเบอร์โทรศัพท์</button>
+        <div class="text-white f16 bg-black rounded p-2 m-2 d-flex justify-content-center scale-button" id="phonebt">
+          <i class='fa fa-mobile-phone' style='font-size:22px;color:#fff;'></i><span class="ps-2">เข้าสู่ระบบด้วยเบอร์โทรศัพท์</span> 
         </div>
-
+    </div>
+  </div>
 </div>
 
-<style>
-    #phonebt,#ggbt,#fbbt {
-      width: 90%;
-      max-width: 400px;
-    }
-</style>
+
 
 
 <!-- The Modal Input Phone Number  -->

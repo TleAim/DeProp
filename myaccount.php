@@ -129,7 +129,11 @@ document.getElementById('link_account_addpost').addEventListener('click', functi
 
 document.getElementById('link_account_managepost').addEventListener('click', function(event) {
   event.preventDefault();
-  showDiv('account_managepost');
+  if(name.value.length == 0 || phone.value.length < 10){ 
+      showDiv('account_info'); 
+    }else{
+      showDiv('account_managepost');
+    }
 });
 
 document.getElementById('account_info').style.display = 'none';
@@ -148,7 +152,11 @@ switch ("<?=$page?>") {
     showDiv('account_info');
     break;
   case "manage":
-    showDiv('account_managepost');
+    if(name.value.length == 0 || phone.value.length < 10){ 
+      showDiv('account_info'); 
+    }else{
+      showDiv('account_managepost');
+    }
     break;
 }
 

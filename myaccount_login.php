@@ -23,19 +23,19 @@ session_start();
 
         <!-- Header -->
         <div class="container-fluid">
-            
             <?php include 'usertop.php'; ?>
         </div>
 
         <!-- Main -->
-        <div class="container-fluid" style="min-height: 900px;">
+        <div class="container-fluid bg-light" style="min-height: 400px;">
+            <div class="p-3"></div>
             <div id="account_login">
               <?php include 'loginbox.php'; ?>
             </div>
         </div>
 
          <!-- Footer -->
-         <div class="container-fluid">
+         <div class="container-fluid p-0">
             <?php include 'footer.php'; ?>
         </div>
         
