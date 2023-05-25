@@ -19,7 +19,7 @@ $at = $_GET['at'] ?? 0;
           <div class ="p-0 mt-1 bgFB text-center" style="cursor:pointer;" role="button" data-bs-toggle="collapse" data-bs-target="#FilterItem" >
             <div class="text-white fw-bold px-0 py-2 " ><i class="fas fa-filter"></i> คัดกรองสินทรัพย์ </div>
           </div>
-          <div class="bg-warning">
+          <div>
             <?php include 'filter.php'; ?>
           </div>
 

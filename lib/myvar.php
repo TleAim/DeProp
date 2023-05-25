@@ -5,6 +5,19 @@
 
     $ggapiKey       =   "AIzaSyBBWOQ9LZBRJ1HKPv_YdGqWyBk6xyL2tpc";
 
+    $pagename = "ตลาดบ้านและที่ดิน";
+    $weburl = "https://taradteedin.com/";
+    $contact_email = "deprop.finance@gmail.com";
+    $contact_phone = "";
+    $contact_fb    = "";
+    $contact_tw    = "";
+    $contact_line  = "@605iveov";
+    $contact_linelink = "https://lin.ee/c34u2ll";
+
+    $admin = "2ak67NccB1QwoYdcYtG3oQ018qj1";
+    $urlmaps1 = "https://goo.gl/maps/";
+    $urlmaps2 = "https://www.google.com/maps";
+
     $assetTypeARR = array(
         1=>"บ้านพร้อมที่ดิน",
         2=>"ที่ดินเปล่า",

@@ -3,7 +3,7 @@ include 'connect.php';
 include 'display.php';
 session_start();
 
-printPostValues();
+//printPostValues();
 
 $sql = "INSERT INTO `userprofile` (`uid`, `name`, `phone`, `email`, `lineid`, `fb`, `tw`)
 VALUES (
@@ -15,11 +15,11 @@ VALUES (
     '".$_POST['fb']."',
     '".$_POST['tw']."'
 )ON DUPLICATE KEY UPDATE `name` = VALUES(`name`), `phone` = VALUES(`phone`), `email` = VALUES(`email`), `lineid` = VALUES(`lineid`), `fb` = VALUES(`fb`), `tw` = VALUES(`tw`)";
-echo $sql;
+//echo $sql;
 
 if ($conn->query($sql) === TRUE) {
     echo "<p>New record or updated successfully</p>";
 } else {
-    echo "Error: " . $sql . "<br>" . $conn->error;
+    echo "Error: " . $conn->error;
 }
 ?>

@@ -14,7 +14,7 @@ $query = mysqli_query($conn2, $sql2);
     <div class="row my-2">
         <div class="col-12 ">
             <select name="province_id" id="province" class="form-select form-select-sm" oninvalid="setCustomMessage(this, 'กรุณาระบุพื้นที่สินทรัพย์ด้วยค่ะ')" required>
-                <option class="text-left ps-2" value=""> เลือกจังหวัด </option>
+                <option class="text-center ps-2" value=""> เลือกจังหวัด </option>
             <?php while($result = mysqli_fetch_assoc($query)): ?>
                 <option class="text-center ps-2" value="<?=$result['id']?>"><?=$result['name_th']?></option>
             <?php endwhile; ?>
@@ -24,14 +24,14 @@ $query = mysqli_query($conn2, $sql2);
     <div class="row my-2">
         <div class="col-12">
             <select name="amphure_id" id="amphure" class="form-select form-select-sm" oninvalid="setCustomMessage(this, 'กรุณาระบุพื้นที่สินทรัพย์ด้วยค่ะ')" disabled required>
-                <option class="text-left ps-2" value="" > เลือกอำเภอ </option>
+                <option class="text-center ps-2" value="" > เลือกอำเภอ </option>
             </select>
         </div>
     </div>
     <div class="row my-2">
         <div class="col-12">
             <select name="district_id" id="district" class="form-select form-select-sm" oninvalid="setCustomMessage(this, 'กรุณาระบุพื้นที่สินทรัพย์ด้วยค่ะ')" disabled required>
-                <option class="text-left ps-2" value=""> เลือกตำบล </option>
+                <option class="text-center ps-2" value=""> เลือกตำบล </option>
             </select>
         </div>
     </div>                

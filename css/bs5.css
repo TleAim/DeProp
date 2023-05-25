@@ -16,9 +16,13 @@ body {
 
   #Filter {
     position: fixed;
-    bottom: 0;
+    top: 0;
     z-index: 999;
     background-color: #3975ea;
+  }
+
+  #FilterTopSpace {
+    height: 40px;
   }
 
 }
@@ -45,14 +49,6 @@ body {
   outline-offset: 3px;
 }
 
-.bgPVMENU{
-  background-color: #f7f7f7;
-}
-
-.bgPVMENU:hover{
-  background-color: #fff;
-  
-}
 
 .hoverblue:hover {
   /* Set the text color to blue */
@@ -223,37 +219,8 @@ div.R0 {
 
 
 /*************************/
-/* Custom Background */
+/* Custom Text Color */
 /*************************/
-  .bgGray{
-    background: #dbdbdb;
-  }
-
-  .bgRed{
-    border-radius: 0px;
-    background: #ff0000;
-    box-shadow:  5px 5px 1px #181818,
-             -5px -5px 1px #fff9f9;
-  }
-
-  .bgRed2{
-    background: #ff0000;
-  }
-  .bgGreen{
-    border-radius: 0px;
-    background: #047719;
-    box-shadow:  5px 5px 1px #181818,
-             -5px -5px 1px #fff9f9;
-  }
-
-  .bgFB{
-    background-color: #3975ea;
-  }
-
-  .bgGG{
-    background-color: #DB4437;
-  }
-
   .textFB{
     color: #3975ea;
   }
@@ -266,60 +233,8 @@ div.R0 {
     color: #4d9feb;
   }
 
-  .bgLINE{
-    background-color:#70c46f;
-  }
-
   .textLINE{
     color: #70c46f;
-  }
-
-  .bgHeader{
-    background: linear-gradient(0deg, #343434 0%, #000000 100%);
-  }
-  .bgHilighttext{
-    background-color: #FFFFB5;
-  }
-
-  .bgHilighttext2{
-    background-color: #ffffff;
-  }
-
-  .bgForm{
-    background-color: #efefef;
-  }
-  .bgWhiteOP1{
-    background: rgba( 255, 255, 255, 0.5 );
-    box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
-    backdrop-filter: blur( 4.5px );
-    -webkit-backdrop-filter: blur( 4.5px );
-    
-    border: 1px solid rgba( 255, 255, 255, 0.18 );
-  }
-
-  .bgWhiteOP2{
-    background: rgba( 255, 255, 255, 0.9 );
-    box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
-    backdrop-filter: blur( 4.5px );
-    -webkit-backdrop-filter: blur( 4.5px );
-    
-    border: 1px solid rgba( 255, 255, 255, 0.18 );
-  }
-
-  .bgWhiteOP3{
-    background: rgba( 255, 255, 255, 0.2 );
-    box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
-    backdrop-filter: blur( 4.5px );
-    -webkit-backdrop-filter: blur( 4.5px );
-    
-    border: 1px solid rgba( 255, 255, 255, 0.18 );
-  }
-
-  .bgWhiteOP4{
-    border-radius: 0px;
-    background: #fff;
-    box-shadow:  5px 5px 10px #d1d1d1,
-             -5px -5px 10px #ffffff;
   }
 
   .white-border {
@@ -327,9 +242,6 @@ div.R0 {
     border-width: 2px;
   }
 
-/*************************/
-/* Text Color */
-/*************************/
   .txtPurple2{
     color: #3f51b8;
   }

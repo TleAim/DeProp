@@ -1,5 +1,5 @@
 <?php
-include('connect2.php');
+include('../connect2.php');
 $sql = "SELECT * FROM districts WHERE amphure_id={$_GET['amphure_id']}";
 $query = mysqli_query($conn2, $sql);
 

@@ -2,6 +2,7 @@
 include 'display.php';
 include 'init.php';
 include 'connect.php';
+include 'lib/myvar.php';
 
 session_start();
 consolelog("UID = ".$_SESSION['uid']);
@@ -22,6 +23,9 @@ $page = $_GET['p'] ?? "manage";
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>จัดการบัญชี</title>
+    <link rel="icon" href="icon.png" type="image/png" sizes="20x20">
+    <meta name="robots" content="noindex">
+
 </head>
 <body class="bg-light">
     <?php if (is_mobile()) { ?>

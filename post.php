@@ -52,6 +52,7 @@ mysqli_close($conn2);
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?=$row['post_head']?></title>
+    <link rel="icon" href="icon.png" type="image/png" sizes="20x20">
     <!-- META FOR SEO --> 
     <meta name="description" content="<?=substr($row["post_desc"],0,400)?>">
     <meta name="keywords" content="ประกาศฟรี,ซื้อขายที่ดิน,ซื้อขายบ้าน,บ้านมือสอง,ขาย<?=$assetTypeARR[$row["asset_type"]]?>,ให้เช่า<?=$assetTypeARR[$row["asset_type"]]?>,ขาย<?=$assetTypeARR[$row["asset_type"]]?><?=$row2["districts"]?>,ขาย<?=$assetTypeARR[$row["asset_type"]]?><?=$row2["amphures"]?>,ขาย<?=$assetTypeARR[$row["asset_type"]]?><?=$row2["provinces"]?>">

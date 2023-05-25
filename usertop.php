@@ -3,13 +3,13 @@
 
       <div class="d-flex justify-content-between">
         <div class="py-1 px-0">
-        <a class="" href="./index.php"><image src="./img/logo.jpg" style="height:80px;"></image></a>
+        <a class="" href="<?=$weburl?>"><image src="./img/logo.jpg" style="height:80px;"></image></a>
         </div>
 
         <div>
           <div id="mymenu1" class="d-flex align-items-end text-white">
             <span class="bgFB text-center rounded-top p-2 me-1">
-              <a class="" href="index.php"><i class="fas fa-search"></i> ค้นหาสินทรัพย์</a>
+              <a class="" href="<?=$weburl?>"><i class="fas fa-search"></i> ค้นหาสินทรัพย์</a>
             </span>
             <span class="bgFB text-center rounded-top p-2 me-1">
               <a class="" href="myaccount.php?p=add">(+) ลงประกาศฟรี</a>

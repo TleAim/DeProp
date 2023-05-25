@@ -2,6 +2,7 @@
 include 'display.php';
 include 'init.php';
 include 'connect.php';
+include 'lib/myvar.php';
 session_start();
 
 ?>
@@ -11,7 +12,9 @@ session_start();
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>เพิ่มประกาศขายบ้านและที่ดิน อสังหาริมทรัพย์</title>
+    <title>เข้าสู่ระบบ</title>
+    <link rel="icon" href="icon.png" type="image/png" sizes="20x20">
+    <meta name="robots" content="noindex">
 </head>
 <body class="bg-light">
     <?php if (is_mobile()) { ?>

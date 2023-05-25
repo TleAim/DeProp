@@ -11,6 +11,7 @@
   //ตรวจสอบการ login จากทุกช่องทาง//
   ////////////////////////////////
   console.log("==============IN login.js==============");
+  console.log("==== Firebase DB ====");
   firebase.auth().onAuthStateChanged((user) => {
     
     if(user){ //หาก login แล้ว

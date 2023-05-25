@@ -107,11 +107,10 @@ NextStep.addEventListener('click', function () {
                 console.log("Upload success");
                 // Redirect to index.php instead of showing an alert
                 //alert('Images uploaded successfully');
-                window.location.href = 'newpost2.php';
+                
             });
-        } else {
-            //alert('Error uploading images');
-        }
+        } 
+        window.location.href = 'newpost2.php';
     }).catch(error => {
         console.error(error);
         //alert('Error uploading images');

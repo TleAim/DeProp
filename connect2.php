@@ -6,6 +6,7 @@ $dbname = "benmjcxk_thailand";
 
 // Create connection
 $conn2 = mysqli_connect($servername, $username, $password, $dbname);
+
 // Check connection
 if ($conn2->connect_error) {
   die("Connection failed: " . $conn2->connect_error);

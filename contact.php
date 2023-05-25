@@ -1,6 +1,7 @@
 <?php
 include 'display.php';
 include 'init.php';
+include 'lib/myvar.php';
 include 'connect.php';
 session_start();
 
@@ -12,6 +13,11 @@ session_start();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ติดต่อเรา</title>
+    <link rel="icon" href="icon.png" type="image/png" sizes="20x20">
+    <!-- META FOR SEO --> 
+    <meta name="description" content="ตลาดซื้อ-ขาย อสังหาริมทรัพย์ บ้านเดี่ยว ที่ดิน อาคารพาณิชน์ ทาวเฮ้าส์ รีสอร์ท วิลล่า ประกาศฟรีไม่มีค่าใช้จ่าย">
+    <meta name="keywords" content="ประกาศฟรี,ซื้อขายที่ดิน,ซื้อขายบ้าน,บ้านมือสอง,บ้านเช่า,อาคารพาณิชน์,ขายฝากที่ดิน,จำนองที่ดิน,ขายฝากบ้าน,จำนองบ้าน">
+    <meta name="robots" content="index,follow">
 </head>
 <body class="bg-light">
     <?php if (is_mobile()) { ?>
@@ -69,50 +75,50 @@ session_start();
                     <div class="container">
 
                     <!-- USER Phone -->
-                    <?php if(1){?>
+                    <?php if(strlen($contact_phone)){?>
                         <div class="row d-flex py-2 m-0">
                         <div class="col-3 text-end f14 text-secondary p-0 m-0 ">
                             <i class="fa fa-mobile-phone" style='font-size:24px'></i> <span class="text-danger fw-bold"></span>
                         </div>
                         <div class="col-9 text-start ">
-                            <span class="pe-1 text-black f14">: 063-343-5158</span>
+                            <span class="pe-1 text-black f14">: <?=$contact_phone?></span>
                         </div>
                     </div>
                     <?php }?>
 
                     <!-- USER Email -->
-                    <?php if(1){?>
+                    <?php if(strlen($contact_email)){?>
                     <div class="row d-flex py-2 m-0">
                         <div class="col-3 text-end f14 text-secondary p-0 m-0 ">
                             อีเมล
                         </div>
                         <div class="col-9 text-start " id="emaildisplay">
-                            <div class="text-wrap text-black f14">: deprop@gmail.com</div>
+                            <div class="text-wrap text-black f14">: <?=$contact_email?></div>
                         </div>
                     </div>
                     <?php }?>
 
                     <!-- USER LineID -->
-                    <?php if(1){?>
+                    <?php if(strlen($contact_line)){?>
                     <div class="row d-flex py-2 m-0 ">
                         <div class="col-3 text-end f14 text-white p-0 m-0">
                            <span class="bg-success rounded px-2 py-1">LINE</span>
                         </div>
                         <div class="col-9 text-start ">
-                            <span class="pe-1 text-black f14">: @DEPROP</span>
+                            <span class="pe-1 text-black f14">: <a href="<?=$contact_linelink?>"><?=$contact_line?></a></span>
                         </div>
                     </div>
                     <?php }?>
 
                     <!-- USER Facebook -->
-                    <?php if(1){?>
+                    <?php if(strlen($contact_fb)){?>
                     <div class="row d-flex py-2 m-0">
                         <div class="col-3 text-end f14 text-white p-0 m-0 ">
                             <i class='fab fa-facebook-square' style='font-size:28px;color:#3975ea;'></i>
                         </div>    
                         <div class="col-9 text-start">
-                            <a href="https://www.facebook.com/">
-                            <span class="pe-1 textFB f14">: DEPROP</span> 
+                            <a href="https://www.facebook.com/<?=$contact_fb?>">
+                            <span class="pe-1 textFB f14">: <?=$contact_fb?></span> 
                             <span class="f12 textFB"><i class='fas fa-external-link-alt'></i></span>
                             </a>
                         </div>
@@ -120,14 +126,14 @@ session_start();
                     <?php }?>
 
                     <!-- USER twitter -->
-                    <?php if(1){?>
+                    <?php if(strlen($contact_tw)){?>
                     <div class="row d-flex py-2 m-0">
                         <div class="col-3 text-end f14 text-white p-0 m-0 ">
                             <i class="	fab fa-twitter-square" style='font-size:28px;color:#4d9feb;'></i> 
                         </div>
                         <div class="col-9 text-start ">
-                            <a href="https://twitter.com/">
-                            <span class="pe-1 textTW f14">: DEPROP</span> 
+                            <a href="https://twitter.com/<?=$contact_tw?>">
+                            <span class="pe-1 textTW f14">: <?=$contact_tw?></span> 
                             <span class="f12 textTW"><i class='fas fa-external-link-alt'></i></span>
                             </a>
                         </div>

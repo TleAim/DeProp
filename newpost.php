@@ -1,6 +1,7 @@
 <?php
 include 'display.php';
 include 'init.php';
+include 'lib/myvar.php';
 session_start();
 ?>
 
