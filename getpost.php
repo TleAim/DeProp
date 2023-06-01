@@ -126,7 +126,7 @@
             <div class="ps-4  text-break fw-bolder ">
               <?= ($row["asset_condition_sale"] ?? null) == '1' ? "<span class=\"badge bg-primary\">ขาย</span>" : "" ?> 
               <?= ($row["asset_condition_rent"] ?? null) == '1' ? "<span class=\"badge bg-success\">ให้เช่า</span>" : ""; ?> 
-              <span class="badge bg-dark"><?= $assetTypeARR[$row["asset_type"]] ?> </span>
+              <span class="badge bg-dark"><?=$assetTypeARR[$row["asset_type"]] ?> </span>
             </div>
 
             <div class="ps-4 p-1 "><i class='fas fa-chart-area'></i>

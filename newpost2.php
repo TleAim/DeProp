@@ -16,15 +16,15 @@ session_start();
 </head>
 <body class="bg-light">
     <?php if (is_mobile()) { ?>
-        <div class="container bg-white p-0" >
+        <div class="container-fluid bg-white p-0" >
     <?php }else{ ?>
-        <div class="container-fluid bg-white p-0 f12" style="max-width: 1200px;">
+        <div class="container-fluid bg-white p-0 f12" style="max-width: 1200px; min-height: 500px;">
 
     <?php } ?>
 
         <!-- Header -->
         <div class="container-fluid">
-            <div id="FilterTopSpace"></div>
+            
             <?php include 'usertopbar.php'; ?>
             <?php include 'usertop.php'; ?>
         </div>

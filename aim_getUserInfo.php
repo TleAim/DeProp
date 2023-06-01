@@ -19,7 +19,8 @@ if ($_SESSION['uid'] == $admin) {
     exit();
 }
 
-$user_sql = "SELECT * FROM `userprofile` WHERE uid = '".$_POST['uid']."'"; 
+$user_sql = "SELECT * FROM `userprofile` WHERE uid IN (SELECT uid FROM proppost WHERE post_id = '".$_POST['id']."')"; 
+
 echo $user_sql;
 $user_result = mysqli_query($conn, $user_sql);
 $row = mysqli_fetch_assoc($user_result);

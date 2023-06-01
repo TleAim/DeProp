@@ -29,7 +29,7 @@ $page = $_GET['p'] ?? "manage";
 </head>
 <body class="bg-light">
     <?php if (is_mobile()) { ?>
-        <div class="container bg-white p-0" >
+        <div class="container-fluid bg-white p-0" >
     <?php }else{ ?>
         <div class="container-fluid bg-white p-0 f12" style="max-width: 1200px; min-height: 500px;">
 
@@ -52,7 +52,7 @@ $page = $_GET['p'] ?? "manage";
                           <div class="mb-3  " >
                             <div class ="mb-1 text-left" >
                               <div class="text-black fw-bold p-3 bgWhiteOP2 scale-button" id="link_account_managepost">
-                                <a href="#" class=" no-underline ps-2"><i class="fas fa-bullhorn"></i> จัดการประกาศของคุณ</a>
+                                <a href="#" class=" no-underline ps-2"><i class="fas fa-bullhorn"></i> จัดการประกาศ</a>
                               </div>
 
                               <div class="text-black fw-bold p-3 bgWhiteOP2 scale-button" id="link_account_info">

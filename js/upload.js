@@ -97,14 +97,22 @@ NextStep.addEventListener('click', function () {
     selectedFiles.forEach((file, index) => {
         formData.append(`file${index}`, file);
     });
-    fetch('upload_process.php', {
+
+    const requestOptions = {
         method: 'POST',
+        headers: {
+            'enctype': 'multipart/form-data' // Add the enctype header
+        },
         body: formData
-    }).then(response => {
+    };
+
+    fetch('upload_process.php', requestOptions)
+    .then(response => {
         if (response.ok) {
             response.text().then(text => {
                 console.log(text);
                 console.log("Upload success");
+                alert(text);
                 // Redirect to index.php instead of showing an alert
                 //alert('Images uploaded successfully');
                 
@@ -112,8 +120,10 @@ NextStep.addEventListener('click', function () {
         } 
         window.location.href = 'newpost2.php';
     }).catch(error => {
-        console.error(error);
-        //alert('Error uploading images');
+        console.log(error);
+        //alert(error);
+        alert('Error uploading images');
+        window.location.href = 'newpost2.php';
     });
 });
 

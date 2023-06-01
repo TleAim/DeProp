@@ -57,7 +57,7 @@ $query = mysqli_query($conn2, $sql2);
 
         <p class="mt-4 form-label">ราคาสินทรัพย์</p>
         <div class="">
-            <input type="text" class="form-control" id="asset_price" name="asset_price" placeholder="ใส่ราคาเช่น 1500000 (หากไม่ต้องการระบุใส่ 0)" oninput="clearNonNumericInput(this); formatNumberWithCommas(this);  " >
+            <input type="text" class="form-control" id="asset_price" name="asset_price" placeholder="ใส่ราคาเช่น 1500000 (หากไม่ต้องการระบุใส่ 0)" oninput="clearNonNumericInput(this); formatNumberWithCommas(this);  " required>
         </div>
     
         <p class="mt-4 form-label">ประเภทสินทรัพย์</p>

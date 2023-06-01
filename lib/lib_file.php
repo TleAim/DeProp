@@ -1,4 +1,19 @@
 <?php
+function printUploadedFilesInfo($fileArr) {
+    if (!empty($fileArr)) {
+      foreach ($fileArr as $file) {
+        $fileName = $file['name'];
+        $fileSize = $file['size'];
+        
+        echo "Filename: " . $fileName . "<br>";
+        echo "Filesize: " . $fileSize . " bytes<br><br>";
+      }
+    } else {
+      echo "No files uploaded.";
+    }
+  }
+
+  
 function deleteFilesWithPrefix($folder, $prefix) {
     // Check if the folder exists
     if (file_exists($folder) && is_dir($folder)) {
@@ -7,23 +22,23 @@ function deleteFilesWithPrefix($folder, $prefix) {
 
         // Print out the number of files found
         $numFiles = count($files);
-        echo "Found " . $numFiles . " files\n";
+        //echo "<br>Found " . $numFiles . " files\n";
         
-        echo "\n--------- DELETE FILE ---------\n";
+        //echo "<br>--------- DELETE FILE ---------";
         // Loop through the files
         foreach ($files as $file) {
             // Check if the file name starts with the specified prefix
             if (strpos(basename($file), $prefix) === 0) {
                 // Delete the file
                 if (unlink($file)) {
-                    echo "Deleted file: " . $file . "\n";
+                    //echo "<br>Deleted file: " . $file . "\n";
                 } else {
-                    echo "Error deleting file: " . $file . "\n";
+                    //echo "<br>Error deleting file: " . $file . "\n";
                 }
             }
         }
     } else {
-        echo "Folder not found: " . $folder . "\n";
+        echo "<br>Folder not found: " . $folder . "\n";
     }
 }
 
@@ -33,12 +48,12 @@ function moveAndRenameFile($oldFilePath, $newFilePath) {
     // Move and rename the file
     if (file_exists($oldFilePath)) {
         if (rename($oldFilePath, $newFilePath)) {
-            echo "<br>Renamed successfully : ".$oldFilePath." => ".$newFilePath;
+            //echo "<br>Renamed successfully : ".$oldFilePath." => ".$newFilePath;
         } else {
-            echo "<br>Error : ".$oldFilePath." => ".$newFilePath;
+            //echo "<br>Error : ".$oldFilePath." => ".$newFilePath;
         }
     }else{
-        echo $oldFilePath." File not exists <br>";
+        //echo $oldFilePath." File not exists <br>";
     }
 }
 
@@ -57,16 +72,16 @@ function saveFile($uploadDir, $fileArr, $uid)
 
                 // Just move the uploaded file to the destination without converting
                 if (move_uploaded_file($file['tmp_name'], $destination)) {
-                    echo "File uploaded: $filename\n";
+                    //echo "File uploaded: $filename\n";
                 } else {
-                    echo "Error uploading file: $file[name]\n";
+                    //echo "Error uploading file: $file[name]\n";
                 }
 
             } else {
-                echo "Invalid file extension: $file[name]\n";
+                //echo "Invalid file extension: $file[name]\n";
             }
         } else {
-            echo "File too large or error: $file[name]\n";
+            //echo "File too large or error: $file[name]\n";
         }
     }
 }

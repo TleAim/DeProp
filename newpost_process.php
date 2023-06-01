@@ -51,17 +51,17 @@ $sql = "INSERT INTO `proppost` (
     
     VALUES".$qrval;
 
-echo "<br>QR = ".$sql;
-printPostValues();
+//echo "<br>QR = ".$sql;
+//printPostValues();
 
-echo "File Transfer";
+//echo "File Transfer";
 if ($conn->query($sql) === TRUE) {
-    echo "<p>New record created successfully</p>";
+    //echo "<p>New record created successfully</p>";
     for ($x = 0; $x < 10; $x++) {
         $oldFilePath = $imgPathTemp.$uid."_".$x.".jpg";
         $newFilePath = $imgPath.$post_id."_".$x.".jpg";
-        echo "<br>OF :".$oldFilePath;
-        echo "<br>NF :".$newFilePath;
+        //echo "<br>OF :".$oldFilePath;
+        //echo "<br>NF :".$newFilePath;
         moveAndRenameFile($oldFilePath, $newFilePath);
     }
 } else {
@@ -79,6 +79,6 @@ if ($conn->query($sql) === TRUE) {
     // Perform the database insertion and file transfer
 
     // Redirect to myaccount.php after the tasks are completed
-    //window.location.href = "myaccount.php";
+    window.location.href = "myaccount.php";
   });
 </script>

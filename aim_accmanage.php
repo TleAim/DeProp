@@ -53,7 +53,7 @@ if ($_SESSION['uid'] == $admin) {
             <div class="container-fluid  p-3 m-3">
                 <div class="d-flex flex-row">
                     <div style="width: 70%">
-                        <input type="text" class="form-control" id="uid" placeholder="Enter UID" name="uid">
+                        <input type="text" class="form-control" id="inputid" placeholder="Enter POST_ID" name="inputid">
                     </div>
                     <div class="mx-2 dynamic-font">
                         <button id="submitUID" type="submit" class="btn btn-primary"> <i class="fas fa-search"></i> SEARCH</button>
@@ -82,14 +82,14 @@ if ($_SESSION['uid'] == $admin) {
   });
 
   function getUserInfo(){
-    var uid       = $('#uid').val();
+    var inputid       = $('#inputid').val();
     console.log("uid: "+uid);
     
     $.ajax({
       type: 'POST',
       url: 'aim_getUserInfo.php',
       data: {
-          uid: uid
+          id: inputid
       },
 
       success: function(data) {

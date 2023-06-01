@@ -2,13 +2,7 @@
 include 'connect.php';
 include 'connect2.php';
 include 'lib/myvar.php';
-$assetTypeARR = array(
-    1=>"บ้านพร้อมที่ดิน",
-    2=>"ที่ดินเปล่า",
-    3=>"คอนโดมิเนียม",
-    4=>"ทาวน์เฮ้าส์",
-    5=>"อาคารพาณิชย์"     
-  );
+
     session_start();
     $sql = "SELECT * FROM `proppost` WHERE uid = '".$_SESSION['uid']."' ORDER BY `proppost`.`post_date` DESC"; //echo $sql;
     $resultPostList = mysqli_query($conn, $sql);

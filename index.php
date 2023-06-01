@@ -25,7 +25,7 @@ consolelog("SESSION :".$_SESSION['uid']);
 </head>
 <body class="bg-light">
     <?php if (is_mobile()) { ?>
-        <div class="container bg-white p-0" >
+        <div class="container-fluid bg-white p-0" >
     <?php }else{ ?>
         <div class="container-fluid bg-white p-0 f12" style="max-width: 1200px;">
 

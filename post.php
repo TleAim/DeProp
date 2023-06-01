@@ -66,7 +66,7 @@ mysqli_close($conn2);
 </head>
 <body class="bg-light">
     <?php if (is_mobile()) { ?>
-        <div class="container bg-white p-0" >
+        <div class="container-fluid bg-white p-0" >
     <?php }else{ ?>
         <div class="container-fluid bg-white p-0 f12" style="max-width: 1200px; min-height: 500px;">
 
@@ -142,18 +142,15 @@ mysqli_close($conn2);
                 </div>
             </div>
 
-            
-
             <!-- Main Photo -->
             <?php if($thumb[0] != $noimgPath){ ?>
                 <div class="container p-2">
-                    <img class="thumb-image1 " src="<?=$thumb[0]?>">
+                    <img class="thumb-image2 " src="<?=$thumb[0]?>">
                 </div>
             <?php } ?>
 
 
-            <!-- Head & Post ID -->
-            
+            <!-- Head & Post ID -->    
             <div class="ps-2 pt-3">
                 <div class="f12 text-secondary">รหัสทรัพย์: <?=$row["post_id"]?></div>
                 <div class="d-flex pb-2">
@@ -171,9 +168,6 @@ mysqli_close($conn2);
                 
             </div>
                     
-                    
-                
-
             <!-- Description -->
             <div class="container f14 text-dark px-2 mb-3">
                 <hr class="m-0 p-0">
@@ -194,7 +188,7 @@ mysqli_close($conn2);
                 $fileName = $imgPath.$row["post_id"]."_".$x.".jpg";
                 if (file_exists($fileName)) {
             ?>
-                <img class="thumb-image1 mb-4" src="<?=$fileName?>">
+                <img class="thumb-image2 mb-4" src="<?=$fileName?>">
             <?php }} ?>
             </div>
             <?php }else{ echo "<div class=\"p-2\"></div>";} ?>
