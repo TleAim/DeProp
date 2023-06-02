@@ -5,10 +5,17 @@ include './lib/myvar.php';
 include './lib/lib_file.php';
 include 'connect.php';
 session_start();
+
+//CHECK SESSION
 if (!isset($_SESSION['uid']) || $_SESSION['uid'] === null) {
     header('Location: myaccount_login.php');
     exit();
 }
+
+//CHECK USER STATUS
+$user_sql = "SELECT status FROM `userprofile` WHERE uid = '".$_SESSION['uid']."'";
+$user_result = mysqli_query($conn, $user_sql);
+$row = mysqli_fetch_assoc($user_result);
 
 $qrval          = "(";
 $post_id        = uniqid();                     $qrval .= "'".$post_id."',";
@@ -51,23 +58,24 @@ $sql = "INSERT INTO `proppost` (
     
     VALUES".$qrval;
 
-//echo "<br>QR = ".$sql;
 //printPostValues();
 
-//echo "File Transfer";
-if ($conn->query($sql) === TRUE) {
-    //echo "<p>New record created successfully</p>";
-    for ($x = 0; $x < 10; $x++) {
-        $oldFilePath = $imgPathTemp.$uid."_".$x.".jpg";
-        $newFilePath = $imgPath.$post_id."_".$x.".jpg";
-        //echo "<br>OF :".$oldFilePath;
-        //echo "<br>NF :".$newFilePath;
-        moveAndRenameFile($oldFilePath, $newFilePath);
+if($row['status'] == "active"){
+    if ($conn->query($sql) === TRUE) {
+        //echo "<p>New record created successfully</p>";
+        for ($x = 0; $x < 10; $x++) {
+            $oldFilePath = $imgPathTemp.$uid."_".$x.".jpg";
+            $newFilePath = $imgPath.$post_id."_".$x.".jpg";
+            //echo "<br>OF :".$oldFilePath;
+            //echo "<br>NF :".$newFilePath;
+            moveAndRenameFile($oldFilePath, $newFilePath);
+        }
+    } else {
+        echo "Error: " . $sql . "<br>" . $conn->error;
     }
-} else {
-    echo "Error: " . $sql . "<br>" . $conn->error;
+}else{
+    consolelog("USER INACTIVE. no tranfer images and record any data!")
 }
-
 
 
 ?>  
