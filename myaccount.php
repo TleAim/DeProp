@@ -15,6 +15,11 @@ if (!isset($_SESSION['uid']) || $_SESSION['uid'] === null) {
   exit();
 }
 $page = $_GET['p'] ?? "manage";
+
+//CHECK USER STATUS
+$user_sql = "SELECT status FROM `userprofile` WHERE uid = '".$_SESSION['uid']."'";
+$user_result = mysqli_query($conn, $user_sql);
+$user_status = mysqli_fetch_assoc($user_result);
 ?>
 
 <!DOCTYPE html>
@@ -85,7 +90,7 @@ $page = $_GET['p'] ?? "manage";
                             </div>
 
                             <div id="account_addpost" style="display: none;">
-                              <?php include 'newimage.php'; ?>    
+                              <?php if($user_status['status']=="active"){ include 'newimage.php';  } ?>    
                               <?php //include 'newpostform.php'; ?>  
                             </div>
                           </div>

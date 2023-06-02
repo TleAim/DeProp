@@ -70,26 +70,75 @@ if ($_SESSION['uid'] == $admin) {
             <?php include 'footer.php'; ?>
         </div>
 
+        <!-- The Modal for Post Deleting-->
+        <div class="modal" id="modalCFdel">
+          <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content ">
+
+              <!-- Modal Header -->
+              <div class="modal-header">
+                <div><h4 class="modal-title text-center text-black">คุณต้องการลบประกาศนี้?</h4></div> 
+
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+              </div>
+
+              <!-- Modal body -->
+              <div class="modal-body" id="cfPostDel" >
+                <button type="button" id="cfPostDelbt"  class="btn btn-primary px-5 mx-2" data-bs-dismiss="modal">ยืนยัน</button>
+                <button type="button" class="btn btn-danger px-5 mx-2" data-bs-dismiss="modal">ไม่ต้องการ</button>
+              </div>
+
+            </div>
+          </div>
+        </div>
+
+        <!-- The Modal for User Status Update-->
+        <div class="modal" id="modalCFUserS">
+          <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content ">
+
+              <!-- Modal Header -->
+              <div class="modal-header">
+                <div><h4 class="modal-title text-center text-black">คุณต้องการเปลี่ยนสถานะ User นี้?</h4></div> 
+
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+              </div>
+
+              <!-- Modal body -->
+              <div class="modal-body" id="cfUserStatus" >
+                <button type="button" id="cfUserStatusbt"  class="btn btn-primary px-5 mx-2" data-bs-dismiss="modal" style="width: 45%;">ยืนยัน</button>
+                <button type="button" class="btn btn-danger px-5 mx-2" data-bs-dismiss="modal" style="width: 45%;">ไม่ต้องการ</button>
+              </div>
+
+            </div>
+          </div>
+        </div>
+
     </div>
 </body>
 </html>
 <script src="./js/login.js" ></script>
 
 <script>
+  var post4del = '';
+  var useruid = '';
+
   document.getElementById('submitUID').addEventListener('click', function(event) {
     event.preventDefault();
     getUserInfo(); 
+    getUserPost();
   });
 
   function getUserInfo(){
-    var inputid       = $('#inputid').val();
-    console.log("uid: "+uid);
+    var inputid = $('#inputid').val();
+    //console.log("uid: "+uid);
     
     $.ajax({
       type: 'POST',
       url: 'aim_getUserInfo.php',
       data: {
-          id: inputid
+          id: inputid,
+          uid: useruid
       },
 
       success: function(data) {
@@ -98,4 +147,71 @@ if ($_SESSION['uid'] == $admin) {
     }); 
 
   }
+
+  function getUserPost(){
+    var inputid = $('#inputid').val();
+    //console.log("uid: "+uid);
+    
+    $.ajax({
+      type: 'POST',
+      url: 'aim_getUserPost.php',
+      data: {
+          id: inputid,
+          uid: useruid
+      },
+
+      success: function(data) {
+        $('#lookuserpost').html(data);
+      },
+    }); 
+  }
+  
+
+  function setPostDel(post_id){
+    post4del = post_id
+    console.log("Confirm to deleting post :"+post4del)
+  }
+
+  function setUserStatus(uid){
+    useruid = uid
+    console.log("Confirm to change user status :"+useruid)
+  }  
+
+  cfPostDelbt.addEventListener("click",(e)=>{
+    console.log("Confirm Delete : Post ID "+post4del)
+
+    // Send request to your server-side script to unset the user UID using AJAX
+    const xhr = new XMLHttpRequest();
+    xhr.open("POST", "aim_delpost.php", true);
+    xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+    xhr.onreadystatechange = function() {
+        if (this.readyState === XMLHttpRequest.DONE && this.status === 200) {
+            // Redirect to login.php
+            //console.log(this.responseText);
+            //window.location.href = "aim_accmanage.php";
+            getUserPost();
+        }
+    };
+    xhr.send('post_id='+post4del);
+  });
+
+  cfUserStatusbt.addEventListener("click",(e)=>{
+    console.log("Confirm Change User Status "+useruid)
+
+    // Send request to your server-side script to unset the user UID using AJAX
+    const xhr = new XMLHttpRequest();
+    xhr.open("POST", "aim_eduserstatus.php", true);
+    xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+    xhr.onreadystatechange = function() {
+        if (this.readyState === XMLHttpRequest.DONE && this.status === 200) {
+            // Redirect to login.php
+            //console.log(this.responseText);
+            getUserInfo(); 
+        }
+    };
+    xhr.send('id='+useruid);
+  });
+
+
+  
 </script>

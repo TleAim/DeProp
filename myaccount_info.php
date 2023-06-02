@@ -16,6 +16,7 @@ $_SESSION["email"] = $user_row['email'] ?? '';
 $_SESSION["lineid"] = $user_row['lineid'] ?? '';
 $_SESSION["fb"] = $user_row['fb'] ?? '';
 $_SESSION["tw"] = $user_row['tw'] ?? '';
+$_SESSION["status"] = $user_row['status'] ?? 'nostatus';
 
 ?>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
@@ -46,6 +47,16 @@ $_SESSION["tw"] = $user_row['tw'] ?? '';
             </div>
             <div class="col-9 ps-4 text-secondary">
                 <?=substr($_SESSION["uid"],3,8)?>
+            </div>
+        </div>
+
+        <!-- USER ID -->
+        <div class="row d-flex p-2" >
+            <div class="col-3 text-end text-secondary f14 dynamic-font">
+                USER STATUS :
+            </div>
+            <div class="col-9 ps-4 text-secondary">
+                <?=$_SESSION["status"]?>
             </div>
         </div>
         
