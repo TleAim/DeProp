@@ -49,6 +49,15 @@ mysqli_close($conn2);
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-PNN5CWEV4J"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+    
+      gtag('config', 'G-PNN5CWEV4J');
+    </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?=$row['post_head']?></title>
@@ -199,6 +208,7 @@ mysqli_close($conn2);
         
         <!-- SECOND COLUMN -->
         <div class="col-sm-3">
+        <?php if($row['uid'] != $admin){ ?>
             <div class="container text-center p-0 mb-4 ">
                 <div class="bgWhiteOP4">
                     <div class="text-secondary f12 fw-bold pt-2">ลงประกาศโดย :</div>
@@ -270,6 +280,8 @@ mysqli_close($conn2);
                     </div>
                 </div>
                 <?php }?>
+
+        <?php } ?>
 
                 <?php 
                 include 'menu_province.php'; 
