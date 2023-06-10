@@ -11,30 +11,29 @@ $query = mysqli_query($conn2, $sql2);
     <form id="newpostform" action="newpost_process.php" method="post" >
     
     <!-- รายละเอียดประกาศ -->
-    <div class="row my-2">
-        <div class="col-12 ">
-            <select name="province_id" id="province" class="form-select form-select-sm" oninvalid="setCustomMessage(this, 'กรุณาระบุพื้นที่สินทรัพย์ด้วยค่ะ')" required>
-                <option class="text-center ps-2" value=""> เลือกจังหวัด </option>
-            <?php while($result = mysqli_fetch_assoc($query)): ?>
-                <option class="text-center ps-2" value="<?=$result['id']?>"><?=$result['name_th']?></option>
-            <?php endwhile; ?>
-            </select>
-        </div>
+    <div class="flex-container pb-2">
+    <div class="input-group px-1 pb-2">
+        <label class="input-group-text">จังหวัด</label>
+        <select name="province_id" id="province" class="form-select form-select-sm" oninvalid="setCustomMessage(this, 'กรุณาระบุพื้นที่สินทรัพย์ด้วยค่ะ')" required>
+            <option class="text-center ps-2" value=""> โปรดระบุ </option>
+        <?php while($result = mysqli_fetch_assoc($query)): ?>
+            <option class="text-center ps-2" value="<?=$result['id']?>"><?=$result['name_th']?></option>
+        <?php endwhile; ?>
+        </select>
     </div>
-    <div class="row my-2">
-        <div class="col-12">
-            <select name="amphure_id" id="amphure" class="form-select form-select-sm" oninvalid="setCustomMessage(this, 'กรุณาระบุพื้นที่สินทรัพย์ด้วยค่ะ')" disabled required>
-                <option class="text-center ps-2" value="" > เลือกอำเภอ </option>
-            </select>
-        </div>
+    <div class="input-group px-1 pb-2">
+        <label class="input-group-text">เขต/อำเภอ</label>
+        <select name="amphure_id" id="amphure" class="form-select form-select-sm" oninvalid="setCustomMessage(this, 'กรุณาระบุพื้นที่สินทรัพย์ด้วยค่ะ')" disabled required>
+            <option class="text-center ps-2" value="" > โปรดระบุ </option>
+        </select>
     </div>
-    <div class="row my-2">
-        <div class="col-12">
-            <select name="district_id" id="district" class="form-select form-select-sm" oninvalid="setCustomMessage(this, 'กรุณาระบุพื้นที่สินทรัพย์ด้วยค่ะ')" disabled required>
-                <option class="text-center ps-2" value=""> เลือกตำบล </option>
-            </select>
-        </div>
-    </div>                
+    <div class="input-group px-1 pb-2">
+        <label class="input-group-text">แขวง/ตำบล</label>
+        <select name="district_id" id="district" class="form-select form-select-sm" oninvalid="setCustomMessage(this, 'กรุณาระบุพื้นที่สินทรัพย์ด้วยค่ะ')" disabled required>
+            <option class="text-center ps-2" value=""> โปรดระบุ </option>
+        </select>
+    </div>    
+    </div>            
     
     <div class="mb-3 pb-4 pt-3 form-control bgForm">
         <div class="">
@@ -46,7 +45,8 @@ $query = mysqli_query($conn2, $sql2);
         </div>
    
         <p class="mt-4 form-label">สินทรัพย์นี้สำหรับ:</p>
-            <div class="form-check">
+        <div class="d-flex flex-row">
+            <div class="form-check pe-3">
                 <input class="form-check-input" type="checkbox" id="type-sale" name="asset_condition_sale" value="1" checked>
                 <label class="form-check-label" for="type-sale">ขาย</label>
             </div>
@@ -54,10 +54,12 @@ $query = mysqli_query($conn2, $sql2);
                 <input class="form-check-input" type="checkbox" id="type-rent" name="asset_condition_rent" value="1">
                 <label class="form-check-label" for="type-rent">ให้เช่า</label>
             </div>
+        </div>
 
         <p class="mt-4 form-label">ราคาสินทรัพย์</p>
-        <div class="">
+        <div class="input-group" style="max-width: 200px;">
             <input type="text" class="form-control" id="asset_price" name="asset_price" placeholder="ใส่ราคาเช่น 1500000 (หากไม่ต้องการระบุใส่ 0)" oninput="clearNonNumericInput(this); formatNumberWithCommas(this);  " required>
+            <label class="input-group-text">บาท</label>
         </div>
     
         <p class="mt-4 form-label">ประเภทสินทรัพย์</p>
@@ -71,17 +73,31 @@ $query = mysqli_query($conn2, $sql2);
                 <option value="7">รีสอร์ท</option>
             </select>
     
-        <p class="mt-4 form-label">ขนาดพื้นที่:</p>
-        <div class="d-flex">
-            <select class="form-select form-select-sm me-1" id="area_rai" name="area_rai" style="width: 30%;"></select>
-            <select class="form-select form-select-sm me-1" id="area_ngan" name="area_ngan" style="width: 30%;">
-                <option value="0" class="text-center"> 0 งาน </option>
-                <option value="1" class="text-center"> 1 งาน </option>
-                <option value="2" class="text-center"> 2 งาน </option>
-                <option value="3" class="text-center"> 3 งาน </option>
-            </select>
-            <select class="form-select form-select-sm" id="area_va" name="area_va" style="width: 30%;"></select>
+        <p class="mt-4 form-label">ขนาดที่ดิน(ถ้ามี):</p>
+        <div class="flex-container">
+            <div class="input-group px-1">
+                <select class="form-select form-select-sm" id="area_rai" name="area_rai" style="width: 30%;"></select>
+                <label class="input-group-text">ไร่</label>
+            </div>   
+            <div class="input-group px-1"> 
+                <select class="form-select form-select-sm" id="area_ngan" name="area_ngan" style="width: 30%;" >
+                    <option value="0" class="text-center"> 0 </option>
+                    <option value="1" class="text-center"> 1 </option>
+                    <option value="2" class="text-center"> 2 </option>
+                    <option value="3" class="text-center"> 3 </option>
+                </select>
+                <label class="input-group-text">งาน</label>
+            </div>
+            <div class="input-group px-1">
+                <select class="form-select form-select-sm" id="area_va" name="area_va" style="width: 30%;"></select>
+                <label class="input-group-text">ตารางวา</label>
+            </div>   
         </div> 
+
+        <p class="mt-4 form-label">ขนาดพื้นที่ใช้สอย(ถ้ามี):</p>
+        <div class="input-group">
+            <input type="number" class="form-control" id="using_space" name="using_space" value="0" placeholder="" oninput="clearNonNumericInput(this); " style="max-width: 200px;"> <span class="input-group-text" >ตารางเมตร</span>
+        </div>
 
         <p class="mt-4 form-label">ระยะเวลาที่แสดงประกาศ</p>
             <input type="radio" id="d30" name="post_duration" value="30">
@@ -143,7 +159,7 @@ $query = mysqli_query($conn2, $sql2);
       for (let i = 0; i <= 100; i++) {
         const optionElement = document.createElement('option');
         optionElement.value = i;
-        optionElement.text = i + " ไร่";
+        optionElement.text = i;
         optionElement.style.textAlign = 'center';
         raiElement.add(optionElement);
       }
@@ -151,7 +167,7 @@ $query = mysqli_query($conn2, $sql2);
       for (let i = 0; i < 400; i++) {
         const optionElement = document.createElement('option');
         optionElement.value = i;
-        optionElement.text = i + " ตรว.";
+        optionElement.text = i ;
         optionElement.style.textAlign = 'center';
         vaElement.add(optionElement);
       }

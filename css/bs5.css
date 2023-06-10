@@ -1,4 +1,9 @@
 @import url('https://fonts.googleapis.com/css?family=Sarabun&display=swap');
+
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   font-family: 'Sarabun', sans-serif;
 }
@@ -13,6 +18,9 @@ body {
   #mymenu1{ display: none !important; }
   #welcome{ font-size:  12px;}
   #contactbox { flex-direction: column !important; }
+  .flex-container {
+    flex-direction: column;
+  }
 
   #Filter {
     position: fixed;
@@ -39,6 +47,10 @@ body {
     flex-direction: row;
   }
   
+}
+
+.flex-container {
+  display: flex;
 }
 
 .txtWrap{

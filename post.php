@@ -162,16 +162,24 @@ mysqli_close($conn2);
             <!-- Head & Post ID -->    
             <div class="ps-2 pt-3">
                 <div class="f12 text-secondary">รหัสทรัพย์: <?=$row["post_id"]?></div>
-                <div class="d-flex pb-2">
+                <div class="d-flex flex-column pb-2">
                     <!-- Area/Location -->
                     <div class="f12 text-secondary">
                         <span class="pe-2">
                         <i class="fa fa-map-marker"></i> <?=$row2["districts"]?> <?=$row2["amphures"]?> , จังหวัด<?=$row2["provinces"]?>
                         </span>
-                        <i class='fas fa-chart-area'></i>
-                        <?= $row["count_sizerai"] = isset($row["count_sizerai"]) && $row["count_sizerai"] > 0 ? $row["count_sizerai"] . " ไร่" : ""; ?>
-                        <?= $row["count_sizengan"] = isset($row["count_sizengan"]) && $row["count_sizengan"] > 0 ? $row["count_sizengan"] . " งาน" : "" ?>
-                        <?= $row["count_sizeva"] = isset($row["count_sizeva"]) && $row["count_sizeva"] > 0 ? $row["count_sizeva"] . " ตร.วา" : "" ?>
+                    </div>
+                    <div class="f12 text-secondary">
+                    <?php if($row["count_sizerai"] > 0 || $row["count_sizengan"] > 0 || $row["count_sizeva"] > 0){ ?>
+                        <i class='fas fa-chart-area'></i> ขนาดที่ดิน
+                          <?= $row["count_sizerai"] > 0 ? $row["count_sizerai"] . " ไร่" : "" ?>
+                          <?= $row["count_sizengan"] > 0 ? $row["count_sizengan"] . " งาน" : "" ?>
+                          <?= $row["count_sizeva"] > 0 ? $row["count_sizeva"] . " ตร.วา" : "" ?>
+                    <?php } ?>
+
+                    <?php if($row["using_space"] > 0){ ?>
+                        <span class="px-1"></span><i class='fas fa-home'></i> พื้นที่ใช้สอย <?= $row["using_space"] > 0 ? $row["using_space"] . " ตร.ม" : "" ?>
+                    <?php } ?>
                     </div>
                 </div>
                 

@@ -129,11 +129,19 @@
               <span class="badge bg-dark"><?=$assetTypeARR[$row["asset_type"]] ?> </span>
             </div>
 
-            <div class="ps-4 p-1 "><i class='fas fa-chart-area'></i>
-              <?= $row["count_sizerai"] = isset($row["count_sizerai"]) && $row["count_sizerai"] > 0 ? $row["count_sizerai"] . " ไร่" : ""; ?>
-              <?= $row["count_sizengan"] = isset($row["count_sizengan"]) && $row["count_sizengan"] > 0 ? $row["count_sizengan"] . " งาน" : "" ?>
-              <?= $row["count_sizeva"] = isset($row["count_sizeva"]) && $row["count_sizeva"] > 0 ? $row["count_sizeva"] . " ตร.วา" : "" ?>
-            </div>
+            <?php if($row["count_sizerai"] > 0 || $row["count_sizengan"] > 0 || $row["count_sizeva"] > 0){ ?>
+              <div class="ps-4 p-1 "><i class='fas fa-chart-area'></i> ขนาดที่ดิน
+                <?= $row["count_sizerai"] > 0 ? $row["count_sizerai"] . " ไร่" : "" ?>
+                <?= $row["count_sizengan"] > 0 ? $row["count_sizengan"] . " งาน" : "" ?>
+                <?= $row["count_sizeva"] > 0 ? $row["count_sizeva"] . " ตร.วา" : "" ?>
+              </div>
+            <?php } ?>
+
+            <?php if($row["using_space"] > 0){ ?>
+              <div class="ps-4 p-1 "><i class='fas fa-home'></i> พื้นที่ใช้สอย
+                <?= $row["using_space"] > 0 ? $row["using_space"] . " ตร.ม" : "" ?>
+              </div>
+            <?php } ?>
 
             <div class="ps-4 pb-3 f12 dynamic-font text-secondary">
               <i class="fa fa-map-marker"></i> <?=$row2["districts"]?> <?=$row2["amphures"]?> , จังหวัด<?=$row2["provinces"]?>

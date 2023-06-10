@@ -44,6 +44,7 @@ $asset_condition_rent = $_POST['asset_condition_rent'] ?? 0 ; $qrval .= "'".$ass
 $count_sizerai  = $_POST['area_rai'] ?? 0 ;     $qrval .= "'".$count_sizerai."',"; 
 $count_sizengan = $_POST['area_ngan'] ?? 0 ;    $qrval .= "'".$count_sizengan."',"; 
 $count_sizeva   = $_POST['area_va'] ?? 0 ;      $qrval .= "'".$count_sizeva."',"; 
+$using_space    = $_POST['using_space'] ?? 0 ;  $qrval .= "'".$using_space."',"; 
 
 $contact_maps = "";
 if (stripos($_POST['contact_location'],$urlmaps1 ) !== false) { $contact_maps   = $_POST['contact_location'];   } 
@@ -54,11 +55,13 @@ $sql = "INSERT INTO `proppost` (
     `post_id`,`post_date`,`post_duration`,`post_head`,`post_desc`,
     `uid`,`loc_province`,`loc_amphur`,`loc_district`,
     `asset_price`,`asset_type`,`asset_condition_sale`,`asset_condition_rent`,
-    `count_sizerai`,`count_sizengan`,`count_sizeva`,`asset_maps`)
+    `count_sizerai`,`count_sizengan`,`count_sizeva`,`using_space`,`asset_maps`)
     
     VALUES".$qrval;
 
 //printPostValues();
+
+//echo $sql;
 
 if($row['status'] == "active"){
     if ($conn->query($sql) === TRUE) {
@@ -74,7 +77,7 @@ if($row['status'] == "active"){
         echo "Error: " . $sql . "<br>" . $conn->error;
     }
 }else{
-    consolelog("USER INACTIVE. no tranfer images and record any data!")
+    consolelog("USER INACTIVE. no tranfer images and record any data!");
 }
 
 
