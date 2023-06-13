@@ -12,7 +12,7 @@
       <div class="hoveryellow"><a href="index.php">ค้นหาสินทรัพย์ล่าสุด</a></div>
       <div class="hoveryellow"><a href="index.php?at=1">บ้านมือสอง</a></div>
       <div class="hoveryellow"><a href="index.php?at=4">ทาวเฮ้าส์</a></div> 
-      <div class="hoveryellow"><a href="index.php?at=3">ทคอนโดมิเนียม</a></div> 
+      <div class="hoveryellow"><a href="index.php?at=3">คอนโดมิเนียม</a></div> 
       <div class="hoveryellow"><a href="index.php?at=2">ที่ดินเปล่า</a></div> 
       <div class="hoveryellow"><a href="index.php?at=5">อาคารพาณิชน์</a></div> 
       <div class="hoveryellow"><a href="index.php?at=7">รีสอร์ท</a></div> 

@@ -3,6 +3,15 @@ function convertDateFormat($dateString) {
     $date = DateTime::createFromFormat('Y-m-d', $dateString);
     return $date->format('d F Y');
 }
+
+function cssBoxselect($a,$b){
+    
+    if($a==$b){
+        return "bgBoxSelect";
+    }else{
+        return "bgLowGray";
+    }
+}
   
 function prnRadio($name,$value,$txt,$checked){
     

@@ -170,15 +170,18 @@ mysqli_close($conn2);
                         </span>
                     </div>
                     <div class="f12 text-secondary">
-                    <?php if($row["count_sizerai"] > 0 || $row["count_sizengan"] > 0 || $row["count_sizeva"] > 0){ ?>
-                        <i class='fas fa-chart-area'></i> ขนาดที่ดิน
-                          <?= $row["count_sizerai"] > 0 ? $row["count_sizerai"] . " ไร่" : "" ?>
-                          <?= $row["count_sizengan"] > 0 ? $row["count_sizengan"] . " งาน" : "" ?>
-                          <?= $row["count_sizeva"] > 0 ? $row["count_sizeva"] . " ตร.วา" : "" ?>
-                    <?php } ?>
+                    <?php 
+                        if($row["count_sizerai"] > 0 || $row["count_sizengan"] > 0 || $row["count_sizeva"] > 0){ ?>
+                            <i class='fas fa-chart-area'></i> ขนาดที่ดิน
+                            <?= $row["count_sizerai"] > 0 ? $row["count_sizerai"] . " ไร่" : "" ?>
+                            <?= $row["count_sizengan"] > 0 ? $row["count_sizengan"] . " งาน" : "" ?>
+                            <?= $row["count_sizeva"] > 0 ? $row["count_sizeva"] . " ตร.วา" : "" ?>
+                            <span class="px-1"></span>
+                    <?php 
+                        } ?>
 
                     <?php if($row["using_space"] > 0){ ?>
-                        <span class="px-1"></span><i class='fas fa-home'></i> พื้นที่ใช้สอย <?= $row["using_space"] > 0 ? $row["using_space"] . " ตร.ม" : "" ?>
+                        <i class='fas fa-home'></i> พื้นที่ใช้สอย <?= $row["using_space"] > 0 ? $row["using_space"] . " ตร.ม" : "" ?>
                     <?php } ?>
                     </div>
                 </div>

@@ -21,6 +21,11 @@
  .bgPVMENU{ background-color: #f7f7f7; }
  .bgPVMENU:hover{ background-color: #fff; }
  .bgGray{ background: #dbdbdb; }
+ .bgLowGray{ background: #ebebeb; }
+ .bgBoxSelect{ 
+  background: #feab4b;
+  border: 2px solid rgb(97, 97, 97);
+ }
  .bgRed{
      border-radius: 0px;
      background: #ff0000;

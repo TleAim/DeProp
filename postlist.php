@@ -32,7 +32,19 @@ $at = $_GET['at'] ?? 0;
 
     <div class="flex-grow-1">
       <main>
-        <?php  
+      <div class="container bgWhiteOP2 p-3 mb-3 f14">
+        <div class="d-flex">
+            <a href="index.php?at=1"><span class="<?php echo cssBoxselect($at,"1")?> rounded m-1 px-2 py-0">บ้าน</span></a>
+            <a href="index.php?at=2"><span class="<?php echo cssBoxselect($at,"2")?> rounded m-1 px-2 py-0">ที่ดิน</span></a>
+            <a href="index.php?at=3"><span class="<?php echo cssBoxselect($at,"3")?> rounded m-1 px-2 py-0">คอนโดมิเนียม</span></a>
+            <a href="index.php?at=4"><span class="<?php echo cssBoxselect($at,"4")?> rounded m-1 px-2 py-0">ทาวเฮ้าส์</span></a>
+            <a href="index.php?at=5"><span class="<?php echo cssBoxselect($at,"5")?> rounded m-1 px-2 py-0">อาคารพาณิชน์</span></a>
+            <a href="index.php?at=6"><span class="<?php echo cssBoxselect($at,"6")?> rounded m-1 px-2 py-0">วิลล่า</span></a>
+            <a href="index.php?at=7"><span class="<?php echo cssBoxselect($at,"7")?> rounded m-1 px-2 py-0">รีสอร์ท</span></a>
+        </div>
+      </div>
+        <?php
+      
         $search = "";
         if( $pv>0 )  { $search = getnamePV($conn2,$pv);}
         elseif($ap>0){ $search = getnameAP($conn2,$ap);

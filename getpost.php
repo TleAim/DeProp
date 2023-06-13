@@ -46,7 +46,7 @@
       $total_count = 100;
     }
 
-    $limit = 8;
+    $limit = 10;
     $prevpage = ($page - 1 < 1) ? 1 : $page - 1;
     $nextpage = ($page+1 <= $total_count/$limit ? $page+1 : $page);
     $offset = ($page - 1) * $limit;
