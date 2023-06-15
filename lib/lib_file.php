@@ -13,6 +13,25 @@ function printUploadedFilesInfo($fileArr) {
     }
   }
 
+function countfile($folder,$prefix){
+    $count = 0;
+    if (file_exists($folder) && is_dir($folder)) {
+        // Get all files in the folder
+        $files = glob($folder . '*');
+
+        // Print out the number of files found
+        $numFiles = count($files);
+
+        // Loop through the files
+        foreach ($files as $file) {
+            // Check if the file name starts with the specified prefix
+            if (strpos(basename($file), $prefix) === 0) {
+                $count++;
+            }
+        }
+    }
+    return $count;
+}
   
 function deleteFilesWithPrefix($folder, $prefix) {
     // Check if the folder exists

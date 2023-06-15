@@ -10,7 +10,7 @@ body {
 
 /* For mobile devices */
 @media (max-width: 767px) {
-  #deschead,#linkft1,#linkft2 { display: none !important; }
+  #deschead,#linkft1,#linkft2,#thumbPostPreview { display: none !important; }
   #hidefilterBT { display:block; }
   #FilterPV { display: none; }
   #icon-menu { display: block; }

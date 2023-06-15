@@ -1,11 +1,69 @@
 <?php
 include 'connect2.php';
+include 'lib/myvar.php';
+session_start();
 
 $sql2 = "SELECT * FROM `provinces` ORDER BY `provinces`.`name_th`";
 $query = mysqli_query($conn2, $sql2);
 ?>
+<script>
+    // Countdown function
+    function countdown() {
+      var seconds = 30; // Number of seconds to countdown
+      
+      // Display initial value
+      document.getElementById('timer').innerHTML = seconds;
+      
+      // Update countdown every second
+      var countdownInterval = setInterval(function() {
+        seconds--; // Decrement seconds
+        document.getElementById('timer').innerHTML = seconds; // Update displayed value
+        
+        // Check if countdown is finished
+        if (seconds <= 0) {
+          clearInterval(countdownInterval); // Stop the countdown
+          window.location.href = "myaccount.php?p=add"; 
+        }
+      }, 1000); // 1000 milliseconds = 1 second
+    }
 
-<div class="bgWhiteOP2 p-3">
+    function redirectToUpload() {
+        window.location.href = "myaccount.php?p=add";
+    }
+</script>
+
+    <?php 
+        $countfile = 0;
+        for ($i = 0; $i < 8; $i++) {
+            $file_path = $imgPathTemp.$_SESSION['uid']."_".$i.".jpg";
+            //echo "CHK:".$file_path."<br>";
+            if(file_exists($file_path)){
+                $thumb[$i] = $file_path;
+                $count++;
+                //echo "exists IMG".$i.":".$file_path."<br>";
+            }
+          }
+    
+    if($count==0){ 
+    ?>
+        <div class="container pt-5 mt-5 text-center">
+            <div class="mb-5"><h3>การอัพโหลดรูปภาพเกิดข้อผิดพลาด ทำการอัพโหลดใหม่ใน <span id="timer"></span> วินาที</h3></div>
+            <div class="btn1 mt-2" onclick="redirectToUpload()">ทำการอัพโหลดอีกครั้ง</div>
+        </div>
+        <script>
+            window.onload = countdown;
+        </script>
+
+    <?php  }else{ ?>
+
+    <div class="bgWhiteOP2 p-3">
+    <div id="thumbPostPreview" class="d-flex justify-content-center mb-4">
+    <?php foreach($thumb as $img){ ?>
+        <div class="p-2" style="width:10%">
+            <img class="thumb-image1 " src="<?=$img?>" >
+        </div>
+    <?php } ?>
+    </div>
 
     <p class="text-center fs-5">ลงประกาศ สำหรับอสังหาริมทรัพย์เท่านั้น</p>
     <form id="newpostform" action="newpost_process.php" method="post" >
@@ -183,3 +241,4 @@ $query = mysqli_query($conn2, $sql2);
       };
     }
   </script>
+  <?php } ?>
