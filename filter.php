@@ -12,7 +12,7 @@ $query = mysqli_query($conn2, $sql2);
                 <option value="1" <?php echo $asset_type == 1 ? 'selected' : '' ?> >บ้านพร้อมที่ดิน</option>
                 <option value="2" <?php echo $asset_type == 2 ? 'selected' : '' ?> >ที่ดินเปล่า</option>
                 <option value="3" <?php echo $asset_type == 3 ? 'selected' : '' ?> >คอนโดมิเนียม</option>
-                <option value="4" <?php echo $asset_type == 4 ? 'selected' : '' ?> >ทาวน์เฮ้าส์</option>
+                <option value="4" <?php echo $asset_type == 4 ? 'selected' : '' ?> >ทาวน์เฮ้าส์ / ทาวน์โฮม</option>
                 <option value="5" <?php echo $asset_type == 5 ? 'selected' : '' ?> >อาคารพาณิชย์</option>
                 <option value="6" <?php echo $asset_type == 6 ? 'selected' : '' ?> >วิลล่า</option>
                 <option value="7" <?php echo $asset_type == 7 ? 'selected' : '' ?> >รีสอร์ท</option>

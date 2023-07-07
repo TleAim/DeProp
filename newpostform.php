@@ -47,8 +47,8 @@ $query = mysqli_query($conn2, $sql2);
     if($count==0){ 
     ?>
         <div class="container pt-5 mt-5 text-center">
-            <div class="mb-5"><h3>การอัพโหลดรูปภาพเกิดข้อผิดพลาด ทำการอัพโหลดใหม่ใน <span id="timer"></span> วินาที</h3></div>
-            <div class="btn1 mt-2" onclick="redirectToUpload()">ทำการอัพโหลดอีกครั้ง</div>
+            <div class="mb-5"><h3>การอัพโหลดรูปภาพเกิดข้อผิดพลาด</h3><h5 class="text-primary p-2">ทำการอัพโหลดใหม่ใน <span id="timer"></span> วินาที</h5></div>
+            <div class="btn1" onclick="redirectToUpload()">ทำการอัพโหลดอีกครั้ง</div>
         </div>
         <script>
             window.onload = countdown;
@@ -125,7 +125,7 @@ $query = mysqli_query($conn2, $sql2);
                 <option value="1" selected>บ้านพร้อมที่ดิน</option>
                 <option value="2">ที่ดินเปล่า</option>
                 <option value="3">คอนโดมิเนียม</option>
-                <option value="4">ทาวน์เฮ้าส์</option>
+                <option value="4">ทาวน์เฮ้าส์/ทาวน์โฮม</option>
                 <option value="5">อาคารพาณิชย์</option>
                 <option value="6">วิลล่า</option>
                 <option value="7">รีสอร์ท</option>

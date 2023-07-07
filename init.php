@@ -47,6 +47,16 @@
 
     </script>
 
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-1005621487"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+        
+      gtag('config', 'AW-1005621487');
+    </script>
+
 <!-- Global Var -->
 <script>
     let uid = "none";
