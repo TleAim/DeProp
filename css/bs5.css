@@ -156,18 +156,23 @@ a:hover {
   justify-content: space-between;
 }
 
-#cfPostDel {
+#cfPostDel,#cfPostCon {
   display: flex;
   justify-content: space-between;
+}
+
+
+#cfPostDel .btn {
+  width: 50%;
+}
+#cfPostCon .btn {
+  width: 50%;
 }
 
 #cflogout .btn {
   width: 50%;
 }
 
-#cfPostDel .btn {
-  width: 50%;
-}
 
 a.no-underline {
   text-decoration: none;

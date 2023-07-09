@@ -2,6 +2,7 @@
 include 'connect.php';
 include 'connect2.php';
 include 'lib/myvar.php';
+include 'lib/func.php';
 
     session_start();
     $sql = "SELECT * FROM `proppost` WHERE uid = '".$_SESSION['uid']."' ORDER BY `proppost`.`post_date` DESC"; //echo $sql;
@@ -29,19 +30,26 @@ include 'lib/myvar.php';
           $resultLOC = mysqli_query($conn2, $sqlGetLOC);
           $row2 = $resultLOC->fetch_assoc();
 
-          $url = $row["post_id"];
+          $urlpostid = $row["post_id"];
           $thumb = array();
           for ($i = 0; $i < 4; $i++) {
             $file_path = $imgPath.$row["post_id"]."_".$i.".jpg";
             $file_path = file_exists($file_path) ? $file_path : $noimgPath ;
             $thumb[$i] = $file_path;
           }
+          $expire = false;
+          $bgDisplay = "bgWhiteOP2";
+          $diffDate = diffDate($row["post_date"]);
+          if($diffDate > $row["post_duration"]){
+            $expire = true;
+            $bgDisplay = "bgExpire";
+          }
 ?>
       
-<div class="bgWhiteOP2 m-0 scale-button" > 
+<div class="<?=$bgDisplay?> m-0 scale-button" > 
 
 <div class="row m-0 pt-4" >
-  <div class="col-sm-4" onclick="window.open('post.php?pid=<?=$url?>', '_self');" >
+  <div class="col-sm-4" onclick="window.open('post.php?pid=<?=$urlpostid?>', '_self');" >
     <div><img class="thumb-image1 " src="<?=$thumb[0]?>"/></div>
     <?php if($thumb[0] != $noimgPath){ ?>
       <div class="d-flex mb-3 bg-light">
@@ -59,13 +67,16 @@ include 'lib/myvar.php';
   </div>
   
   <div class="col-sm-8 ps-0 text-black ">
-    <div onclick="window.open('post.php?pid=<?=$url?>', '_self');" >
+    <div onclick="window.open('post.php?pid=<?=$urlpostid?>', '_self');" >
       <div class="ps-4 fw-bold f20">
         <?=number_format($row["asset_price"])?> <span class="f12"> บาท</span>
       </div>
 
       <div class="ps-4 p-1 pb-2 text-secondary f14 fw-bolder">
         <?=$row["post_head"]?><span class="f12 ps-2"><em>--Post เมื่อ <?=$row["post_date"]?></em></span>
+        <?php if($expire){ ?>
+          <span class="text-danger fw-bold f14"> [ หมดอายุ ]</span>
+        <?php } ?>
       </div>
 
       <div class="ps-4  text-break fw-bolder ">
@@ -95,14 +106,16 @@ include 'lib/myvar.php';
       <div class="ps-4 pb-3 f14 text-break"><?=mb_substr($row["post_desc"],0,250)."..."?></div>
     </div>
     
-    <div class="ms-4 mt-2 mb-4 d-flex justify-content-between">
-      <div>
-        <?php if($row["asset_maps"]){ $link = $row["asset_maps"]; ?>
-          <button class="btn1" onclick="window.open('<?=$link?>', '_blank');"><i class="fas fa-map"></i> แผนที่สินทรัพย์</button>
-        <?php } ?>
-      </div>
+    <div class="ms-4 mt-2 mb-4 d-flex justify-content-end">
 
-      <div id="del" class="py-2 px-3 f14 bgRed2 rounded text-white scale-button " data-bs-toggle="modal" data-bs-target="#modalCFdel" onclick="setPostDel('<?=$url?>')">
+      <?php if($expire){ ?>
+      <div id="con" class="py-2 px-3 me-3 f14 bgGreen2 rounded text-white scale-button " data-bs-toggle="modal" data-bs-target="#modalCFcon" onclick="setPostCon('<?=$urlpostid?>')">
+        <div class="pt-1">
+         ต่ออายุประกาศ 30 วัน
+        </div>
+      </div>
+      <?php } ?>
+      <div id="del" class="py-2 px-3 f14 bgRed2 rounded text-white scale-button " data-bs-toggle="modal" data-bs-target="#modalCFdel" onclick="setPostDel('<?=$urlpostid?>')">
         <div class="pt-1">
         <i class='fas fa-trash-alt' style='font-size:20px'></i> ลบประกาศ
         </div>
@@ -152,6 +165,28 @@ include 'lib/myvar.php';
   </div>
 </div>
 
+<!-- The Modal for Add 30 Days Duration Post-->
+<div class="modal" id="modalCFcon">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content ">
+
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <div><h4 class="modal-title text-center text-black">คุณต้องการต่ออายุประกาศนี้ 30 วัน?</h4></div> 
+       
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+
+      <!-- Modal body -->
+      <div class="modal-body" id="cfPostCon" >
+        <button type="button" id="cfPostConbt"  class="btn btn-primary px-5 mx-2" data-bs-dismiss="modal">ยืนยัน</button>
+        <button type="button" class="btn btn-danger px-5 mx-2" data-bs-dismiss="modal">ไม่ต้องการ</button>
+      </div>
+
+    </div>
+  </div>
+</div>
+
 <script>
 function setPostDel(post_id){
     //const postid = document.getElementById("postid")
@@ -177,4 +212,24 @@ function setPostDel(post_id){
     xhr.send('post_id='+post4del);
   });
 
+
+  function setPostCon(post_id){
+    //const postid = document.getElementById("postid")
+    postRef = post_id
+  }
+
+  cfPostConbt.addEventListener("click",(e)=>{
+    // Send request to your server-side script to unset the user UID using AJAX
+    const xhr = new XMLHttpRequest();
+    xhr.open("POST", "myaccount_repost.php", true);
+    xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+    xhr.onreadystatechange = function() {
+        if (this.readyState === XMLHttpRequest.DONE && this.status === 200) {
+            // Redirect to login.php
+            console.log(this.responseText);
+            window.location.href = "myaccount.php";
+        }
+    };
+    xhr.send('post_id='+postRef);
+  });
 </script>
